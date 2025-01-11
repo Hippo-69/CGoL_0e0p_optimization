@@ -121,7 +121,7 @@ local glider_SoD=pattern()
 glider_SoD.array=g.parse("bo$2bo$3o!")
 glider_SoD=glider_SoD[SoD_phase].state(SoD_glidermark_state).t(-7,7)
 
-local openkernelglider=gpo.glider[1].state(comment_glider_state).t(-open_kernel_lane+64,-open_kernel_lane-64,gp.rccw)
+local openkernelglider=gpo.glider[0].state(comment_glider_state).t(-open_kernel_lane+64,-open_kernel_lane-64,gp.rccw)
 
 local positionmark=pattern()
 positionmark.array=g.parse("o3bo$bobo$2bo$bobo$o3bo!")
@@ -164,32 +164,32 @@ local function E_shell_pattern()
  constructionstopper.array=g.parse("2o$2o!")
  constructionstopper=constructionstopper.state(shell_state)
 
- local constructionprestopper=gpo.block
-
  local constructionstopperSoD=pattern()
  constructionstopperSoD.array=g.parse("2o$2o!")
  constructionstopperSoD=constructionstopperSoD[SoD_phase].state(SoD_state).t(-7,-4)
 
- local constructionstopperwithSoD=(constructionstopper+constructionstopperSoD+constructionprestopper.t(31,20)).t(-21-constr_lane_dist,-13+constr_lane_dist)
+ local constructionstopperwithSoD=(constructionstopper+constructionstopperSoD).t(-21-constr_lane_dist,-13+constr_lane_dist)
 
  local constructionlaneblockingeater=gpo.eater.state(shell_state).t(58-constr_lane_dist-shell_lane0_dist-shell_lane_dist,58+constr_lane_dist-shell_lane0_dist-shell_lane_dist,gp.flip)
 
- local constructiontarget=gpo.block.state(comment_state).t(-8-constr_lane_dist,10-constr_lane_dist)
+ local constructionarmtarget=gpo.block.t(-8-42-constr_lane_dist,10+42-constr_lane_dist)
+ local constructiontarget=gpo.block.t(-8+28-constr_lane_dist,10-52-constr_lane_dist)
 
- local oriconstructiontarget=gpo.block.state(comment_state).t(1-oriconstr_lane_dist-shell_lane0_dist-3*shell_lane_dist-shell_last_extra_dist,0-oriconstr_lane_dist+shell_lane0_dist+3*shell_lane_dist+shell_last_extra_dist)
+ local oriconstructionarmtarget=gpo.block.state(comment_state).t(1-oriconstr_lane_dist-shell_lane0_dist-3*shell_lane_dist-shell_last_extra_dist,0-oriconstr_lane_dist+shell_lane0_dist+3*shell_lane_dist+shell_last_extra_dist)
 
  local E=pattern()+positionmark
  E=E+filltxt.t(-6-2*shell_lane0_dist-5*shell_lane_dist-shell_last_extra_dist,15+0*shell_lane0_dist-shell_lane_dist-shell_last_extra_dist)
  E=E+filltxt.t(0-2*shell_lane0_dist-3*shell_lane_dist,15+0*shell_lane0_dist-shell_lane_dist,gp.rcw)
  E=E+filltxt.t(20-2*shell_lane0_dist-shell_lane_dist,20+0*shell_lane0_dist-shell_lane_dist,gp.flip)
- E=E+constructiontarget+constructionlaneblockingeater+constructionstopperwithSoD+oriconstructiontarget+constructionlaneblockingeaterSoDsplitter+constructionstopperSoDtuner
+ E=E +constructiontarget+constructionarmtarget
+         +constructionlaneblockingeater+constructionstopperwithSoD+oriconstructionarmtarget+constructionlaneblockingeaterSoDsplitter+constructionstopperSoDtuner
  E=E+openkernelglider
  E=E+openkerneltxt.t(-open_kernel_lane+64,-open_kernel_lane-64)
  E=E+openkerneltxt.t(-open_kernel_lane+64,-open_kernel_lane-64,gp.rcw)
  E=E+openkerneltxt.t(-open_kernel_lane+64,-open_kernel_lane-64,gp.flip)
  E=E+openkerneltxt.t(-open_kernel_lane+64,-open_kernel_lane-64,gp.rccw)
- E=E+gpo.blinker.t(-open_kernel_lane+82,-open_kernel_lane-92,gp.rcw)+gpo.blinker.t(-open_kernel_lane+86,-open_kernel_lane-92,gp.rcw)
-         +gpo.long_boat.t(-constr_lane_dist+93,-constr_lane_dist-89,gp.rcw) -- debug timing
+ -- E=E+gpo.blinker.t(-open_kernel_lane+82,-open_kernel_lane-92,gp.rcw)+gpo.blinker.t(-open_kernel_lane+86,-open_kernel_lane-92,gp.rcw)
+ --        +gpo.long_boat.t(-constr_lane_dist+93,-constr_lane_dist-89,gp.rcw) -- debug timing
  E=E+(gpo.pond.t(-8,20)+gpo.beehive.t(-4,14)+gpo.ship.t(-18,6)+gpo.block.t(-33,2)).state(SoD_state).t(-open_kernel_lane,-open_kernel_lane)
  E=E+(snarkNES_withSoD1+firstlanesnarkSoDsplitter+loopSoDsplitter+loopSoDturner).t(-2*shell_lane0_dist-shell_lane_dist,0*shell_lane0_dist-shell_lane_dist)
  E=E+(snarkNES_withSoD1+midlanesnarkSoDsplitter).t(-2*shell_lane0_dist-3*shell_lane_dist,0*shell_lane0_dist-shell_lane_dist)
@@ -277,7 +277,7 @@ local SE,NE,NW,SW=shell_sides_SE_NE_NW_SW()
 local function E_output()
  local S=13 -- NE shift of SOD
  E=E+(scorbiesplitter_withSoD
-    +(gpo.boat.t(70, 44,gp.rccw)+gpo.boat.t(65, 49,gp.rccw)+gpo.boat.t(60, 44,gp.rccw) + gpo.eater.t(50,44,gp.swap_xy)).state(output_layer_state)
+    +(gpo.boat.t(71, 45,gp.rccw)+gpo.boat.t(65, 49,gp.rccw)+gpo.boat.t(60, 44,gp.rccw) + gpo.eater.t(50,44,gp.swap_xy)).state(output_layer_state)
     +(gpo.long_boat.t(57+S,-39-S,gp.flip)+gpo.blinker.t(56+S,-33-S,gp.rcw)
      ).state(SoD_state)
     +(scorbiesplitter_withSoD
@@ -298,12 +298,12 @@ local function E_output()
          +gpo.blinker.t(89-S,-88+S,gp.rcw)+gpo.long_boat.t(95-S,-89+S)
        ).state(SoD_state)
      ).t(-44+170,331-170,gp.swap_xy_flip)
-    +(gpo.eater.state(output_layer_state)+(gpo.pond.t(-16,15)+gpo.blinker.t(-10,21,gp.rcw)).state(SoD_state)).t(137,89)  -- fill prevent and its SoD
+    +(gpo.eater.state(output_layer_state)+(gpo.pond.t(-16,15)+gpo.blinker.t(-10,21)).state(SoD_state)).t(137,89)  -- fill prevent and its SoD
     +(snarkNES.state(output_layer_state)
       +(gpo.block.t(26,21)+gpo.blinker.t(-29,73,gp.rcw)+gpo.tub.t(-30,86)).state(SoD_state)
      ).t(525-DNAloopOctavoDist+input_lane0_dist+input_lane1_dist+input_lane2_dist,-264+DNAloopOctavoDist-input_lane0_dist-input_lane1_dist-input_lane2_dist,gp.flip_x)
     ).t(-2*DNA_outershell_dist-6,-46)
-    +(scorbieSE_withSoD2
+    +(scorbieSE_withSoD2p1
       +(gpo.loaf.t(22,-20,gp.flip)+gpo.beehive.t(19,-39)+gpo.boat.t(-42,9,gp.rcw)).state(SoD_state) -- destroyal path
        +gpo.eater.t(-32,-26,gp.swap_xy_flip).state(output_layer_state) -- to block the lane not going to shell construction
      ).t(69-DNA_outershell_dist-constr_lane_dist,-65-constr_lane_dist+DNA_outershell_dist,gp.flip)
@@ -334,10 +334,11 @@ local function N_output()
       +(gpo.boat.t(116,-93,gp.rccw)+gpo.long_boat.t(46-S,-36+S,gp.rccw)+gpo.blinker.t(47-S,-30+S)+gpo.blinker.t(29,0,gp.rcw)).state(SoD_state)
      ).t(6+525-DNAloopOctavoDist+input_lane0_dist+input_lane1_dist+input_lane2_dist+input_lane3_dist,
          6-264+DNAloopOctavoDist-1-input_lane0_dist-input_lane1_dist-input_lane2_dist-input_lane3_dist,gp.flip_x)
-    +(gpo.eater.state(output_layer_state)+(gpo.pond.t(-16-97,14+97)+gpo.blinker.t(-10-97,20+97,gp.rcw)).state(SoD_state)).t(137,89)).t(-46+1,2*DNA_outershell_dist+6,gp.rccw)
+    +(gpo.eater.state(output_layer_state)+(gpo.pond.t(-16-97,14+97)+gpo.blinker.t(-10-97,20+97)).state(SoD_state)).t(137,89)  -- fill prevent and its SoD
+      ).t(-46+1,2*DNA_outershell_dist+6,gp.rccw)
     +snarkNES.state(output_layer_state).t(80+constr_lane_dist-DNA_outershell_dist,56-DNA_outershell_dist-constr_lane_dist,gp.flip_x).t(0,0,gp.flip)
     +((gpo.block
-      +gpo.blinker.t(19,25)+gpo.blinker.t(23,25)
+      +gpo.blinker.t(19,25,gp.rcw)+gpo.blinker.t(23,25,gp.rcw)
       ).state(SoD_state) -- destroyal path+SoD
          +gpo.eater.t(-15,24,gp.flip_x).state(output_layer_state)                                        -- eater blocking lane to shell construction
      ).t(53+constr_lane_dist-DNA_outershell_dist,77-DNA_outershell_dist-constr_lane_dist).t(0,0,gp.flip)
@@ -362,7 +363,7 @@ end
 
 local function W_output()
  W=W+(scorbiesplitter_withSoDp1
-    +(gpo.boat.t(39,67,gp.flip)+gpo.boat.t(64, 50,gp.rccw)).state(output_layer_state)
+    +(gpo.boat.t(39,67,gp.flip)+gpo.boat.t(65, 49,gp.rccw)).state(output_layer_state)
     +gpo.eater.t(87,103,gp.rcw).state(output_layer_state) -- loop/construction
     +(gpo.ship.t(144,-143)+gpo.blinker.t(152,-130)).state(SoD_state)
     +(scorbiesplitter_withSoDp1
@@ -378,15 +379,17 @@ local function W_output()
       +(gpo.blinker.t(29,0)+gpo.tub.t(131,-129)+gpo.blinker.t(130,-116,gp.rcw)).state(SoD_state)
       ).t(-44+170,331-170,gp.swap_xy_flip) -- ori construction/state reading
     +gpo.eater.t(107-12,156+12,gp.rcw).state(output_layer_state) -- NW ori construction blocker
-    +(gpo.loaf.t(93-12,138+12,gp.flip)+gpo.blinker.t(89-12,132+12,gp.rcw)).state(SoD_state) -- NW ori construction start .. length critical
+    +(gpo.loaf.t(93-12,138+12,gp.flip)+gpo.blinker.t(89-12,132+12)).state(SoD_state) -- NW ori construction start .. length critical  fill prevent and its SoD
     +(snarkNES.state(output_layer_state)
       +(gpo.block.t(26,21)+gpo.ship.t(-36,88)+gpo.block.t(-22,91)).state(SoD_state)
      ).t(525-DNAloopOctavoDist+input_lane0_dist,-264+DNAloopOctavoDist-input_lane0_dist,gp.flip_x)
          ).t(2*DNA_outershell_dist+6,46,gp.flip) -- NW ori construction .. length critical
     +(snarkNES.state(output_layer_state)
       +(gpo.block.t(26,21)+gpo.block.t(4,46)+gpo.loaf.t(1,40,gp.flip)).state(SoD_state)
+         +gpo.glider[3].t(2,4,gp.flip).state(comment_glider_state)
+         +gpo.glider[3].t(-37,61,gp.rccw).state(comment_glider_state)
      ).t(16+25+116+2*shell_lane0_dist+6*shell_lane_dist+shell_last_extra_dist,16+25+1-shell_last_extra_dist , gp.flip) -- dna fill
-    +(scorbieSE_withSoD2+
+    +(scorbieSE_withSoD2p1+
          (gpo.loaf.t(22,-20,gp.flip)+gpo.beehive.t(19,-39)+gpo.boat.t(-42,9,gp.rcw)).state(SoD_state) -- destroyal path
          +gpo.eater.t(-32,-26,gp.swap_xy_flip).state(output_layer_state) -- to block the lane not going to shell construction
          ).t(-69+DNA_outershell_dist+constr_lane_dist,65+constr_lane_dist-DNA_outershell_dist) -- SW shell construction
@@ -410,7 +413,7 @@ end
 
 local function S_output()
  S=S+(scorbiesplitter_withSoDp1
-    +(gpo.boat.t(64, 50,gp.rccw) + gpo.boat.t(59, 45,gp.rccw) + gpo.eater.t(50,44,gp.swap_xy)).state(output_layer_state)
+    +(gpo.boat.t(66, 50,gp.rccw) + gpo.boat.t(59, 45,gp.rccw) + gpo.eater.t(50,44,gp.swap_xy)).state(output_layer_state)
     +(gpo.ship.t(140,-139)+gpo.blinker.t(148,-126)).state(SoD_state)
     +(scorbiesplitter_withSoD
       +(gpo.beehive.t(116,-119,gp.rcw)+gpo.pond.t(107,-115)).state(SoD_state)
@@ -421,7 +424,7 @@ local function S_output()
     +(snarkNES.state(output_layer_state)
       +(gpo.blinker.t(-2,18)).state(SoD_state)
      ).t(525-DNAloopOctavoDist+input_lane0_dist+input_lane1_dist,-264+DNAloopOctavoDist-1-input_lane0_dist-input_lane1_dist,gp.flip_x)
-    +(gpo.eater.state(output_layer_state)+(gpo.pond.t(-16-97,14+97)+gpo.blinker.t(-10-97,20+97,gp.rcw)).state(SoD_state)).t(137,89)).t(46-1,-2*DNA_outershell_dist-6,gp.rcw)
+    +(gpo.eater.state(output_layer_state)+(gpo.pond.t(-16-97,14+97)+gpo.blinker.t(-10-97,20+97)).state(SoD_state)).t(137,89)).t(46-1,-2*DNA_outershell_dist-6,gp.rcw) --fill prevent and its SoD
     +(snarkNES.state(output_layer_state)
       +gpo.glider[1].t(0,2,gp.flip).state(comment_glider_state)
       +(gpo.block.t(26,21)+gpo.loaf.t(-48,85,gp.flip)+gpo.block.t(-42,88)).state(SoD_state)
@@ -691,13 +694,13 @@ o$49bo26$6b3o4$b2o$o2bo$b2o$9bo$8bobo$7bobo$7b2o4$25b2o$24bobo$23bobo$
 
  return
  (SE_part.state(output_layer_state)+SE_partSoD.t(-396,-260).state(SoD_state)
-  + (boatsemisnarkwithSoD+semisnarksemi).t(24-1,130+1,gp.rccw)
+  + (boatsemisnarkwithSoD+semisnarkready).t(24-1,130+1,gp.rccw)
   + (gpo.boat.t(18-1,109+1,gp.flip)+gpo.block.t(86-1,177+1)+gpo.block.t(92-1,173+1)+gpo.boat.t(84-1,169+1,gp.rccw)).state(SoD_state) --stop and start semisnark SoD (to wait for correct first semisnark state)
   + (gpo.boat.t(-31-1,12+1,gp.rccw)).state(output_layer_state) -- starting read clock
          --  + (gpo.loaf.t(-29,16,gp.rcw)+gpo.blinker.t(-32,27,gp.rcw)).state(output_layer_state) -- starting read clock
  ).t(973-innerquadsize,-458)
  +
- (NW_part.state(output_layer_state)+NW_partSoD.t(-46,1).state(SoD_state)+gpo.glider[1].t(-6,13,gp.swap_xy_flip).state(active_state)
+ (NW_part.state(output_layer_state)+NW_partSoD.t(-46,1).state(SoD_state)+gpo.glider[1+2].t(-6-75115,13-75115,gp.swap_xy_flip).state(active_state)
   +(boatsemisnarkwithSoD+semisnarksemi).t(3-1,97+1)
   +(gpo.boat.t(35-1, 87+1, gp.flip) -- read state alarm clock gun start (we can use other barel of this gun instead)
    +gpo.block.t(25, 96) --

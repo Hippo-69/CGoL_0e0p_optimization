@@ -14,6 +14,7 @@ local startX, startY = g.getpos()
 local startMag=g.getmag()
 -- sizes
 local DNAtimelog = 24 --27
+--DNAtimelog = 17
 local DNAFDlog = DNAtimelog-2
 local DNAloopOctavoDist = 2^(DNAFDlog-3) // 3
 local quadsize = 2^(DNAFDlog-3)--5*DNAloopOctavoDist --4096 -- to be callculated
@@ -709,21 +710,50 @@ o$49bo26$6b3o4$b2o$o2bo$b2o$9bo$8bobo$7bobo$7b2o4$25b2o$24bobo$23bobo$
  ).t(-5069-innerquadsize,-6501)
 end
 
-local function cell()
- E_output()
- N_output()
- W_output()
- S_output()
- return --positionmark.t(halfsize,0)+positionmark.t(0,-halfsize)+positionmark.t(-halfsize,0)+positionmark.t(0,halfsize)+
-  E.t(2*innerquadsize,0)+N.t(0,-2*innerquadsize)+W.t(-2*innerquadsize,0)+S.t(0,2*innerquadsize)
-  +SE.t(innerquadsize,innerquadsize)+NE.t(innerquadsize,-innerquadsize)+NW.t(-innerquadsize,-innerquadsize)+SW.t(-innerquadsize,innerquadsize)
-  +DNA_loop_snarks()+ReadClock()+mainClock()
+local function cell(mark)
+    local ret
+    ret = E.t(2*innerquadsize,0)+N.t(0,-2*innerquadsize)+W.t(-2*innerquadsize,0)+S.t(0,2*innerquadsize)
+            +SE.t(innerquadsize,innerquadsize)+NE.t(innerquadsize,-innerquadsize)+NW.t(-innerquadsize,-innerquadsize)+SW.t(-innerquadsize,innerquadsize)
+    if mark then
+        return ret + positionmark
+    end
+    return ret
 end
 
-local _0e0p_cell = cell()
+local function long_blockF(x,y,d1,d2)
+    return gpo.glider[1].state(5).t(x+d1+d2+9,y+d1-d2+8,gp.identity)+
+        gpo.loaf.t(x+d1+d2,y+d1-d2+1,gp.flip_x)+gpo.beehive.t(x+d1+d2,y+d1-d2-8,gp.rcw)+gpo.boat.t(x+d1-2,y+d1+6,gp.identity)+gpo.boat.t(x+d2+3,y-d2-8,gp.flip_y)
+     +gpo.block.state(4).t(x,y)
+end
+
+local function long_blockB(x,y,d1,d2)
+    return gpo.glider[1].state(5).t(x+d2-1,y-d2-12,gp.flip)+
+            gpo.ship.t(x+d1+d2+13,y+d1-d2-4)+gpo.blinker.t(x+d1+d2+9,y+d1-d2-1)+gpo.boat.t(x+d1-4,y+d1+4,gp.identity)+gpo.boat.t(x+d2+15,y-d2-9,gp.flip)+gpo.blinker.t(x+d2+9,y-d2-10,gp.rcw)
+            +gpo.block.state(4).t(x,y)
+end
+
+local block_build_dist = 86+innerquadsize//2
+local _0e0p_cellS = cell(true)
+        + long_blockB((innerquadsize-475),0,block_build_dist-86,block_build_dist).t(0,0,gp.identity)
+        + long_blockB((innerquadsize-475),0,block_build_dist-86,block_build_dist).t(0,0,gp.rcw)
+        + long_blockF((innerquadsize-475),0,block_build_dist,block_build_dist-44).t(0,0,gp.flip)
+        + long_blockB((innerquadsize-475),0,block_build_dist,block_build_dist).t(0,0,gp.rccw)
+        --+ gpo.block.t() --AGJF Ori targets
+        --+ gpo.block.t((innerquadsize-475),0,gp.identity) --+ gpo.block.t(0, (innerquadsize-475),gp.rcw)
+        --+ gpo.block.t(-(innerquadsize-475),0,gp.flip) + gpo.block.t(0, -(innerquadsize-475),gp.rccw)
+onlyshell = false
+if not onlyshell then
+	E_output()
+	N_output()
+	W_output()
+	S_output()
+end
+local _0e0p_cellF = cell(true)+DNA_loop_snarks()+ReadClock()+mainClock()
 g.setrule("LifeHistory14")
-local _0e0p_cells = _0e0p_cell+_0e0p_cell.t(-halfsize,-halfsize)+_0e0p_cell.t(halfsize,-halfsize)+_0e0p_cell.t(halfsize,halfsize)+_0e0p_cell.t(-halfsize,halfsize)
-_0e0p_cells.display("0e0pcells")
+local _0e0p_cells = _0e0p_cellF+_0e0p_cellF.t(-halfsize,-halfsize)+_0e0p_cellF.t(halfsize,-halfsize)+_0e0p_cellS.t(halfsize,halfsize)+_0e0p_cellF.t(-halfsize,halfsize)
+--_0e0p_cells.display("0e0pcells")
+_0e0p_cellF.display("0e0pcellWithoutDNA")
+--cell(true).display("0e0pshell")
 g.setbase(2)
 g.setstep(16)
 g.setpos(startX,startY)

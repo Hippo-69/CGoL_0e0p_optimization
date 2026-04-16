@@ -1,0 +1,14 @@
+1) inter cell distance skip CrabstretchingComplete22b
+2) ScorbieSplitter with O Allocation seed ... reflectors/splitters (FE180, GH90-180)              ... TO DO (blinker shift to create block target for ShellO_OD90)
+3) send 2 crabStretchers
+4) CD reflectors (FE180, GH90, IJ90, K90)                                                         ... TO DO (target from collision remains)
+5) AB reflectors/splitters (FE0-180, GH90, target for ShellB_OD0/ShellA)                          ... TO DO (target)
+6) ignite AB fuse, GH, EF                                                                         ... TO DO timing
+7) CD sidestep to allow addressing                                                                ... TO DO
+8) ignite DC fuse prepare                                                                         ... TO DO
+9) EF reflectors (IJ90, target for ShellE,ShellF)                                                 ... TO DO
+10) destroy ScorbieSplitter (2 phases)                                                            ... TO DO
+11) ShellO_OD90 + ShellA_OD270 (reflectorN90+ori target) + ShellF_OD0(reflectorM90+oritarget) + ShellB_OD0 (reflector N90+CK90target)  ... TO DO 4pslmake ShellA_OD270 + ShellF_OD0
+12) EndShellO_OD0 ... iginite DC fuse, N, I, J, K, build tempSnarkwith SoD, push44*8-9 + duplicate + honeyfarm 26HD L (snark pseudoSoD) + destroyarm
+... 12 ignite DC fuse is synchronized, all other should cooperate as much as possible there is ShellC_OD270 and ShellE_OD270 work to do before tempSnarkwith SoD is created
+... so plan for ShellC, ShellE should wait to experimental finish of 1)-12) to find correct positioning of AB, CD fuse ends and decision when synchronized DC fuse is invoked.

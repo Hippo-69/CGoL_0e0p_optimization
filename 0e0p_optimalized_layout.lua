@@ -50,12 +50,14 @@ local DNA_loop_state=17
 local clock_logic_state=19 -- to be replaced by say 5
 local state_computation_state=25
 local send_state_state=21
-local recieve_state_state=23
+local receive_state_state=23
 local SoD_state=11
 local SoD_glidermark_state=10
 local SoD_phase=1
 local active_state=5
 local comment_state=4
+local glider_trail_state=127
+local glider_notrail_state=129
 local comment_glider_state=4
 
 -- patterns
@@ -72,17 +74,13 @@ local scorbiesplit=pattern()
 scorbiesplit.array=g.parse("46bo$46b3o$49bo$40bo7b2o$40b3o$18bo24bo$16b3o23b2o$15bo$15b2o$2o$bo$bob2o$2bo2bo$3b2o$18b2o13b2o$18b2o13b2o7$21b2obo6b2o$21b2ob3o3bobo21b2o$27bo2bo23bobo$21b2ob3o2b2o25bo$22bobo31b2o$10b2o10bobo$10b2o11bo!")
 scorbiesplit=scorbiesplit.t(-27,11)
 
-local scorbiesplit_SoD=pattern()
-scorbiesplit_SoD.array=g.parse("3o28b3o30$10b2o$9bo2bo$10b2o!")
-scorbiesplit_SoD=scorbiesplit_SoD.t(6,-2).t(-27,11)
-
 local scorbiesplitinsertstopped_SoDOpp=pattern()
 scorbiesplitinsertstopped_SoDOpp.array=g.parse("62b2o$62bobo$63b2o$29b3o33b2o$65bobo$66b2o9$2o$bo$bobo$2b2o12$38b2o$37bobo$38bo$59bo$59bo$59bo2$14b2o$14bobo$15b2o!")
 scorbiesplitinsertstopped_SoDOpp=scorbiesplitinsertstopped_SoDOpp.t(-9,-1).t(-27,11)
 
 local scorbiesplitinsert_SoDOpp=pattern()
 scorbiesplitinsert_SoDOpp.array=g.parse("16b2o$17bo$14b3o3b2o$13bo6bobo$13b2o6b2o$23b2o12b2o$bo21bobo11b2o$obo21b2o$2o27$18b2o$17bobo$17b2o!")
-scorbiesplitinsert_SoDOpp=scorbiesplitinsert_SoDOpp.t(-14,8).t(-27,11)
+scorbiesplitinsert_SoDOpp=scorbiesplitinsert_SoDOpp.t(14,-8).t(-27,11)
 
 local scorbiesplit_SoDOpp=pattern()
 scorbiesplit_SoDOpp.array=g.parse("53bo$52bobo$53bobo$54b2o$17bo$16bobo$15bo2bo$16b2o7$65b2o$65bo$b2o63b3o$o2bo65bo$b2o65b2o5$74bo$73bobo$73b2o15$26b2o$25bo2bo$26b2o!")
@@ -146,11 +144,17 @@ local output_snarkturn_withGsoDs=(snark.state(shell_state).t(-86,0,gp.flip_x)+sn
 ----- ott ... boat, longboat
 local blinker2_ott90=pattern()
 blinker2_ott90.array=g.parse("3ob3o!")
+local toad_ott90=pattern()
+toad_ott90.array=g.parse("b3o$3o!")
 
 ----- ots ------
 local tubblinker_ots = gpo.tub.t(1,14)+gpo.blinker.t(2,1)
 local pondblinker_ots = gpo.pond+gpo.blinker[1].t(6,6)
-local boatloaf_ots = gpo.boat.t(0,0)+gpo.loaf.t(0,0)
+local boatloaf_ots = pattern()
+    boatloaf_ots.array=g.parse("6bo$5bobo$5bo2bo$6b2o6$bo$obo$b2o!")
+local shipblinker_ots = pattern()
+shipblinker_ots.array=g.parse("o$o$o6$12b2o$12bobo$13b2o!")
+
 --local output_oppositeSoD_splitter = pondblinker_ots
 
 local positionmark=pattern()
@@ -360,7 +364,7 @@ local function N_ori()
      +  shillelagh.t(68,55,gp.swap_xy)+gpo.block.t(72,54)+gpo.beehive.t(59,86,gp.rcw) -- bondersnatch_SoDOpp
      + (shillelagh.t(68,55,gp.swap_xy)+gpo.block.t(72,54)+gpo.beehive.t(59,86,gp.rcw)).t(-44,27) -- bondersnatch_SoDOpp
       ).state(SoD_state)
-  ).t(16-32-293-2+shell_last_extra_dist, 16+255-2+2*shell_lane0_dist+6*shell_lane_dist+shell_last_extra_dist)
+  ).t(16-32-293-5+shell_last_extra_dist, 16+255-5+2*shell_lane0_dist+6*shell_lane_dist+shell_last_extra_dist)
 end
 
 local function W_ori()
@@ -376,41 +380,40 @@ local function W_ori()
      ).t(525-2-DNAloopOctavoDist+input_lane0_dist,-264-2+DNAloopOctavoDist-input_lane0_dist,gp.flip_x)
          ).t(2*DNA_outershell_dist+6,46,gp.flip) -- NW ori construction .. length critical
     +(snark.state(receive_DNA_state)+snark_SoDOpp[SoD_phase].state(SoD_state)--(gpo.block.t(26,21)+gpo.block.t(4,46)+gpo.loaf.t(1,40,gp.flip)).state(SoD_state)
-         +gpo.glider[3].t(2,4,gp.flip).state(comment_glider_state)
-         +gpo.glider[3].t(-37,61,gp.rccw).state(comment_glider_state)
-     ).t(16+25+116+2*shell_lane0_dist+6*shell_lane_dist+shell_last_extra_dist,16+25+1-4-shell_last_extra_dist , gp.flip) -- dna fill
+         +gpo.glider[3].t(2,4,gp.flip).state(glider_trail_state)
+     ).t(16+25+116+2*shell_lane0_dist+6*shell_lane_dist+shell_last_extra_dist,16+25+1-10-shell_last_extra_dist , gp.flip) -- dna fill
     +(scorbieturn.state(build_child_shell_state) + scorbieturn_SoDOpp.state(SoD_state)).t(-69+DNA_outershell_dist+constr_lane_dist,65+constr_lane_dist-DNA_outershell_dist) -- SW shell construction
     +((gpo.eater.t(0,0,gp.flip_y) -- state reading stoper (construction continues in DNA_loop_snarks)
-       +gpo.boat.t(3,-19,gp.flip)+gpo.boat.t(21,-13,gp.rcw)+gpo.loaf.t(6,-27,gp.rccw)+(gpo.blinker.t(9,-41)+gpo.blinker.t(10,-42))
-       +gpo.boat.t(-55,-70)+gpo.long_boat.t(-62,-78,gp.rccw)
-       +gpo.boat.t(-40,-35,gp.flip)  -- state reading stopper destroy
-      ).state(state_computation_state-1) -- state reading stoper replacement
-      +(gpo.boat.t(6,-50,gp.flip)  -- state reading stopper destroy
+       +boatloaf_ots.t(1-10,-30-10) + toad_ott90.t(8-10,-42-10) + gpo.boat.t(11+10,-23+10,gp.rcw) -- eater building seed
+       +gpo.boat.t(-55-2,-70-2)+gpo.long_boat.t(-62,-78,gp.rccw)
+       +gpo.boat.t(-43-2,-38-2,gp.flip)  -- state reading stopper destroy
+      ).t(2,2).state(state_computation_state) -- state reading stoper replacement
+      +(gpo.boat.t(6+1,-50-1,gp.flip)  -- state reading stopper destroy
        ).state(SoD_state)
      ).t(89+DNA_outershell_dist+constr_lane_dist+DNAloopOctavoDist,1+constr_lane_dist-DNA_outershell_dist-DNAloopOctavoDist)
  W=W+((gpo.boat.t(-6,5)+gpo.block.t(-14,7)).state(SoD_state).t(-310-open_kernel_lane,310-open_kernel_lane)).t(0,0,gp.flip) -- SW ori construction start
 end
 
 local function S_ori()
- S=S+(scorbiesplit.state(DNA_loop_state) + scorbiesplitinsertstopped_SoDOpp.state(SoD_state)
-      +(gpo.boat.t(66, 50,gp.rccw) + gpo.boat.t(59, 45,gp.rccw) + gpo.eater.t(50,44,gp.swap_xy)).state(build_child_shell_state)
-      +(scorbiesplit.state(build_child_shell_state) + scorbiesplitinsertstopped_SoDOpp.state(SoD_state)).t(90,47)
-      +(snark.state(send_DNA_state)+snark_SoDOpp.state(SoD_state)).t(145, 94)
-      +(snark.state(send_DNA_state)+snark_SoDOpp.state(SoD_state)).t(525-DNAloopOctavoDist+input_lane0_dist+input_lane1_dist,-264+DNAloopOctavoDist-1-input_lane0_dist-input_lane1_dist,gp.flip_x)
-      +(gpo.eater.state(send_DNA_state)).t(137,89)  --fill prevent
-     ).t(46-1,-2*DNA_outershell_dist-6,gp.rcw)
-    +(snark.state(receive_DNA_state)+snark_SoDOpp.state(SoD_state)
-         +gpo.glider[1].t(0,2,gp.flip).state(comment_glider_state)
-     ).t(102+2-shell_last_extra_dist, -95-2-2*shell_lane0_dist-6*shell_lane_dist-shell_last_extra_dist, gp.rcw)
-    +(snark.state(build_child_shell_state)+snark_SoDOpp.state(SoD_state)).t(80+constr_lane_dist-DNA_outershell_dist,56-DNA_outershell_dist-constr_lane_dist,gp.flip_x)
- S=S+((gpo.boat.t(-6,5).state(send_DNA_state)+gpo.block.t(-14,7).state(SoD_state)).t(-310-open_kernel_lane,310-open_kernel_lane)).t(0,0,gp.rcw)
+    S=S+(scorbiesplit.state(DNA_loop_state) + scorbiesplitinsertstopped_SoDOpp.state(SoD_state)
+            +(gpo.boat.t(66, 50,gp.rccw) + gpo.boat.t(59, 45,gp.rccw) + gpo.eater.t(50,44,gp.swap_xy)).state(build_child_shell_state)
+            +(scorbiesplit.state(build_child_shell_state) + scorbiesplitinsertstopped_SoDOpp.state(SoD_state)).t(90,47)
+            +(snark.state(send_DNA_state)+snark_SoDOpp.state(SoD_state)).t(145, 94)
+            +(snark.state(send_DNA_state)+snark_SoDOpp.state(SoD_state)).t(525-DNAloopOctavoDist+input_lane0_dist+input_lane1_dist,-264+DNAloopOctavoDist-1-input_lane0_dist-input_lane1_dist,gp.flip_x)
+            +(gpo.eater.state(send_DNA_state)).t(137,89)  --fill prevent
+    ).t(46-1,-2*DNA_outershell_dist-6,gp.rcw)
+            +(snark.state(receive_DNA_state)+snark_SoDOpp.state(SoD_state)
+            +gpo.glider[1].t(0,2,gp.flip).state(glider_notrail_state)
+    ).t(102+5-shell_last_extra_dist, -95-5-2*shell_lane0_dist-6*shell_lane_dist-shell_last_extra_dist, gp.rcw)
+            +(snark.state(build_child_shell_state)+snark_SoDOpp.state(SoD_state)).t(80+constr_lane_dist-DNA_outershell_dist,56-DNA_outershell_dist-constr_lane_dist,gp.flip_x)
+    S=S+((gpo.boat.t(-6,5).state(send_DNA_state)+gpo.block.t(-14,7).state(SoD_state)).t(-310-open_kernel_lane,310-open_kernel_lane)).t(0,0,gp.rcw)
 end
 
 local function DNA_loop()
 local shift = 82+4*(DNAtimelog%2)
 local speedupshift=4*19
 local L=((snark.state(DNA_loop_state)+snark_SoDOpp.state(SoD_state)).t(-14,10,gp.rccw)).t(3*DNAloopOctavoDist,DNAloopOctavoDist,gp.flip) -- 1 dna loop delay
-     +gpo.boat.state(DNA_loop_state).t(-16+149+2,-16+178+2+4*DNAloopOctavoDist,gp.flip) -- destroy fill reflector
+     +gpo.boat.state(DNA_loop_state).t(-16+149+5,-16+178+5+4*DNAloopOctavoDist,gp.flip) -- destroy fill reflector
      +((snark.state(DNA_loop_state)+snark_SoDOpp.state(SoD_state)).t(-14,10,gp.rccw)--+(gpo.blinker.t(-14,-19,gp.rcw)+gpo.boat.t(-14,-12,gp.flip))[1].state(SoD_state)
      +(gpo.boat.t(16, -56, gp.flip) -- start NE construction
       +gpo.boat.t(21, -61, gp.flip) -- start SE construction
@@ -428,7 +431,7 @@ local L=((snark.state(DNA_loop_state)+snark_SoDOpp.state(SoD_state)).t(-14,10,gp
      ).t(2+2*DNAloopOctavoDist,2*DNAloopOctavoDist,gp.rcw)                                                                                                                           -- 6 dna loop delay
      +gpo.boat.state(DNA_loop_state).t(-16+2+2*DNAloopOctavoDist,-16+32+2*DNAloopOctavoDist,gp.flip) -- first glider redirect to switch fill to clocks construction
      +tubblinker_ots.state(101).t(-16+30+2*DNAloopOctavoDist,-16+41+2*DNAloopOctavoDist)  -- mimicks moment in construction starting to work on clocks
-     +blinker2_ott90.state(DNA_loop_state).t(-16+157+2+2*DNAloopOctavoDist,-16+174+2+2*DNAloopOctavoDist,gp.rcw) -- part1 turn to destroy fill reflector
+     +blinker2_ott90.state(DNA_loop_state).t(-16+157+5+2*DNAloopOctavoDist,-16+174+5+2*DNAloopOctavoDist,gp.rcw) -- part1 turn to destroy fill reflector
      +((snark.state(DNA_loop_state)+snark_SoDOpp[SoD_phase].state(SoD_state)).t(-14,10,gp.rccw)
       --+(gpo.block.t(7,-17)+gpo.block.t(23,-4)+gpo.loaf.t(17,0,gp.rcw)).state(SoD_state)
       +(boatsemisnark.state(clock_logic_state)+boatsemisnark_SoD.state(SoD_state) + semisnarkready).t(-129+1,-157-1) -- to make children and die
@@ -447,12 +450,11 @@ local L=((snark.state(DNA_loop_state)+snark_SoDOpp.state(SoD_state)).t(-14,10,gp
      +((snark.state(DNA_loop_state)+snark_SoDOpp.state(SoD_state)).t(-14,10,gp.rccw)).t(3,2*DNAloopOctavoDist,gp.flip_y)                       -- 4 dna loop delay
      +((snark.state(DNA_loop_state)+snark_SoDOpp.state(SoD_state)).t(-14,10,gp.rccw)).t(shift+1-2*DNAloopOctavoDist,shift,gp.swap_xy)          -- 3 dna loop delay
      +((snark.state(DNA_loop_state)+snark_SoDOpp.state(SoD_state)).t(-14,10,gp.rccw)).t(shift-1,shift-2*DNAloopOctavoDist,gp.flip_x)           -- 2 dna loop delay
-     +((scorbiesplit.state(receive_DNA_state)+scorbiesplit_SoD[1].state(SoD_state)).t(2,-2)
-             +(gpo.boat.t(60,24) -- turn to open state fill
-             +gpo.pond.t(21,2)+gpo.beehive.t(25,-4) -- fill/clock build scorbiesplitter destroy
-             +gpo.pond.t(37,53)+gpo.beehive.t(33,47)).state(SoD_state) -- fill bondersnatch destroy
-             +gpo.boat.t(130,45).state(state_computation_state) -- turn to close state fill
-             +snark.state(state_computation_state).t(123,169) -- state fill
+     +((scorbiesplit.state(receive_DNA_state)+scorbiesplitinsert_SoDOpp.state(SoD_state)).t(5,-5)
+             --+boatloaf_ots.t(47,30,gp.rccw).state(SoD_state)
+             +(gpo.boat.t(55+5+3,19+5-3) -- turn to open state fill
+             +gpo.boat.t(130,45)).state(state_computation_state) -- turn to close state fill
+             +snark.state(state_computation_state).t(123-2,169+2) -- state fill
              +gpo.block.t(149,190).state(SoD_state) -- snarkSoD
              +(gpo.loaf.t(69,266)+gpo.eater.t(64,268,gp.swap_xy)).state(state_computation_state) -- send state snark SoD spitter
      ).t(4+3*DNAloopOctavoDist,346+DNAloopOctavoDist,gp.rcw) --dna fill/clocks construction

@@ -301,7 +301,7 @@ local SE,NE,NW,SW=shell_sides_SE_NE_NW_SW()
 local function E_ori()
  local S=13
  E=E + ((scorbiesplit.state(DNA_loop_state) + scorbiesplitinsertstopped_SoDOpp.state(SoD_state)).t(-2*DNA_loop_shrink,0)
-         + (gpo.boat.t(71, 45, gp.rccw) + gpo.boat.t(65, 49, gp.rccw) + gpo.boat.t(60, 44, gp.rccw) + gpo.eater.t(50, 44, gp.swap_xy).t(-DNA_loop_shrink,DNA_loop_shrink)).state(build_child_shell_state)
+         + (gpo.boat.t(71-3, 45+3, gp.rccw) + gpo.boat.t(65-3, 49+3, gp.rccw) + gpo.boat.t(60-3, 44+3, gp.rccw) + gpo.eater.t(50, 44, gp.swap_xy).t(-DNA_loop_shrink,DNA_loop_shrink)).state(build_child_shell_state)
          --+ (gpo.long_boat.t(57 + S, -39 - S, gp.flip) + gpo.blinker.t(56 + S, -33 - S, gp.rcw)).state(SoD_state)
          + (scorbiesplit.state(build_child_shell_state) + scorbiesplit_SoDOpp.state(SoD_state)
          --+ (gpo.tub.t(37 + S, -15 - S) + gpo.blinker.t(24 + S, -14 - S, gp.rcw)).state(SoD_state)
@@ -339,7 +339,7 @@ end
 local function N_ori()
  N=N+((scorbiesplit.state(DNA_loop_state) + scorbiesplitinsertstopped_SoDOpp.state(SoD_state)).t(-2*DNA_loop_shrink,0)
      +gpo.boat.t(50+4, -26-4,gp.rccw).state(DNA_loop_state)
-     +(gpo.boat.t(71, 45,gp.rccw)+gpo.boat.t(76, 40,gp.rccw)+gpo.boat.t(81, 35,gp.rccw)+gpo.boat.t(91, 35,gp.rccw)+gpo.eater.t(55,49,gp.swap_xy).t(-DNA_loop_shrink,DNA_loop_shrink)).state(build_child_shell_state)
+     +(gpo.boat.t(71-3, 45-3,gp.rccw)+gpo.boat.t(76-3, 40-3,gp.rccw)+gpo.boat.t(81-3, 35-3,gp.rccw)+gpo.boat.t(91-3, 35-3,gp.rccw)+gpo.eater.t(55-3,49-3,gp.swap_xy).t(-DNA_loop_shrink,DNA_loop_shrink)).state(build_child_shell_state)
     -- ^ clocked ott paths opening build paths to neighbors
     +(scorbiesplit.state(build_child_shell_state)+scorbiesplit_SoDOpp.state(SoD_state)).t(90,47).t(-DNA_loop_shrink,DNA_loop_shrink) -- output to NE transfer path (includes directed shell build) maybe (scorbiesplitinsert_SoDOpp with blinker)
     +(snark.state(send_DNA_state)+snark_SoDOpp.state(SoD_state)
@@ -369,7 +369,8 @@ end
 
 local function W_ori()
  W=W+((scorbiesplit.state(DNA_loop_state) + scorbiesplitinsertstopped_SoDOpp.state(SoD_state)).t(-2*DNA_loop_shrink,0)
-    +(gpo.boat.t(39,67,gp.flip)+gpo.boat.t(65, 49,gp.rccw)+gpo.eater.t(87,103,gp.rcw).t(-DNA_loop_shrink,DNA_loop_shrink)).state(build_child_shell_state)
+    +(gpo.boat.t(65, 49,gp.rccw)
+    +(gpo.boat.t(33,73,gp.flip)+gpo.eater.t(81,109,gp.rcw)).t(-DNA_loop_shrink,DNA_loop_shrink)).state(build_child_shell_state)
     +(scorbiesplit.state(build_child_shell_state) + scorbiesplitinsertstopped_SoDOpp.state(SoD_state)).t(90,47).t(-DNA_loop_shrink,DNA_loop_shrink) -- NW shell construction/NW ori construction .. length critical
     +(snark.state(state_computation_state)+snark_SoDOpp.state(SoD_state)).t(169-2,118-2).t(-DNA_loop_shrink,DNA_loop_shrink)
     +(scorbiesplit.state(state_computation_state) + scorbiesplitinsertstopped_SoDOpp.state(SoD_state)).t(182-2,166-2,gp.rcw).t(-DNA_loop_shrink,DNA_loop_shrink)

@@ -190,7 +190,7 @@ local function E_shell_pattern()
 
  local constructionlaneblockingeater=gpo.eater.state(shell_state).t(58+4-constr_lane_dist-shell_lane0_dist-shell_lane_dist,58+5+constr_lane_dist-shell_lane0_dist-shell_lane_dist,gp.swap_xy_flip)
 
- local constructionarmtarget=gpo.block.t(-72-constr_lane_dist,74-constr_lane_dist).state(construction_target_state)
+ local constructionarmtarget=gpo.block.t(-72-4+4-constr_lane_dist,74-3+3-constr_lane_dist).state(construction_target_state)
  local constructionarmtargetSoD=gpo.block.t(-97-constr_lane_dist,44-constr_lane_dist).state(SoD_state)
     --local constructiontarget=gpo.block.t(-8+28-constr_lane_dist,10-52-constr_lane_dist)
  -- ^ changed
@@ -371,7 +371,7 @@ local function W_ori()
        +boatloaf_ots.t(1-10,-30-10) + toad_ott90.t(8-10,-42-10) + gpo.boat.t(11+10,-23+10,gp.rcw) -- eater building seed
        +gpo.boat.t(-41,-56)+gpo.long_boat.t(-46,-62,gp.rccw)
        +gpo.boat.t(-43-2,-38-2,gp.flip)  -- state reading stopper destroy
-      ).t(2,2).state(state_computation_state) -- state reading stoper replacement
+      ).t(2-600,2+600).state(state_computation_state) -- state reading stoper replacement
      ).t(89+DNA_outershell_dist+constr_lane_dist+DNAloopOctavoDist,1+constr_lane_dist-DNA_outershell_dist-DNAloopOctavoDist)
  W=W+((gpo.boat.t(-6,5)+gpo.block.t(-14,7)).state(SoD_state).t(-310-open_kernel_lane,310-open_kernel_lane)).t(0,0,gp.flip) -- SW ori construction start
 end
@@ -426,7 +426,7 @@ local L=((snark.state(DNA_loop_state)+snark_SoDOpp.state(SoD_state)).t(-14,10,gp
       +gpo.boat.t(183,135,gp.flip)
       --+tubblinker_ots.t(180+20,130-2,gp.rcw) -- stop DNA
         -- 0 speedup
-     +(gpo.boat.t(239,202)+gpo.boat.t(235,198) -- 2*3 single phase glider absorbers 2*2 opposite phase glider absorbers
+     +(gpo.boat.t(243,206)+gpo.boat.t(239,202)+gpo.boat.t(235,198) -- (1*3 single phase glider absorber) 2*3 single phase glider absorbers 2*2 opposite phase glider absorbers
        +gpo.long_boat.t(242+2,186-3,gp.flip)+gpo.tub.t(236,177)+gpo.tub.t(227,168)+gpo.tub.t(218,159)
        +gpo.boat.t(225,195,gp.flip)+gpo.boat.t(216,186,gp.flip)+gpo.boat.t(207,177,gp.flip)+gpo.boat.t(198,168,gp.flip)
        +gpo.blinker.t(223,178)+gpo.blinker.t(214,169,gp.rcw)+gpo.blinker.t(205,160)
@@ -443,7 +443,7 @@ local L=((snark.state(DNA_loop_state)+snark_SoDOpp.state(SoD_state)).t(-14,10,gp
         +(snark.state(state_computation_state)+snark_SoDOpp.state(SoD_state)).t(123-2,169+2) -- state fill
         +pondbeehive_ots.t(60+17,266+11,gp.rccw).state(state_computation_state) -- send state/ snark SoD
         +pondbeehive_ots.t(77,254,gp.flip_x).state(SoD_state) -- destroy state reading SoDOpp start + destroy the state endreading eater
-        +blinker2_ott90[1].t(-199,-12,gp.rcw).state(SoD_state) -- destroy state endreading eater
+        +blinker2_ott90[1].t(-199-600,-12-600,gp.rcw).state(SoD_state) -- destroy state endreading eater
         --+gpo.blinker.t(150,170).state(1+0*SoD_state)
         --+(gpo.loaf.t(69,266)+gpo.eater.t(64,268,gp.swap_xy)).state(state_computation_state)
      ).t(4+3*DNAloopOctavoDist,346+DNAloopOctavoDist,gp.rcw) --dna fill/clocks construction

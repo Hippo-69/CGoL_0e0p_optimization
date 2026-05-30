@@ -1,0 +1,142 @@
+Let q be the WWWW-SSSS distance (side of the cell) ... time for glider to travel from SSSS to SSSW.
+Let d variable ... is total recipe delay caused by our planning decisions. 
+We are in "foton c/4" perspective ... thinking about d, but we need "gods perpendicullar observer perspective as well" o variable.
+
+Overall o perspective:
+SSSS o=0, d=0 is build (with seeds around the input lane)
+SSSS o=1q, d=1q kernel opennig glider is sent to parent it opens the directed build at d>5q, it arrives to the child cell at d>6
+SSWW o=2q, d=0 crabstretching to SSWW is completed (gliders hitting the SSWW splitters/180ott's) mwss E seed created.
+SSSW o=3q, d=2q construction finished (targeting glider from SSWW), just with gliders to SWWW going through splitter to SSWW and SSSS created and hit
+WWWW o=4q, d=0 crabstretching to WWWW completed (gliders reaching WWWW mwss and glider seeds) WWWW is build (and ott from SWWW to NWWW)
+SSSS o=4q, d=4q (gliders reaching SSSS mwss and glider seeds, another mwss seed created and hit to go to SS, another ott from SSSW to SSSE is created) gliders sent through SWWW to NNNE, through SSSW to NEEE and through SSSW and SSSS to SEEE (first two through splitter the other output using EEEE reflectors reaching the destination) simkin OGGCA destroyed at SSSS
+SSWW o=4q, d=2q mwss seed is hit from SSSW msww goes to SS
+SSSW o=4q, d=3q slow^2 gliders are sent to SS, splitter to SS and SSSS is created and hit, splitter to SS and SWWW is created and hit.
+SSSW o=5q, d=4q reflect glider to NEEE
+SWWW o=5q, d=2q construction using WWWW glider as target finished, ott from SSSW to WW created
+SS   o=5q, d=3q collision of perpendicullar mwss's creates target, additional ott (from SSSW to SSSE) is built by slow^2 gliders from SSSW and hit, another ott (from SSSW to WW) is built by slow^2 gliders and hit
+SSSS o=5q, d=5q glider from SSSW is reflected to SSSE
+SSSE o=6q, d=5q target created by collision of gliders from SSSW through SS and SSSS.
+SWWW o=6q, d=3q glider from SSSW reflected to WW, slow^2 gliders sent to WW to create additional ott from SWWW to NWWW, splitter to WWWW and WW created and hit
+WW   o=7q, d=3q target created, ott from SWWW to NWWW created and hit
+WWWW o=7q, d=3q glider from SWWW reflected to NWWW
+SWWW o=7q, d=4q reflect glider from SSSS to NNNE
+SSSE o=7q, d=6q simkin OGGCA constructed after d=6q recipe passed by (stopping and destroying EEEE simkin OGGCA) SSSE is built, gliders building NWWW are sent simkin OGGCA is destroyed and input blocking seed hit
+NNNN o=8q, d=0 target created
+NWWW o=8q, d=3q target created (SWWW through WWWW and WW)
+EEEE o=8q, d=4q reflections to NNNE, NEEE, SEEE slow 2 (/180 OGGCA) recipes to create 3 otts at SEEE sent, splitter to NNNW through NNNN and SEEE created and invoked, splitter to NN through NNNE and SEEE created and invoked, splitter to EE through NEEE and SEEE created and invoked, EEEE build, recipes building NNNN, NNNE and NEEE sent
+NEEE o=9q, d=4q NEEE target created (SSSS through SSSW and EEEE) and NEEE is build just when NNNN a NNNE gliders went around, ott from EEEE to EE created and hit
+SEEE o=9q, d=6q ott's for NNNW, NN, EE allocations created and used, ECCA target moves here and SEEE is finished, NNNW recipe sent(, NN and EE as well)
+EE   o=10q, d=6q target created and positioned just after gliders to NNNW and NN passed
+NNNE o=11q, d=4q NNNE target created and NNNE is build just when NNNN gliders went around ott from EEEE to NN created and hit
+NN   o=12q, d=6q target created and positioned just after gliders to NNNW passed
+input path seed is addressed and ECCA destroyed (in sync)
+
+NNNN o=12q, d=4q ott to NNNW created and used, NNNN is build (from EEEE)
+NNNW o=13q, d=6q NNNW target is created (EEEE through SWWW and NNNN) and NNNW built
+
+stream foton d perspective (with more detailed view)
+SSSS o=0, d=0 moves forward and build simkin OGGCA (with target block NW) far enough tor WWWW, SWWW, SSSW and SSSS constructions
+              build crabdoublestrer to NW seed and send it as early as possible (sync mode started at launch)
+WWWW o=4q, d=0 crabstretching to WWWW completed (block loaf blinker ... with just 1 pixel of block reachable, but blinker is accessible rather well)
+               do small cleanup to make block more accessible
+               build mwss to EEEE seed ASAP
+SSWW o=2q, d=0 crabstretching to SSWW is completed (well accessible block)
+               build WWWW,SSSS to EEEE splitter ASAP and activate it
+WWWW o=4q, d=0 (glider reaching WWWW mwss seed)
+               build ott180 to SWWW and activate it (sync should be maintained ... position of SWWW, forbidden lane till 2q)
+               build ott180 to NNNN through SSSS
+SSWW o=2q, d=0 build SSSW ott180 and activate it (sync should be maintained ... position of SSSW, forbidden lane till 2q)
+               build WWWW,SSSS to NNNN splitter and activate it
+WWWW o=4q, d=0 (glider reaching WWWW ott180 to NNNN through SSSS) build WWW (till 4q) and slow^2ott90 from SWWW to NWWW(till 3q)
+SSWW o=2q, d=0 build SSSW ott180 and activate it (sync should be maintained ... position of ott180 SSSS to SSSS for proper timing of input line blocking seed activation) forbidden lane till~3.9q
+               build SSSW ott180 and activate it (sync should be maintained ... position of ott180 SSSS to SSSS to EEEE for proper timing of stopping EEEE Simkin OGGCA) forbidden lane till~0.9q
+               build mwss SSSW to SS seed (nothing else remaining) (till 2q)
+NNNN o=8q, d=0 target created (mwss travels backward in time) 
+
+SSSS o=d~0.2q  (sync targeted glider from WWSS) build 180ott SSSS to SSSS "part" of the future stop the EEEE simkin seed
+SSSS o=d~0.5q  ignite SSWW wick (travels back in time)
+SSSS o=d~1q    ignite WWWW wick (travels back in time)
+SSSS o=1q, d=1q kernel opennig glider is sent to parent it opens the directed build at d>5q, it arrives to the child cell at d>6
+SSSS           build WWWW to EEEE ott (till 4q), build SSWW to NNNN mwss seed (till 4q), build SSSW to SS mwss seed (till 4q), build SSSS (E part) (till 4q)
+
+SWWW o=5q, d=2q glider from WWWW should be sync targeted, slow2 ott90 from SSSW to WW created (till 3q)
+SSSW o=3q, d=2q glider from SSWW should be sync targeted, splitter SSWW,SSSS to SS created and hit (a target remains)
+SSWW o=4q, d=2q (mwss seed is hit from SSSW msww goes to SS, SSWW site remains empty)
+SWWW o=5q, d=2q finish slow2ott90 from SSSW to WW(till 3q), build slow2ott90 from SSSS to NNNE (till 4q)
+SSSW o=3q, d=2q SSSW construction finished (till 4q), build SS,SSSS to SSSE splitter (till 3q), build SS,SWWW to WW splitter (till 3q), build slow2ott90 from SSSS to NWWW (till 4q) 
+
+SSSW o=4q, d=3q slow^2 gliders to SS building slow2ott90 from SSSW to SSSE, activate splitter SS,SSSS to SSSE
+                slow^2 gliders to SS building slow2ott90 from SSSW to WW, activate splitter SS,SWWW to WW
+		build slow2ott90 from SSSS to NWWW (till 4q) 
+SS   o=5q, d=3q (collision of mwss's from SSSS and SSWW creates target, slow^2 gliders from SSSW build slow2ott90 from SSSW to SSSW which is hit)
+                (slow^2 gliders from SSSW build slow2ott from SSSW to WW which is hit)
+SWWW o=6q, d=3q (glider from SSSW reflected to WW), slow^2 gliders sent to WW to create slow2ott90 from SWWW to NWWW, build WWWW,WW to NWWW splitter and activate it, 
+		if not finished ... build slow2ott90 from SSSS to NNNE (till 4q)
+WW   o=7q, d=3q (target created by SSSW through SWWW and SS gliders), slow^2 gliders from SWWW created slow^2ott90 from SWWW to NWWW and hit
+WWWW o=7q, d=3q (glider from SWWW reflected to NWWW, rest of slow^2ott destroyed)
+NWWW o=8q, d=3q target created (SWWW through WWWW and WW)
+
+SSSS o=d~3.9q   (sync targeted glider from WWSS) build 180ott SSSS to SSSS "part" of the future "input lane blocking seed"
+SSSS o=4q, d=4q (glider reaching SSWW to EEEE ott)
+		slow^2 gliders creating ott180 from SSSS to SEEE at EEEE created
+                splitter SSSW(SSSS),EEEE to SEEE created and activated
+		(glider reaching SSWW to NNNN mwss seed)
+                (glider reaching SSSW to SS mwss seed)
+                splitter SWWW,EEEE to NNNE created and activated               
+SWWW o=7q, d=4q (reflect glider from SSSS to NNNE)
+                converted to rotationally symmetric position for directed build
+SSSS o=4q, d=4q splitter SSSW,EEEE to NEEE created and activated
+SSSW o=5q, d=4q (reflect glider to NEEE)
+                build 180ott from SSSS to SSSS and SEEE (no other target .. except the SSSW pattern)
+SSSS o=4q, d=4q (ott from SSSW to SSSE is created)
+                SSSS west part is build 
+                ott from SSSW to SEEE created
+                ott from ~2.9S,1.1W to EEEE (simkin gun stopper) created
+                simkin OGGCA converted to speboe at SSSS
+                SSSS middle part "input blocking" seed is build addressed throught ott from SSSE to NW and 180ott build at ~3.9q (may be replaced by before OGGCA conversion)
+                exactly timed glider sent to ~2.9S,1.1W ott to stop the Simkin OGGCA at EEEE
+                speboe gliders sent to EEEE to convert to speboe
+	        SSSS speboe destroyed
+SSSW o=5q, d=4q (180ott from SSSS to SSSS activated)
+
+EEEE o=8q, d=4q (target created (SSWW through WWWW and SSSS) converted to (180ott from SSSS to SEEE) and to speboe from SSSS
+                (180ott from SSSS to SEEE activated)
+		simkin OGCCA created at EEEE (with targets on both sides?, directed mainly NW)
+                slow^2 reflectors to NNNE, and NEEE created (and hit), 
+                SEEE (180 OGGCA) recipe send to create slow^2 ott from EEEE to NNNW,
+NNNN o=12q,d=4q slow2ott90 EEEE to NNNW created
+EEEE o=8q, d=4q splitter SEEE,NNNN to NNNW created and activated
+NNNN o=12q,d=4q NNNN built (from remnants of the slow^2ott) (till 6q with interruption at 5q)
+EEEE o=8q, d=4q SEEE (180 OGGCA) recipe send to create slow^2 ott from EEEE to NN,
+NNNE o=11q,d=4q (target created SSSS through SWWW and EEEE) slow2ott90 EEEE to NN created
+                NNNE built (from remnants of the slow^2ott) (till 6q with interruption at 5q)
+EEEE o=8q, d=4q splitter SEEE,NNNE to NN created and activated
+                SEEE (180 OGGCA) recipe send to create slow^2 ott from EEEE to EE,
+NEEE o=9q, d=4q (target created SSSS through SSSW and EEEE) slow2ott90 EEEE to EE created
+EEEE o=8q, d=4q splitter SEEE,NEEE to NN created and activated
+NEEE o=9q, d=4q convert (remnants of the slow^2ott) to rotationally symmetric position for directed build
+EEEE o=8q, d=4q EEEE build (both sides) (till 6q with 5q interruption)
+
+SSSS o=5q, d=5q glider from SSSW is reflected to SSSE
+SSSE o=6q, d=5q target as speboe created (SSSW through SS and SSSS)
+		simkin OGGCA constructed directed preferably to SE
+NWWW o=10q,d=5q build NWWW (till 6q)
+WW   o=9q, d=5q convert to rotationally symmetric position for directed build (if it isn't)
+SS   o=7q, d=5q convert to rotationally symmetric position for directed build (if it isn't)
+SSSE o=6q, d=5q convert to rotationally symmetric position for directed build and convert the simkin OGGCA to speboe
+                input blocking seed is targetted, speboe deleted
+
+SEEE o=9q, d=6q (target created SSSS through SSSW,SSSS and EEEE)
+                (slow^2ott for EEEE to NNNW created and used)
+                (slow^2ott for EEEE to NN created and used)
+                (slow^2ott for EEEE to EE created and used)
+                
+                ECCA target moves to SEEE
+NNNW o=13q,d=6q (target created EEEE through SEEE and NNNN)
+		convert to rotationally symmetric position for directed build (if it isn't)
+NN   o=12q,d=6q (target created EEEE through SEEE and NNNE)
+                convert to rotationally symmetric position for directed build (if it isn't)
+EE   o=10q,d=6q (target created EEEE through SEEE and NEEE)
+                convert to rotationally symmetric position for directed build (if it isn't)
+SEEE o=9q, d=6q SEEE is finished using last simkin OGGCA gliders
+EEEE o=10q,d=6q salvo converting stopped simkin OGGCA to E construction target block of child cell arrives (middle of EEEE construction)

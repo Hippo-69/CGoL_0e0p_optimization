@@ -9,8 +9,16 @@ local gp = require "gplus"
 local gpo = require "gplus.objects"
 local gpt = require "gplus.text"
 local pattern = gp.pattern
-g.setrule("Life")
-local onlyshell = true
+
+g.open("gen.mc", false)
+local genrect=g.getrect()
+g.setrule("LifeHistory64")
+local gen=pattern(); gen.array = g.getcells({genrect[1]+5+3, genrect[2]+1+3, genrect[3]-5-3, genrect[4]-1-3})
+for i=0,12,3 do --last glider doing cleanup
+    gen.array[#(gen.array)-i]=129
+end
+gen = gen.t(0,-1)
+g.new("0e0pcells")
 
 local startX, startY = g.getpos()
 local startMag=g.getmag()
@@ -49,8 +57,8 @@ local build_child_shell_state=29
 local shell_state=27
 local send_DNA_state=7
 local send_DNA_seed_state=79
-local SE_clock_state=68
-local NW_clock_state=70
+local SE_clock_state=69
+local NW_clock_state=71
 local shell_send_DNA_state=7
 local receive_DNA_state=15  -- to be replaced by say 5
 local DNA_loop_state=17
@@ -72,8 +80,36 @@ local construction_target_state=31
 local ori_construction_target_state=33
 local pseudo_state=101 -- not to be built ... mimicks construction process
 
-if onlyshell then
+local function finalstates()
+    build_child_shell_state=29
+    shell_state=27
+    send_DNA_state=7
+    send_DNA_seed_state=79
+    SE_clock_state=69
+    NW_clock_state=71
+    shell_send_DNA_state=7
+    receive_DNA_state=15  -- to be replaced by say 5
+    DNA_loop_state=17
+    clock_logic_state=19 -- to be replaced by say 5
+    state_computation_state=25
+    send_state_state=21
+    receive_state_state=23
+    SoD_state=13
+    shell_SoD_state=11
+    SoD_glidermark_state=10
+    active_state=5
+    passive_state=38
+    comment_state=40
+    glider_trail_state=127
+    glider_notrail_state=129
+    comment_glider_state=64
+    shell_comment_glider_state=64
+    construction_target_state=31
+    ori_construction_target_state=33
+    pseudo_state=101 -- not to be built ... mimicks construction process
+end
 
+local function onlyshellstates()
     build_child_shell_state=0
     --shell_state=27
     send_DNA_state=0
@@ -99,6 +135,35 @@ if onlyshell then
     --shell_comment_glider_state=64
     --construction_target_state=31
     --ori_construction_target_state=33
+    pseudo_state=0
+end
+
+local function shellplanstates()
+    build_child_shell_state=0
+    shell_state=56
+    send_DNA_state=0
+    shell_send_DNA_state=38
+    send_DNA_seed_state=0
+    SE_clock_state=0
+    NW_clock_state=0
+    receive_DNA_state=0  -- to be replaced by say 5
+    DNA_loop_state=0
+    clock_logic_state=0 -- to be replaced by say 5
+    state_computation_state=0
+    send_state_state=0
+    receive_state_state=0
+    SoD_state=0
+    shell_SoD_state=62
+    SoD_glidermark_state=0
+    active_state=0
+    passive_state=0
+    comment_state=40
+    glider_trail_state=0
+    glider_notrail_state=0
+    comment_glider_state=0
+    shell_comment_glider_state=64
+    construction_target_state=34
+    ori_construction_target_state=32
     pseudo_state=0
 end
 
@@ -713,12 +778,17 @@ local function long_blockB(x,y,d1,d2)
 end
 
 local function input_gen()
-    local gen = io.open("gen.txt", "r")
-    local inputrow = gen:read()
+    local DNAloopshift = 2^DNAFDlog
+    local input_gen = gen.t(25,53).t(6,-17).t(-input_lane0_dist-input_lane1_dist-shell_lane0_dist,input_lane0_dist+input_lane1_dist-shell_lane0_dist).t(0,0,gp.rccw).t(innerquadsize,-innerquadsize)
+    if true then
+        return input_gen.t(DNAloopshift,-DNAloopshift)+input_gen
+    end
+
+    local genf = io.open("gen.txt", "r")
+    local inputrow = genf:read()
     local sumdelays = 0
     local inputglider=pattern();inputglider.array=g.parse("2o$obo$o!")
     inputglider=inputglider.t(25,53).t(6,-17).t(-input_lane0_dist-input_lane1_dist-shell_lane0_dist,input_lane0_dist+input_lane1_dist-shell_lane0_dist).t(0,0,gp.rccw).t(innerquadsize,-innerquadsize)
-    local DNAloopshift = 2^DNAFDlog
     local input_gen = pattern()
     while inputrow do
         local commentStart = string.find(inputrow, "--", 1, true)
@@ -744,9 +814,9 @@ local function input_gen()
                 sumdelays = sumdelays + gap
             end
         end
-        inputrow = gen:read()
+        inputrow = genf:read()
     end
-    gen:close()
+    genf:close()
     input_gen = input_gen + inputglider.state(glider_notrail_state)
     input_gen = input_gen[(4-sumdelays)%4]
     input_gen = input_gen.t((sumdelays//4),-(sumdelays//4))
@@ -773,14 +843,23 @@ local _0e0p_cellS = cell(true)
 local _0e0p_cellF = cell(true)
         +DNA_loop()
         +ReadClock()+mainClock()
+
+shellplanstates()
+E,N,W,S=shell_corners_E_N_W_S()
+SE,NE,NW,SW=shell_sides_SE_NE_NW_SW()
+local _0e0p_cellplan = cell(true)
+
 g.setrule("LifeHistory64")
 --local _0e0p_cells = _0e0p_cellF+_0e0p_cellF.t(-halfsize,-halfsize)+_0e0p_cellF.t(halfsize,-halfsize)+_0e0p_cellS.t(halfsize,halfsize)+_0e0p_cellF.t(-halfsize,halfsize)
-local _0e0p_cells = _0e0p_cellF+_0e0p_cellF.t(-halfsize,-halfsize) -- +_0e0p_cellF.t(halfsize,-halfsize)
-    +_0e0p_cellF.t(halfsize,halfsize)+_0e0p_cellF.t(-halfsize,halfsize) --+input_gen()
+local _0e0p_cells = _0e0p_cellF+_0e0p_cellF.t(-halfsize,-halfsize) +_0e0p_cellplan.t(halfsize,-halfsize)
+    +_0e0p_cellF.t(halfsize,halfsize)+_0e0p_cellF.t(-halfsize,halfsize) +input_gen()
 _0e0p_cells.display("0e0pcells")
+g.setcell(-349354,-489,0); g.setcell(-349353,-488,0) -- state 1
+g.setcell(-354953,-6445,1); g.setcell(-354952,-6445,1); g.setcell(-354953,-6444,1); g.setcell(-354938,-6434,0) -- central clocks started
 --_0e0p_cellF.display("0e0pcellWithoutDNA")
 --cell(true).display("0e0pshell")
 g.setbase(2)
 g.setstep(16)
 g.setpos(startX,startY)
 g.setmag(startMag)
+g.note("NE child build starts around 74 100 000 (openning the build) 76 900 000 hitting E speboe 78 435 000 crab stop 78 783 000 child entrance filtering")

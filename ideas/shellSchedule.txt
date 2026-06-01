@@ -36,7 +36,7 @@ NNNW o=13q, d=6q NNNW target is created (EEEE through SWWW and NNNN) and NNNW bu
 
 stream foton d perspective (with more detailed view)
 SSSS o=0, d=0 moves forward and build simkin OGGCA (with target block NW) far enough tor WWWW, SWWW, SSSW and SSSS constructions
-              build crabdoublestrer to NW seed and send it as early as possible (sync mode started at launch)
+              build crabdoublestretcher to NW seed and send it as early as possible (sync mode started at launch)
 WWWW o=4q, d=0 crabstretching to WWWW completed (block loaf blinker ... with just 1 pixel of block reachable, but blinker is accessible rather well)
                do small cleanup to make block more accessible
                build mwss to EEEE seed ASAP
@@ -62,7 +62,7 @@ SSSS           build WWWW to EEEE ott (till 4q), build SSWW to NNNN mwss seed (t
 SWWW o=5q, d=2q glider from WWWW should be sync targeted, slow2 ott90 from SSSW to WW created (till 3q)
 SSSW o=3q, d=2q glider from SSWW should be sync targeted, splitter SSWW,SSSS to SS created and hit (a target remains)
 SSWW o=4q, d=2q (mwss seed is hit from SSSW msww goes to SS, SSWW site remains empty)
-SWWW o=5q, d=2q finish slow2ott90 from SSSW to WW(till 3q), build slow2ott90 from SSSS to NNNE (till 4q)
+SWWW o=5q, d=2q finish slow2ott90 from SSSW to WW(till 3q), build slow2ott90 from SSSS to NNNE (till 4q) build SWWW (till 4q)
 SSSW o=3q, d=2q SSSW construction finished (till 4q), build SS,SSSS to SSSE splitter (till 3q), build SS,SWWW to WW splitter (till 3q), build slow2ott90 from SSSS to NWWW (till 4q) 
 
 SSSW o=4q, d=3q slow^2 gliders to SS building slow2ott90 from SSSW to SSSE, activate splitter SS,SSSS to SSSE
@@ -84,10 +84,11 @@ SSSS o=4q, d=4q (glider reaching SSWW to EEEE ott)
                 (glider reaching SSSW to SS mwss seed)
                 splitter SWWW,EEEE to NNNE created and activated               
 SWWW o=7q, d=4q (reflect glider from SSSS to NNNE)
-                converted to rotationally symmetric position for directed build
+                
 SSSS o=4q, d=4q splitter SSSW,EEEE to NEEE created and activated
 SSSW o=5q, d=4q (reflect glider to NEEE)
-                build 180ott from SSSS to SSSS and SEEE (no other target .. except the SSSW pattern)
+                build 180ott from SSSS to SSSS and SEEE
+		convert rest to rotationally symmetric position for directed build
 SSSS o=4q, d=4q (ott from SSSW to SSSE is created)
                 SSSS west part is build 
                 ott from SSSW to SEEE created
@@ -97,7 +98,7 @@ SSSS o=4q, d=4q (ott from SSSW to SSSE is created)
                 exactly timed glider sent to ~2.9S,1.1W ott to stop the Simkin OGGCA at EEEE
                 speboe gliders sent to EEEE to convert to speboe
 	        SSSS speboe destroyed
-SSSW o=5q, d=4q (180ott from SSSS to SSSS activated)
+SSSW o=5q, d=4q (180ott from SSSS to SSSS activated)		
 
 EEEE o=8q, d=4q (target created (SSWW through WWWW and SSSS) converted to (180ott from SSSS to SEEE) and to speboe from SSSS
                 (180ott from SSSS to SEEE activated)
@@ -109,21 +110,21 @@ EEEE o=8q, d=4q splitter SEEE,NNNN to NNNW created and activated
 NNNN o=12q,d=4q NNNN built (from remnants of the slow^2ott) (till 6q with interruption at 5q)
 EEEE o=8q, d=4q SEEE (180 OGGCA) recipe send to create slow^2 ott from EEEE to NN,
 NNNE o=11q,d=4q (target created SSSS through SWWW and EEEE) slow2ott90 EEEE to NN created
-                NNNE built (from remnants of the slow^2ott) (till 6q with interruption at 5q)
+                to rotationally symmetric position for directed build (from remnants of the slow^2ott) (till 6q with interruption at 5q)
 EEEE o=8q, d=4q splitter SEEE,NNNE to NN created and activated
                 SEEE (180 OGGCA) recipe send to create slow^2 ott from EEEE to EE,
 NEEE o=9q, d=4q (target created SSSS through SSSW and EEEE) slow2ott90 EEEE to EE created
 EEEE o=8q, d=4q splitter SEEE,NEEE to NN created and activated
-NEEE o=9q, d=4q convert (remnants of the slow^2ott) to rotationally symmetric position for directed build
+NEEE o=9q, d=4q build NEEE (form remnants of the slow^2ott)
 EEEE o=8q, d=4q EEEE build (both sides) (till 6q with 5q interruption)
 
 SSSS o=5q, d=5q glider from SSSW is reflected to SSSE
 SSSE o=6q, d=5q target as speboe created (SSSW through SS and SSSS)
 		simkin OGGCA constructed directed preferably to SE
-NWWW o=10q,d=5q build NWWW (till 6q)
+NWWW o=10q,d=5q convert to rotationally symmetric position for directed build NWWW (till 6q)
 WW   o=9q, d=5q convert to rotationally symmetric position for directed build (if it isn't)
 SS   o=7q, d=5q convert to rotationally symmetric position for directed build (if it isn't)
-SSSE o=6q, d=5q convert to rotationally symmetric position for directed build and convert the simkin OGGCA to speboe
+SSSE o=6q, d=5q build SSSE and convert the simkin OGGCA to speboe
                 input blocking seed is targetted, speboe deleted
 
 SEEE o=9q, d=6q (target created SSSS through SSSW,SSSS and EEEE)
@@ -133,10 +134,10 @@ SEEE o=9q, d=6q (target created SSSS through SSSW,SSSS and EEEE)
                 
                 ECCA target moves to SEEE
 NNNW o=13q,d=6q (target created EEEE through SEEE and NNNN)
-		convert to rotationally symmetric position for directed build (if it isn't)
+		build NNNW
 NN   o=12q,d=6q (target created EEEE through SEEE and NNNE)
                 convert to rotationally symmetric position for directed build (if it isn't)
 EE   o=10q,d=6q (target created EEEE through SEEE and NEEE)
                 convert to rotationally symmetric position for directed build (if it isn't)
-SEEE o=9q, d=6q SEEE is finished using last simkin OGGCA gliders
+SEEE o=9q, d=6q SEEE is convert to rotationally symmetric position for directed build (if it isn't) using last simkin OGGCA gliders
 EEEE o=10q,d=6q salvo converting stopped simkin OGGCA to E construction target block of child cell arrives (middle of EEEE construction)

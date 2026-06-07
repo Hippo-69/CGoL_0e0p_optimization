@@ -12,6 +12,8 @@ class SimkinECCAp2compiler(object):
                     self.name2l[name] = chr(recipe_l)
                     self.l2name[chr(recipe_l)] = name
                     self.recipes[name] = (sections[0].strip(),sections[1].strip())
+                    if chr(recipe_l)=="Z":
+                        recipe_l = 96
 
     def pack_letters(self, str):
         last_ch = ""
@@ -45,7 +47,7 @@ class SimkinECCAp2compiler(object):
         plusMove, plusEff, minusMove, minusEff = "",0,"",0
         for recipekey in self.recipes:
             recipe = self.recipes[recipekey][0].split(" ")
-            info = self.recipes[recipekey][1].split("l") # works only for 270 degree recipes
+            info = self.recipes[recipekey][1].split(";") # works only for 270 degree recipes
             sg = int(info[0])
             delay = -120*sg
             if recipe[0][0]=="+": # the only not synced recipe
@@ -75,7 +77,7 @@ class SimkinECCAp2compiler(object):
             print(f"Expected +1 be the only plus move! {plusEff}")
         if minusEff != -150:
             print(f"Expected -150 be the best minus move! {minusEff}")
-        print(f"long range best moves {plusMove}={self.l2name[plusMove]} {minusMove}={self.l2name[minusMove]}")
+        #print(f"long range best moves {plusMove}={self.l2name[plusMove]} {minusMove}={self.l2name[minusMove]}")
 
         #BellmanFord
         for i in range(8):
@@ -85,7 +87,7 @@ class SimkinECCAp2compiler(object):
         maxPlus,minMinus=1+plusPeriod,-1+minusPeriod # -150 for faster stabilisation
         toFindPeriod = True
         orig_moves = [k for k in movekeys]
-        print ("table computation starts")
+        #print ("table computation starts")
         progress = True
         def updateIfBetter(key, move, cost, sgliders):
             if (not key in self.m) or (self.m[key][1] > cost):
@@ -171,7 +173,7 @@ class SimkinECCAp2compiler(object):
                             toFindPeriod = False
                     if toFindPeriod:
                         maxPlus = n + plusPeriod + 1
-                        print (f"maxPlus changed to {n}+{plusPeriod+1}={maxPlus}")
+                        #print (f"maxPlus changed to {n}+{plusPeriod+1}={maxPlus}")
                         break
             toFindPlus = toFindPeriod
             toFindPeriod = False
@@ -186,7 +188,7 @@ class SimkinECCAp2compiler(object):
                             toFindPeriod = False
                     if toFindPeriod:
                         minMinus = n + minusPeriod - 1
-                        print (f"minMinus changed to {n}+{minusPeriod-1}={minMinus}")
+                        #print (f"minMinus changed to {n}+{minusPeriod-1}={minMinus}")
                         break
             toFindPeriod = toFindPeriod or toFindPlus
             #toFindPeriod = toFindPlus
@@ -202,13 +204,13 @@ class SimkinECCAp2compiler(object):
         self.mMinus = minusMove
         self.mPlus = plusMove
 
-        print ("get_move table:")
-        for n in range(minMinus-10,maxPlus+11):
-            row = f"_{n}"
-            for s in range(8):
-                move = self.get_move(s,n)
-                row += f" {self.pack_letters(move[0])}({move[1]},{move[2]})"
-            print(row)
+        #print ("get_move table:")
+        #for n in range(minMinus-10,maxPlus+11):
+        #    row = f"_{n}"
+        #    for s in range(8):
+        #        move = self.get_move(s,n)
+        #        row += f" {self.pack_letters(move[0])}({move[1]},{move[2]})"
+        #    print(row)
 
     #let us make table of optpimal single emissions. The problem is we do not know the continuation and the total cost depends on the followup.
     #fortunately for the same number of used simkin gliders the recipe able to finish in shorter time (able to do earlier collision)
@@ -265,10 +267,10 @@ class SimkinECCAp2compiler(object):
             return inserted
 
         for recipekey in self.recipes:
-            info = self.recipes[recipekey][1].split("l") # works only for 270 degree recipes
-            if len(info)==2: #single glider emissions
+            info = self.recipes[recipekey][1].split(";") # works only for 270 degree recipes
+            if len(info)==2 and info[1][0]=="l": #single glider emissions
                 ginfo = info[1].split(",")
-                phase = "eo"[int(ginfo[0])%2]
+                phase = "eo"[int(ginfo[0][1:])%2]
                 lane = int(ginfo[1])
                 sync = int(self.recipes[recipekey][0][1])
                 sg = self.recipes[recipekey][3]
@@ -280,9 +282,9 @@ class SimkinECCAp2compiler(object):
         prevMaxPlus,prevMinMinus=-1,0
         toFindPeriod = True
         orig_moves = [k for k in self.l]
-        print ("table computation starts")
+        #print ("table computation starts")
         def lane_recipes(lane):
-            print (f"lane {lane}")
+            #print (f"lane {lane}")
             for omove in orig_moves:
                 #print(omove)
                 os=int(omove[1])
@@ -336,7 +338,7 @@ class SimkinECCAp2compiler(object):
                                     toFindPeriod = False
                         if toFindPeriod:
                             maxPlus = n + plusPeriod + 1
-                            print (f"maxPlus changed to {n}({s}{phase})+{plusPeriod+1}={maxPlus}")
+                            #print (f"maxPlus changed to {n}({s}{phase})+{plusPeriod+1}={maxPlus}")
                             break
             toFindPlus = toFindPeriod
             toFindPeriod = False
@@ -355,7 +357,7 @@ class SimkinECCAp2compiler(object):
                                     toFindPeriod = False
                         if toFindPeriod:
                             minMinus = n + minusPeriod - 1
-                            print (f"minMinus changed to {n}({s}{phase})+{minusPeriod-1}={minMinus}")
+                            #print (f"minMinus changed to {n}({s}{phase})+{minusPeriod-1}={minMinus}")
                             break
             toFindPeriod = toFindPeriod or toFindPlus
             #toFindPeriod = toFindPlus
@@ -365,24 +367,189 @@ class SimkinECCAp2compiler(object):
         self.lMinusPeriod = minusPeriod
         self.lPlusPeriod = plusPeriod
 
-        print ("get_loptions tables:")
-        for phase in "beo":
-            for n in range(minMinus-10,maxPlus+11):
+        #print ("get_loptions tables:")
+        #for phase in "beo":
+        #    for n in range(minMinus-10,maxPlus+11):
+        #        row = f"_{phase}{n}"
+        #        for s in range(8):
+        #            alt = ""
+        #            for lmove in self.get_loptions(s,phase,n):
+        #                alt += f",{self.pack_letters(lmove[0])}({lmove[1]},{lmove[2]})"
+        #            row += " "+alt[1:]
+        #        print(row)
+
+    def make_r_table(self):
+        def dominated(sync,muster,questioned):
+            #print(f"dom [{sync}],({self.pack_letters(muster[0])},{muster[1]},{muster[2]}),({self.pack_letters(questioned[0])},{questioned[1]},{questioned[2]})")
+            if muster[2]>questioned[2]: #actually we would not ask
+                return False
+            elif muster[2]==questioned[2]: #actually we would not ask either
+                return muster[1]<=questioned[1]
+            else:
+                dist = questioned[1]-muster[1] - 120*(questioned[2]-muster[2])
+                move = self.get_move((sync+muster[1])%8,dist)
+                #print (f"is {(self.pack_letters(muster[0]),muster[1],muster[2])} dominating {(self.pack_letters(questioned[0]),questioned[1],questioned[2])} ... dist{dist} {move[1]}+{muster[1]}={move[1]+muster[1]}")
+                return move[1]+muster[1]<=questioned[1]
+
+        def updateIfBetter(key, move, cost, sgliders):
+            #print(f"uib {key},{self.pack_letters(move)},{cost},{sgliders}")
+            cur_moveitem = (move, cost, sgliders)
+            if (not key in self.r):
+                self.r[key]=[cur_moveitem]
+                return True
+            inserted, try_insert = False, True
+            for r in range(len(self.r[key])):
+                if try_insert:
+                    if self.r[key][r][2] > cur_moveitem[2]:
+                        cur_moveitem, self.r[key][r], inserted = self.r[key][r], cur_moveitem, True
+                    elif self.r[key][r][2] == cur_moveitem[2]:
+                        if self.r[key][r][1] > cur_moveitem[1]:
+                            self.r[key][r], inserted, try_insert = cur_moveitem, True, False
+                        else:
+                            return False
+
+            if try_insert:
+                if not dominated(int(key[1]),self.r[key][-1], cur_moveitem):
+                    self.r[key].append(cur_moveitem)
+                    inserted = True
+            if inserted:
+                #print (f"recheck {range(1,len(self.r[key]))}")
+                i=1
+                while i<len(self.r[key]):
+                    if dominated(int(key[1]),self.r[key][-i-1],self.r[key][-i]):
+                        #print (f"removing dominated {self.r[key][-i]}, leaving {self.r[key][-i-1]}")
+                        del self.r[key][-i]
+                        if i>1:
+                            i-=1
+                    else:
+                        i+=1
+            return inserted
+
+        for recipekey in self.recipes:
+            info = self.recipes[recipekey][1].split(";") # works only for 270 degree recipes
+            if len(info)==2 and info[1][0]=="r": #single glider emissions
+                ginfo = info[1].split(",")
+                phase = "eo"[int(ginfo[0][1:])%2]
+                lane = int(ginfo[1])
+                sync = int(self.recipes[recipekey][0][1])
+                sg = self.recipes[recipekey][3]
+                cost = self.recipes[recipekey][2]+120*sg # delay has 120*sg subtracted
+                updateIfBetter(f"{[sync]}_{phase}{lane}",self.name2l[recipekey],cost,sg)
+                updateIfBetter(f"{[sync]}_b{lane}",self.name2l[recipekey],cost,sg)
+        plusPeriod,minusPeriod=2,-36
+        maxPlus,minMinus=self.mMaxPlus//4,self.mMinMinus//4
+        prevMaxPlus,prevMinMinus=-1,0
+        toFindPeriod = True
+        orig_moves = [k for k in self.r]
+        #print ("table computation starts")
+
+        def lane_recipes(lane):
+            #print (f"lane {lane}")
+            for omove in orig_moves:
+                #print(omove)
+                os=int(omove[1])
+                op=omove[4]
+                olane=int(omove[5:])
+                shift = lane-olane
+                if shift%2 == 0:
+                    for oinfo in self.r[omove]:
+                        for s in range(8):
+                            minfo = self.get_move(s,os-s+4*shift)
+                            updateIfBetter(f"{[s]}_{op}{lane}",minfo[0]+oinfo[0],minfo[1]+oinfo[1],minfo[2]+oinfo[2])
+
+        def print_rtable(phase,minM,maxP):
+            print (f"r_table {phase}({minM},{maxP})")
+            for n in range(minM,maxP+1):
                 row = f"_{phase}{n}"
                 for s in range(8):
-                    alt = ""
-                    for lmove in self.get_loptions(s,phase,n):
-                        alt += f",{self.pack_letters(lmove[0])}({lmove[1]},{lmove[2]})"
-                    row += " "+alt[1:]
+                    key = f"[{s}]_{phase}{n}"
+                    if key in self.r:
+                        alt = ""
+                        for rmove in self.r[key]:
+                            alt += f",{self.pack_letters(rmove[0])}({rmove[1]},{rmove[2]})"
+                        row += " "+alt[1:]
+                    else:
+                        row += " ?"
                 print(row)
+
+        while toFindPeriod:
+            for lane in range(prevMaxPlus+1,maxPlus+1):
+                 lane_recipes(lane)
+            for lane in range(prevMinMinus-1,minMinus-1,-1):
+                 lane_recipes(lane)
+
+            #for phase in "beo":
+            #    print_rtable(phase,minMinus,maxPlus)
+            prevMinMinus,prevMaxPlus = minMinus,maxPlus
+
+            toFindPeriod = False
+            for n in range(maxPlus,maxPlus-plusPeriod-1,-1):
+                if toFindPeriod:
+                    break
+                for s in range(8):
+                    if toFindPeriod:
+                        break
+                    for phase in "beo":
+                        toFindPeriod = True
+                        key = f"[{s}]_{phase}{n}"
+                        if key in self.r:
+                            for option in self.r[key]:
+                                if (option[0].find(self.mPlus*8)>=0):
+                                    toFindPeriod = False
+                        if toFindPeriod:
+                            maxPlus = n + plusPeriod + 1
+                            #print (f"maxPlus changed to {n}({s}{phase})+{plusPeriod+1}={maxPlus}")
+                            break
+            toFindPlus = toFindPeriod
+            toFindPeriod = False
+            for n in range(minMinus,minMinus-minusPeriod+1):
+                if toFindPeriod:
+                    break
+                for s in range(8):
+                    if toFindPeriod:
+                        break
+                    for phase in "beo":
+                        toFindPeriod = True
+                        key = f"[{s}]_{phase}{n}"
+                        if key in self.r:
+                            for option in self.r[key]:
+                                if (option[0].find(self.mMinus+self.mPlus*6)>=0):
+                                    toFindPeriod = False
+                        if toFindPeriod:
+                            minMinus = n + minusPeriod - 1
+                            #print (f"minMinus changed to {n}({s}{phase})+{minusPeriod-1}={minMinus}")
+                            break
+            toFindPeriod = toFindPeriod or toFindPlus
+            #toFindPeriod = toFindPlus
+
+        self.rMinMinus = minMinus
+        self.rMaxPlus = maxPlus
+        self.rMinusPeriod = minusPeriod
+        self.rPlusPeriod = plusPeriod
+
+        #print ("get_roptions tables:")
+        #for phase in "beo":
+        #    for n in range(minMinus-10,maxPlus+11):
+        #        row = f"_{phase}{n}"
+        #        for s in range(8):
+        #            alt = ""
+        #            for rmove in self.get_roptions(s,phase,n):
+        #                alt += f",{self.pack_letters(rmove[0])}({rmove[1]},{rmove[2]})"
+        #            row += " "+alt[1:]
+        #        print(row)
 
     # let us do not consider building and destroying the simkin gun and expecting the recipe contain lanes not interacting with the simkin gun
     # do not use anchor moves and their destroyal at the first try
-    def __init__(self, initial_direction=1):
+    # I am adding r direction, I really do not know how should I combine it with left direction.
+    # I am copy pasting the code, but this would be terrible for maintainance ... :(
+    def __init__(self, initial_direction='L'):
 
+        self.direction = initial_direction # 'L'/'R' left/right outputing specified gliders
+        self.sideswitching = True
         self.recipes = {} # imported base recipes "{name}"->(exttimedeltas, description, delay, sgliders) -- delay, sgliders added by make_move_table
         self.m = {} # arm moves "[{sync}]_{delta}"->(letterstring, cost, sgliders)
         self.l = {} # single emissions which could be optimal "[{sync}]_{phase}{lanedist of correct parity}"->[(letterstring, cost, sgliders)]
+        self.r = {} # single emissions which could be optimal "[{sync}]_{phase}{lanedist of correct parity}"->[(letterstring, cost, sgliders)]
         # delay = cost - 120*sgliders ... (change of cur)
         # the m,l would be formulated in recipe names as the "possibly optimal" recipes would be after some preperiod periodic with respect to both 
         #increasing/decreasing lane distances, the recipes would be tabulated till the period appears and function replaying to requests in the periodic portion would be answered
@@ -397,16 +564,27 @@ class SimkinECCAp2compiler(object):
         self.load_recipes()
         self.make_move_table()
         self.make_l_table()
-        self.prev_goptions = [] # TODO to be used for combined emissions
+        self.make_r_table()
+        self.recipes['build']=["[0] 126 102 100 195 90 91 95 98 105 90 101 141 94 159 92 146 99 90 152 139 144 92 161 131 116 101 114 111 112 93 127 98 102 114 107 157 90 90 90 91 91 243 113 139 108 95 127 121 99 257 144 94 218 148 226 111 119 100 (90)"]
+        self.name2l['build']='='
+        self.l2name['=']='build'
+        self.recipes['clean_block']=["[2] 91 138 289 221 (90)"]
+        self.name2l['clean_block']='<'
+        self.l2name['<']='clean_block'
+        self.recipes['clean']=["[2] 91 138 201 221 216 138 125 (90)"]
+        self.name2l['clean']='|'
+        self.l2name['|']='clean'
+
+        self.prev_goptions = [] # used for combined emissions
+        self.subresults = [""]
         #Following structures are "doubled", second version corresponds to switched o<>e phases on input % means we could use results from the other branch as well ... (current pattern is p1)
         self.cur = [0,0] # position of the collision of the simking glider with gliders sent at next_available_tick would happen in "1/8 fd"
         # glider lanes in recipes are relative to 2*(self.cur//8)
         self.delayed2, self.delayed1 = [{},{}], [{},{}] # portions of candidate salvas not yet decided to connect to the recipe, delayed2 does not contain last 2 gliders, delayed1 does not contain last glider (the glider currently considered)
-        self.subresults = [""]
         self.delayed1[0][0],self.delayed1[1][0]=("0:",0),("0:",0)
         self.output = ["",""] # to be made by self.flush from subresults
-
         # curAfterLastEmission -> (letterstring,cost)
+
         self.delayed = [{},{}] # curerntly working on similarly as self.delayed1, self.delayed2 to be "rotated" after all options are processed
         # curAfterLastEmission -> ((predecessorkey,predecessorlevel,letterstring after predecessor),cost)
 
@@ -432,6 +610,7 @@ class SimkinECCAp2compiler(object):
         else:
             ret = self.m[f"[{sync}]_{dist}"]
         return ret
+
     #[(letterstring, cost, sgliders)]
     def get_loptions(self, sync, phase, lanedist):
         #print (f"get_move({sync},{dist})")
@@ -458,41 +637,69 @@ class SimkinECCAp2compiler(object):
             options = self.l[f"[{sync}]_{phase}{lanedist}"]
         return options
 
+    #[(letterstring, cost, sgliders)]
+    def get_roptions(self, sync, phase, lanedist):
+        #print (f"get_move({sync},{dist})")
+        options=[]
+        if lanedist < self.rMinMinus:
+            e = (lanedist - self.rMinMinus) // (-self.rMinusPeriod)
+            key = f"[{sync}]_{phase}{lanedist+e*self.rMinusPeriod}"
+            for o in self.r[key]:
+                rpos = o[0].find(self.mMinus+self.mPlus*6)
+                move = o[0][:rpos] + (self.mMinus+self.mPlus*6)*(-e) + o[0][rpos:]
+                cost = o[1]-e*96
+                sg = o[2]-e*2
+                options.append((move,cost,sg))
+        elif lanedist > self.rMaxPlus:
+            e = (self.rMaxPlus - lanedist) // self.rPlusPeriod
+            key = f"[{sync}]_{phase}{lanedist+e*self.rPlusPeriod}"
+            for o in self.r[key]:
+                rpos = o[0].find(self.mPlus*8)
+                move = o[0][:rpos] + (self.mPlus*8)*(-e) + o[0][rpos:]
+                cost = o[1]-e*8
+                sg = o[2]-e*0
+                options.append((move, cost, sg))
+        else:
+            options = self.r[f"[{sync}]_{phase}{lanedist}"]
+        return options
+
+    get_xoptions = {'L':get_loptions, 'R':get_roptions}
+
     #[(letterstring, cost, sgliders, lane0)] to be shifted to p_lane latter
     def get_llpreoptions(self, p_laneMod2, lanedif, pphase, phase):
         #there is curreently at most one match, so we do not bother with multiplicity
         name = f"ll{p_laneMod2}_{lanedif}"
         if name in self.recipes:
             #simple match
-            print (f"ll match {name}")
+            #print (f"ll match {name}")
             recipe = self.recipes[name]
-            info = recipe[1].split("l")
+            info = recipe[1].split(";l")
             if pphase!="b" and pphase!="eo"[int(info[1].split(",")[0])%2]:
-                print (f"pphase wrong {pphase} {'eo'[int(info[1].split(',')[0])%2]}")
+                #print (f"pphase wrong {pphase} {'eo'[int(info[1].split(',')[0])%2]}")
                 return []
             if phase!="b" and phase!="eo"[int(info[2].split(",")[0])%2]:
-                print (f"phase wrong {phase} {'eo'[int(info[2].split(',')[0])%2]}")
+                #print (f"phase wrong {phase} {'eo'[int(info[2].split(',')[0])%2]}")
                 return []
             return [(self.name2l[name],recipe[2]+120*recipe[3],recipe[3],int(info[1].split(",")[1]))]
         name = f"ll{p_laneMod2}" #there is only one such recipe, otherwise we should make changes there
         if name in self.recipes:
-            print (f"ll match {name}")
+            #print (f"ll match {name}")
             recipe = self.recipes[name]
-            info = recipe[1].split("l")
+            info = recipe[1].split(";l")
             if pphase!="b" and pphase!="eo"[int(info[1].split(",")[0])%2]:
-                print (f"pphase wrong {pphase} {'eo'[int(info[1].split(',')[0])%2]}")
+                #print (f"pphase wrong {pphase} {'eo'[int(info[1].split(',')[0])%2]}")
                 return []
             baselanedif = int(info[1].split(",")[2]) # more general alternative would to have baselanedif in _o,_e parts
             if lanedif<baselanedif:
-                print (f"lanedif too small")
+                #print (f"lanedif too small")
                 return []
             name2 = f"ll{p_laneMod2}_{'eo'[lanedif%2]}"
             recipe2 = self.recipes[name2]
-            info2 = recipe2[1].split("l")
+            info2 = recipe2[1].split(";l")
             if phase!="b" and phase!="eo"[int(info2[1].split(",")[0])%2]:
-                print (f"phase wrong {phase} {'eo'[int(info2[1].split(',')[0])%2]}")
+                #print (f"phase wrong {phase} {'eo'[int(info2[1].split(',')[0])%2]}")
                 return []
-            print (f"lanedif {lanedif} baselanedif {baselanedif} dif//2 {(lanedif-baselanedif)//2}")
+            #print (f"lanedif {lanedif} baselanedif {baselanedif} dif//2 {(lanedif-baselanedif)//2}")
             minfo = self.get_move(0,8*((lanedif-baselanedif)//2)) #positive moves do not depend on sync (the sync is 0)
             return [(self.name2l[name]+minfo[0]+self.name2l[name2],
                 recipe[2]+120*recipe[3]+minfo[1]+recipe2[2]+120*recipe2[3],
@@ -500,18 +707,48 @@ class SimkinECCAp2compiler(object):
                 int(info[1].split(",")[1]))]
         return []
 
+    #[(letterstring, cost, sgliders, lane0)] to be shifted to p_lane latter
+    def get_rrpreoptions(self, p_laneMod2, lanedif, pphase, phase):
+        #there is curreently at most one match, so we do not bother with multiplicity
+        name = f"rr{p_laneMod2}_{lanedif}"
+        if name in self.recipes:
+            #simple match
+            #print (f"ll match {name}")
+            recipe = self.recipes[name]
+            info = recipe[1].split(";r")
+            if pphase!="b" and pphase!="eo"[int(info[1].split(",")[0])%2]:
+                #print (f"pphase wrong {pphase} {'eo'[int(info[1].split(',')[0])%2]}")
+                return []
+            if phase!="b" and phase!="eo"[int(info[2].split(",")[0])%2]:
+                #print (f"phase wrong {phase} {'eo'[int(info[2].split(',')[0])%2]}")
+                return []
+            return [(self.name2l[name],recipe[2]+120*recipe[3],recipe[3],int(info[1].split(",")[1]))]
+        return []
+
+    get_xxpreoptions = {'L':get_llpreoptions, 'R':get_rrpreoptions}
+
     #[(letterstring, cost, sgliders)]
     def get_lloption(self, sync, lane0evendist, llpreoption):
-        print (f"get_lloption({sync},{lane0evendist},({self.pack_letters(llpreoption[0])},{llpreoption[1]},{llpreoption[2]},{llpreoption[3]}))")
+        #print (f"get_lloption({sync},{lane0evendist},({self.pack_letters(llpreoption[0])},{llpreoption[1]},{llpreoption[2]},{llpreoption[3]}))")
         os = int(self.recipes[self.l2name[llpreoption[0][0]]][0][1])
         shift = lane0evendist - llpreoption[3]
         minfo = self.get_move(sync,os-sync+4*shift)
         return (minfo[0]+llpreoption[0],minfo[1]+llpreoption[1],minfo[2]+llpreoption[2])
 
-    def pack_loptions(self,loptions):
+    #[(letterstring, cost, sgliders)]
+    def get_rroption(self, sync, lane0evendist, rrpreoption):
+        #print (f"get_rroption({sync},{lane0evendist},({self.pack_letters(rrpreoption[0])},{rrpreoption[1]},{rrpreoption[2]},{rrpreoption[3]}))")
+        os = int(self.recipes[self.l2name[rrpreoption[0][0]]][0][1])
+        shift = lane0evendist - rrpreoption[3]
+        minfo = self.get_move(sync,os-sync+4*shift)
+        return (minfo[0]+rrpreoption[0],minfo[1]+rrpreoption[1],minfo[2]+rrpreoption[2])
+
+    get_xxoption = {'L':get_lloption, 'R':get_rroption}
+
+    def pack_options(self,options):
         res=" "
-        for loption in loptions:
-            res+=f"({self.pack_letters(loption[0])},{loption[1]},{loption[2]}),"
+        for option in options:
+            res+=f"({self.pack_letters(option[0])},{option[1]},{option[2]}),"
         return res[:-1]
 
     def letters2names(self, letter_string):
@@ -527,13 +764,10 @@ class SimkinECCAp2compiler(object):
             recipe.append(self.recipes[name][0])
         return " ".join(recipe)
 
-    def jointimedeltas(self, ext_td):
+    def jointimedeltas(self, ext_td, current_total=0):
         etds = ext_td.split(" ")
-        current_parenthesis = 0
-        current_plus = 0
-        synced = False
-        started = False
-        current_reminder = 0
+        current_parenthesis, current_plus = 0, 0
+        synced, started = False, False
         tds = []
         for etd in etds:
             if etd[0]=="(":
@@ -554,11 +788,11 @@ class SimkinECCAp2compiler(object):
                     started = True
                 else:
                     td = current_parenthesis + current_plus
-                    rem = (int(etd[1:-1]) - td - current_reminder) % 8
+                    psplit = (etd[1:-1]+"%8").split('%') # %8 default
+                    rem = (int(psplit[0]) - td - current_total) % int(psplit[1])
                     tds.append(f"{td+rem}")
-                current_reminder = int(etd[1:-1])
-                current_parenthesis = 0
-                current_plus = 0
+                    current_total += td+rem
+                    current_parenthesis, current_plus = 0, 0
                 synced = True
             elif etd[0]=="+":
                 if synced:
@@ -569,11 +803,12 @@ class SimkinECCAp2compiler(object):
                     print("exact delay when not synced!")
                 delay = int(etd)
                 tds.append(etd)
-                current_reminder += delay
+                current_total += delay
         if current_parenthesis > 0:
-            if current_parenthesis>0:
-                tds.append(f"({current_parenthesis + current_plus})")
-        return " ".join(tds)
+            tds.append(f"({current_parenthesis + current_plus})")
+            current_total += current_parenthesis + current_plus
+            current_parenthesis, current_plus = 0, 0
+        return " ".join(tds),current_total
 
     def pack_delayed1(self, delayed):
         res=""
@@ -595,7 +830,7 @@ class SimkinECCAp2compiler(object):
 
         self.delayed=[{},{}]
         def updateIfBetter(key, phaseswitch, move, cost):
-            #print(f"uib {key},{self.pack_letters(move)},{cost}")
+            #print(f"uib {key},{self.pack_letters(move[2])},{cost}")
             if (not key in self.delayed[phaseswitch]):
                 self.delayed[phaseswitch][key] = (move, cost)
                 return True
@@ -604,45 +839,59 @@ class SimkinECCAp2compiler(object):
                 return True
             else:
                 return False
-        print(f"process_options {goptions} len(delayed2) {len(self.delayed2[0])},{len(self.delayed2[1])} len(delayed1) {len(self.delayed1[0])},{len(self.delayed1[1])}")
-        print(f"subresults {self.pack_subresults()}")
-        print (f"delayed 2[0]{self.pack_delayed1(self.delayed2[0])}")
-        print (f"delayed 2[1]{self.pack_delayed1(self.delayed2[1])}")
-        print (f"delayed 1[0]{self.pack_delayed1(self.delayed1[0])}")
-        print (f"delayed 1[1]{self.pack_delayed1(self.delayed1[1])}")
-        for phaseswitch in range(2):
-            for pgoption in self.prev_goptions:
-                if len(pgoption):
-                    #TODO % on pgoption phaseswitch is it ok?
-                    pphase, p_lane = phaseswitching[f"{pgoption[0]}{phaseswitch}"], int(pgoption[1:])
-                    for goption in goptions:
-                        if len(goption):
-                            phase, lane = phaseswitching[f"{goption[0]}{phaseswitch}"], int(goption[1:])
-                            lanedif = lane-p_lane
-                            llpreoptions = self.get_llpreoptions(p_lane%2,lanedif,pphase,phase)
-                            print (f"llpreoptions: {llpreoptions}")
-                            for llpreoption in llpreoptions:
-                                print(f"trying ({self.pack_letters(llpreoption[0])},{llpreoption[1]},{llpreoption[2]},{llpreoption[3]})")
-                                for key, value in self.delayed2[phaseswitch].items():
-                                    lloption = self.get_lloption(key%8,p_lane-2*(key//8),llpreoption)
-                                    ncost = value[1] + lloption[1]
-                                    ncur = key + lloption[1] - 120*lloption[2]
-                                    nmove = (key, 2, lloption[0]) # real update would be during step forward
-                                    updateIfBetter(ncur, phaseswitch, nmove, ncost)
-
-            # we plan to use delayed2 in near future using ll emissions as well
-            # after procossing possible double emissions
-            for goption in goptions:
-                if len(goption):
-                    phase, lane = phaseswitching[f"{goption[0]}{phaseswitch}"], int(goption[1:])
-                    for key, value in self.delayed1[phaseswitch].items():
-                        loptions = self.get_loptions(key%8, phase, lane-2*(key//8))
-                        print(f"loptions [{key%8}]_{phase}{lane-2*(key//8)}: {self.pack_loptions(loptions)}")
-                        for loption in loptions:
-                            ncost = value[1] + loption[1]
-                            ncur = key + loption[1] - 120*loption[2]
-                            nmove = (key, 1, loption[0]) # real update would be during step forward
-                            updateIfBetter(ncur, phaseswitch, nmove, ncost)
+        #print(f"process_options {goptions} len(delayed2) {len(self.delayed2[0])},{len(self.delayed2[1])} len(delayed1) {len(self.delayed1[0])},{len(self.delayed1[1])}")
+        #print(f"subresults {self.pack_subresults()}")
+        #print (f"delayed 2[0]{self.pack_delayed1(self.delayed2[0])}")
+        #print (f"delayed 2[1]{self.pack_delayed1(self.delayed2[1])}")
+        #print (f"delayed 1[0]{self.pack_delayed1(self.delayed1[0])}")
+        #print (f"delayed 1[1]{self.pack_delayed1(self.delayed1[1])}")
+        if goptions == ['L'] or goptions == ['R']:
+            self.direction = goptions[0] # I have expected I should do other stuff as well and check "doing nothing" if already 'L' ... it 'L' side mode prevents llmove
+            goptions=[]
+            for phaseswitch in range(2):
+                for key, value in self.delayed1[phaseswitch].items():
+                    updateIfBetter(key, phaseswitch, (key, 1, ''), value[1]) # delayed correspond to doing nothing
+        elif goptions == ['w']:
+            goptions=[]
+            for phaseswitch in range(2):
+                for key, value in self.delayed1[phaseswitch].items():
+                    wmove = 'A' * (16-(key%8)) + 'B' + 'A' * (14+key%8) # requires A = +1, B = [0] (90)
+                    #print(f"wmove {self.pack_letters(wmove)}")
+                    ncost = value[1] + 120
+                    ncur = key
+                    nmove = (key, 1, wmove) # real update would be during step forward
+                    updateIfBetter(ncur, phaseswitch, nmove, ncost)
+        else:
+            for phaseswitch in range(2):
+                if self.prev_goptions != []:
+                    for pgoption in self.prev_goptions:
+                        if len(pgoption):
+                            pphase, p_lane = phaseswitching[f"{pgoption[0]}{phaseswitch}"], int(pgoption[1:])
+                            for goption in goptions:
+                                if len(goption):
+                                    phase, lane = phaseswitching[f"{goption[0]}{phaseswitch}"], int(goption[1:])
+                                    lanedif = lane-p_lane
+                                    xxpreoptions = self.get_xxpreoptions[self.direction](self,p_lane%2,lanedif,pphase,phase)
+                                    #print (f"xxpreoptions: {xxpreoptions}")
+                                    for xxpreoption in xxpreoptions:
+                                        #print(f"trying ({self.pack_letters(xxpreoption[0])},{xxpreoption[1]},{xxpreoption[2]},{xxpreoption[3]})")
+                                        for key, value in self.delayed2[phaseswitch].items():
+                                            xxoption = self.get_xxoption[self.direction](self,key%8,p_lane-2*(key//8),xxpreoption)
+                                            ncost = value[1] + xxoption[1]
+                                            ncur = key + xxoption[1] - 120*xxoption[2]
+                                            nmove = (key, 2, xxoption[0]) # real update would be during step forward
+                                            updateIfBetter(ncur, phaseswitch, nmove, ncost)
+                for goption in goptions:
+                    if len(goption):
+                        phase, lane = phaseswitching[f"{goption[0]}{phaseswitch}"], int(goption[1:])
+                        for key, value in self.delayed1[phaseswitch].items():
+                            xoptions = self.get_xoptions[self.direction](self,key%8, phase, lane-2*(key//8))
+                            #print(f"xoptions [{key%8}]_{phase}{lane-2*(key//8)}: {self.pack_options(xoptions)}")
+                            for xoption in xoptions:
+                                ncost = value[1] + xoption[1]
+                                ncur = key + xoption[1] - 120*xoption[2]
+                                nmove = (key, 1, xoption[0]) # real update would be during step forward
+                                updateIfBetter(ncur, phaseswitch, nmove, ncost)
         self.prev_goptions = goptions
 
     #extends the options DAG and if it is "tally" it outputs already known
@@ -659,7 +908,7 @@ class SimkinECCAp2compiler(object):
                 updateIfBetter(key1,0,self.delayed1[1][key1])
             for key0 in keys0:
                 updateIfBetter(key0,1,self.delayed1[0][key0])
-            print("done? %")
+            #print("done? %")
         else:
             goptions = glider.split("|")
             self.process_goptions(goptions)
@@ -668,7 +917,7 @@ class SimkinECCAp2compiler(object):
                     #we probably can flush known "history"
                     for key, value in self.delayed[phaseswitch].items():
                         if value[0][1] == 1: #mark of normal emission
-                            print (f"partial output[{phaseswitch}] {self.pack_delayed1(self.delayed1[phaseswitch])} {key} {value}")
+                            #print (f"partial output[{phaseswitch}] {self.pack_delayed1(self.delayed1[phaseswitch])} {key} {value}")
                             self.cur[phaseswitch] = value[0][0]
                             joiner = len(self.subresults)
                             self.subresults.append(self.delayed1[phaseswitch][self.cur[phaseswitch]][0])
@@ -681,8 +930,6 @@ class SimkinECCAp2compiler(object):
                         self.delayed[phaseswitch][key]=(self.delayed2[phaseswitch][value[0][0]][0]+value[0][2], value[1])
 
             self.delayed2,self.delayed1 = self.delayed1,self.delayed
-            #self.delayed2 = dict.copy(self.delayed1)
-            #self.delayed1 = dict.copy(self.delayed)
 
     #selects the emission with minimal cost, not considering the final .cur
     def flush(self):
@@ -696,13 +943,26 @@ class SimkinECCAp2compiler(object):
             self.output[phaseswitch]=output[1]
         return
 
-    def compile(self, gliders):
-
+    def build_with_block (self):
         self.cur = [0,0]
         self.subresults = [""]
         self.delayed2, self.delayed1 = [{},{}], [{},{}] # portions of candidate salvas not yet decided to connect to the recipe, delayed2 does not contain last 2 gliders, delayed1 does not contain last glider (the glider currently considered)
-        self.delayed1[0][0],self.delayed1[1][0]=("0:",0),("0:",0)
+        self.delayed1[0][0],self.delayed1[1][0]=("0:=<",0),("0:=<",0)
         self.prev_goptions = []
+        self.output = ["",""]
+
+    def convert_to_speboe(self):
+        treshold = -1
+        for phaseswitch in range(2):
+            if self.cur[phaseswitch] > treshold:
+                names = self.letters2names(self.output[phaseswitch])
+                #TODO we should make 2 letters for it to be able to incorporate the escaping gliders in the code
+                escapes = 3 + self.cur[phaseswitch] // 120
+                exttd = self.names2exttimedeltas(names) +f" [95%120] 180 204 96 (90){' [2] (90)'*(escapes//2)}{' [4] (90)'*(escapes%2)} [0%2] 91 90 104 121 121 96 99 112 94 102 94 115 231 111 118 91 92 108 129 (90)"
+                td = self.jointimedeltas(exttd)
+                print (f"{phaseswitch}: {td}")
+
+    def compile(self, gliders):
         for x in gliders.split():
             self.preprocess_glider(x)
         self.flush()
@@ -711,9 +971,9 @@ class SimkinECCAp2compiler(object):
             maintd = td
             print (f"{phaseswitch}: {self.pack_letters(self.output[phaseswitch])}")
             names = self.letters2names(self.output[phaseswitch])
-            print (names)
+            #print (names)
             exttd = self.names2exttimedeltas(names)
-            print (exttd)
+            #print (exttd)
             td = self.jointimedeltas(exttd)
             print (td)
         return maintd

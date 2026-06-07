@@ -14,8 +14,10 @@ g.open("gen.mc", false)
 local genrect=g.getrect()
 g.setrule("LifeHistory64")
 local gen=pattern(); gen.array = g.getcells({genrect[1]+5+3, genrect[2]+1+3, genrect[3]-5-3, genrect[4]-1-3})
-for i=0,12,3 do --last glider doing cleanup
-    gen.array[#(gen.array)-i]=129
+for i=0,13 do --last glider doing cleanup
+    if gen.array[#(gen.array)-i]==1 then
+        gen.array[#(gen.array)-i]=129
+    end
 end
 gen = gen.t(0,-1)
 g.new("0e0pcells")
@@ -55,6 +57,7 @@ local SoD_phase=1
 -- states
 local build_child_shell_state=29
 local shell_state=27
+local shell_entrance_state=27
 local send_DNA_state=7
 local send_DNA_seed_state=79
 local SE_clock_state=69
@@ -82,6 +85,7 @@ local pseudo_state=101 -- not to be built ... mimicks construction process
 
 local function finalstates()
     build_child_shell_state=29
+    shell_entrance_state=27
     shell_state=27
     send_DNA_state=7
     send_DNA_seed_state=79
@@ -111,6 +115,7 @@ end
 
 local function onlyshellstates()
     build_child_shell_state=0
+    --shell_entrance_state=27
     --shell_state=27
     send_DNA_state=0
     --shell_send_DNA_state=7
@@ -140,6 +145,7 @@ end
 
 local function shellplanstates()
     build_child_shell_state=0
+    shell_entrance_state=26
     shell_state=56
     send_DNA_state=0
     shell_send_DNA_state=38
@@ -293,9 +299,9 @@ local function E_shell_pattern()
 
  local constructionstopper=pattern()
  constructionstopper.array=g.parse("2o$2o!")
- constructionstopper=constructionstopper.t(-21-constr_lane_dist,-13+constr_lane_dist).state(shell_state)
+ constructionstopper=constructionstopper.t(-21-constr_lane_dist,-13+constr_lane_dist).state(shell_entrance_state)
 
- local constructionlaneblockingeater=gpo.eater.state(shell_state).t(58+4-constr_lane_dist-shell_lane0_dist-shell_lane_dist,58+5+constr_lane_dist-shell_lane0_dist-shell_lane_dist,gp.swap_xy_flip)
+ local constructionlaneblockingeater=gpo.eater.state(shell_entrance_state).t(58+4-constr_lane_dist-shell_lane0_dist-shell_lane_dist,58+5+constr_lane_dist-shell_lane0_dist-shell_lane_dist,gp.swap_xy_flip)
 
  local constructionarmtarget=gpo.block.t(-72-4+4-constr_lane_dist,74-3+3-constr_lane_dist).state(construction_target_state)
  local constructionarmtargetSoD=gpo.block.t(-97-constr_lane_dist,44-constr_lane_dist).state(shell_SoD_state)
@@ -862,4 +868,4 @@ g.setbase(2)
 g.setstep(16)
 g.setpos(startX,startY)
 g.setmag(startMag)
-g.note("NE child build starts around 74 100 000 (openning the build) 76 900 000 hitting E speboe 78 435 000 crab stop 78 783 000 child entrance filtering")
+g.note("NE child build starts around (openning the build) 74 099 712\nhitting E speboe 76 899 328\ncrab1 stop 78 434 304\nchild entrance filtering 78 782 464\nend of carb2 wick1 burning 80 375 808\nend of crab2 wick burning 81 776 640")

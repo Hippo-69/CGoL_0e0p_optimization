@@ -1,0 +1,9 @@
+--SSSS o=5q, d=5q glider from SSSW is reflected to SSSE
+--SSSE o=6q, d=5q target as speboe created (SSSW through SS and SSSS)
+--                simkin OGGCA constructed directed preferably to SE
+--NWWW o=10q,d=5q convert to rotationally symmetric position for directed build NWWW (till 6q)
+--WW   o=9q, d=5q convert to rotationally symmetric position for directed build (if it isn't)
+--SS   o=7q, d=5q convert to rotationally symmetric position for directed build (if it isn't)
+--SSSE o=6q, d=5q build SSSE and convert the simkin OGGCA to speboe
+--                input blocking seed is targetted, speboe deleted
+-- q5L end

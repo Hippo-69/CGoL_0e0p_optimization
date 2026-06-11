@@ -1,0 +1,3 @@
+w w w
+L o20 -- ~0.2q target for future input lane blocking delay ott180
+-- q0.2L end

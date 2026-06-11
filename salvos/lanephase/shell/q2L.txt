@@ -1,0 +1,9 @@
+L
+o92 -- 2q SWWW build start
+o-3 -- 2q SSSW build start
+--SWWW o=5q, d=2q glider from WWWW should be sync targeted, slow2 ott90 from SSSW to WW created (till 3q)
+--SSSW o=3q, d=2q glider from SSWW should be sync targeted, splitter SSWW,SSSS to SS created and hit (a target remains)
+--SSWW o=4q, d=2q (mwss seed is hit from SSSW msww goes to SS, SSWW site remains empty)
+--SWWW o=5q, d=2q finish slow2ott90 from SSSW to WW(till 3q), build slow2ott90 from SSSS to NNNE (till 4q) build SWWW (till 4q)
+--SSSW o=3q, d=2q SSSW construction finished (till 4q), build SS,SSSS to SSSE splitter (till 3q), build SS,SWWW to WW splitter (till 3q), build slow2ott90 from SSSS to NWWW (till 4q) 
+-- q2L end

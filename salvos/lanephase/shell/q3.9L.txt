@@ -1,0 +1,4 @@
+L
+o-25 -- ~3.9 target for ott180 for input lane blocking seed
+--SSSS o=d~3.9q   (sync targeted glider from WWSS) build 180ott SSSS to SSSS "part" of the future "input lane blocking seed"
+-- q3.9L end

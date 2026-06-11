@@ -1,0 +1,11 @@
+-- something from q0.5R can go here (we could start building SE_Part3 here ... but we should incorporate q4 reflectors to the build)
+R t54 
+b50 b48|b53 e53 b61 e38 e51 o35 e61 -- *
+b64 b71 b83 o81 e89|e90|o93|o94 e94 b77 o74 e82 -- *
+b79 b77|b82 b75 b76 b73 b60|b61|b62|b63|b64|b65 b53 b51|b56 o51 o53 o67 e58 o47 o63 -- *
+b51 b41 o38 e30 e36 o39 -- *
+o41 o23 e50 e46 e50 -- *
+b67 e67 o60|o61|e64|e65 o57 e62 e60 -- *
+b56 b50 o48 o51 e45 e36 o56 b66 o62 e55 b53|b55|b58 o52 b79 o87 e88|e89|o84|o85 o85 o87 o89 
+w w w w w w w w w w w w w w w w w w w w w
+-- q0.2R end 699139

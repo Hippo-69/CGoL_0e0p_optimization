@@ -1,0 +1,14 @@
+--SEEE o=9q, d=6q (target created SSSS through SSSW,SSSS and EEEE)
+--                (slow^2ott for EEEE to NNNW created and used)
+--                (slow^2ott for EEEE to NN created and used)
+--                (slow^2ott for EEEE to EE created and used)
+--                ECCA target moves to SEEE
+--NNNW o=13q,d=6q (target created EEEE through SEEE and NNNN)
+--                build NNNW
+--NN   o=12q,d=6q (target created EEEE through SEEE and NNNE)
+--                convert to rotationally symmetric position for directed build (if it isn't)
+--EE   o=10q,d=6q (target created EEEE through SEEE and NEEE)
+--                convert to rotationally symmetric position for directed build (if it isn't)
+--SEEE o=9q, d=6q SEEE is convert to rotationally symmetric position for directed build (if it isn't) using last simkin OGGCA gliders
+--EEEE o=10q,d=6q salvo converting stopped simkin OGGCA to E construction target block of child cell arrives (middle of EEEE construction)
+-- q6L end

@@ -1,0 +1,12 @@
+L
+--SSSW o=4q, d=3q slow^2 gliders to SS building slow2ott90 from SSSW to SSSE, activate splitter SS,SSSS to SSSE
+--                slow^2 gliders to SS building slow2ott90 from SSSW to WW, activate splitter SS,SWWW to WW
+--		build slow2ott90 from SSSS to NWWW (till 4q) 
+--SS   o=5q, d=3q (collision of mwss's from SSSS and SSWW creates target, slow^2 gliders from SSSW build slow2ott90 from SSSW to SSSW which is hit)
+--                (slow^2 gliders from SSSW build slow2ott from SSSW to WW which is hit)
+--SWWW o=6q, d=3q (glider from SSSW reflected to WW), slow^2 gliders sent to WW to create slow2ott90 from SWWW to NWWW, build WWWW,WW to NWWW splitter and activate it, 
+--		if not finished ... build slow2ott90 from SSSS to NNNE (till 4q)
+--WW   o=7q, d=3q (target created by SSSW through SWWW and SS gliders), slow^2 gliders from SWWW created slow^2ott90 from SWWW to NWWW and hit
+--WWWW o=7q, d=3q (glider from SWWW reflected to NWWW, rest of slow^2ott destroyed)
+--NWWW o=8q, d=3q target created (SWWW through WWWW and WW)
+-- q3L end

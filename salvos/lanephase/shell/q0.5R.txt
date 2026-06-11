@@ -1,0 +1,61 @@
+R 
+e79 b81 b75 o90 o90 o88 o69 e71 e67 b63|b65|b68 b61|b62|b63|b64|b65 o57 b32|b34|b37
+B56
+t760
+-- divisions at (local) p1 boundaries * better version = equal versions
+b756 o760 o770 -- =
+b761 b768 e759 o769 o761 e760 -- *
+b756 b754|b759 b752 b753 b750 b737|b738|b739|b740|b741|b742 b730 b721|b722|b725 b726 b717 e731 e717
+o739|o740|o741|e736|e737|e738 e736 -- *
+b751 b758 b749|b750|b753 b754 b745 e759 e745 o767|o768|o769|e764|e765|e766 e764 -- *
+b779 b786 b784|b789 b782 b783 b780 b767|b768|b769|b770|b771|b772 b760 b758|b763 b765 b764 b767 b775|b776|b777|b778|b779|b780 b778
+b776|b781 b783 b782 b785 b793|b794|b795|b796|b797|b798 b796 e793 e795 o779 -- =
+b798 b777 e781 e779 e786 -- *
+b776 b786 e786 b782 e801 e801 -- *
+b815 o815 e827 -- =
+b811 b807 b780 b771 b779 b781 b780 b780|b781|b782|b783 e767 b750 b740 b743 b741|b746 b753 b751 b739 b745 b745 b733 b743 o759 o775
+o778 e775|e776 -- *
+b771 b769|b774 e774 o774 e761 o777 -- *
+b758 e757 b757 e754|e756 -- *
+b741 b734 o742 e750 e758 e751 e764 e783 e793 o782 e787 e798 o794 e801 o812 o790 o750 o753 e759 -- =
+b758|b759 b757 b759 b755 b760|b763|b764 o751 o757 o747 b744|b751 b737 o732 b740 o733 o733 o736 o751 b756 b752 b740
+b740 o744 e746|e747|o750|o751 o752 o751 e743 e738 b727|b728|b731|b738 b710 b718 b715 o703 o680
+b688 b686 b695 o703 o708 o703 b715 b709 b716 o704 e704 e698|e699|e700|o701|o702|o703 b720 e695
+b699 o700 b680 b683 o686 e697 o683 b709 b708 b715 b703 b702|b706|b709 b687 o691 o700 o693 b683
+b682|b693 o698 e699|e700|o695|o696 o692 b678 b687 e683 e676|e677|o680|o681 e681 e676 o665 e673
+b671|b672|b673|b674|b676 o711 o687 b686|b687 b685 b687 e656 b656 b654 o651 e647 o632 b625 b614
+b614 b625 b615|b616|b617|b618|b619|b620 b591 o588 e581 e590 o566 b551 o559 b547 b544 b555 b582
+b575 o590 o573 o577 o572 o575 o580 o575 b587|b588|b589|b590|b591|b592 b581 o580 e579 e580 e567
+b571 o575 b559 b559 b557|b562 o562 b545|b546 e548 o559 b557 b564 o556 b541 b521 o526 b529 b535
+e535 e511|o502 b520 o502 o494 b486 b497 b510 b513 b537|b538|b539|b540|b541|b542
+b542|b545|b546|b549 o546 o546 e541 b545 b560 b566|b567|b568|b569 b565 b574 o573 b569
+e579|e580|o575|o576 o578 b591 o588 b561|b562|b563|b564 o563 e584 o577 b585 b592 b594 o575 e586
+e593 b591 b565 e562 o555 b544 b543 e565 e562|e563 e548 e559 o583 b585 o585 e583 e587 o584 b585
+e583 o559 b558|b559 b557 b559 b542 b543 b556 b556 b563|b564|b565|b566 b563 o560
+b569|b570|b571|b572|b573 e562 e552 o551 o538 e536|e537|o540|o541 o548 o539 e544 e545 b545|b548
+o510 e503 o512 b516 b508 o515 o514 b495 b487|b488|b489|b490|b491|b492 b485 o484 e496 b480 b476
+b458 b452 b459|b462|b463|b466 e500 o522 o538 o560 o596 e593 o594 e595|e596|o591|o592 o593 e597
+o591 o607 e592 e593 b591 o592 b596 o599 o593 b597|b598|b599 o587 o583 o574 b576 o573 o575 o562
+b569 o572 o587 o575 o567 e590 b589 o589 b584 b585 o596|o597 b601 b590 b603 b604 o616 b641 b659
+b659 b651 o659 o665 o684 e681|e682 b686 o682 o690 o677 e674 b672 o676 e673 b683 o680 b660 e672
+e677 e671 e679 b682 b674 b660 o657 o654 o659 o655 b654 e672 b663|b664|b665|b666|b667|b668 e664
+o650 b648 b656 o644 e651 o649|o650 o654 b658 b660 b664 b674 b662 b670 o653 b652 b649 b646|b651
+o648 e644 b648 b647|b648 o658 e668 o664 o664 o713 e702 b700 b708 o696 e700 o699 o705 o708 b703
+o770 b777 o773 e770|e771|o766|o767 o765 o775 o786 e787 o765 e767 b760 o765 e752 e741 o776 b785
+e769 b745 b752 o744 o728 o720 o717 o715 b719 b719 o720 b732|b733|b734|b735|b736 b724 o727 o721
+b713 b722|b723|b724|b725|b726|b727 o741 e731 o730 b737|b738|b739|b740|b741 o746 e736 e736
+w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w
+w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w
+w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w
+w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w
+w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w
+w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w
+w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w
+w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w
+w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w
+w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w
+w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w
+w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w
+w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w
+w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w w
+-- q0.5R end 1049008

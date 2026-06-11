@@ -1,0 +1,39 @@
+--SSSS o=4q, d=4q (glider reaching SSWW to EEEE ott)
+--	          slow^2 gliders creating ott180 from SSSS to SEEE at EEEE created
+--                splitter SSSW(SSSS),EEEE to SEEE created and activated
+--                (glider reaching SSWW to NNNN mwss seed)
+--                (glider reaching SSSW to SS mwss seed)
+--                splitter SWWW,EEEE to NNNE created and activated               
+--SWWW o=7q, d=4q (reflect glider from SSSS to NNNE)
+--SSSS o=4q, d=4q splitter SSSW,EEEE to NEEE created and activated
+--SSSW o=5q, d=4q (reflect glider to NEEE)
+--                build 180ott from SSSS to SSSS and SEEE
+--		convert rest to rotationally symmetric position for directed build
+--SSSS o=4q, d=4q (ott from SSSW to SSSE is created)
+--                SSSS west part is build 
+--                ott from SSSW to SEEE created
+--                ott from ~2.9S,1.1W to EEEE (simkin gun stopper) created
+--                simkin OGGCA converted to speboe at SSSS
+--                SSSS middle part "input blocking" seed is build addressed throught ott from SSSE to NW and 180ott build at ~3.9q (may be replaced by before OGGCA conversion)
+--                exactly timed glider sent to ~2.9S,1.1W ott to stop the Simkin OGGCA at EEEE
+--                speboe gliders sent to EEEE to convert to speboe
+--                SSSS speboe destroyed
+--SSSW o=5q, d=4q (180ott from SSSS to SSSS activated)		
+--EEEE o=8q, d=4q (target created (SSWW through WWWW and SSSS) converted to (180ott from SSSS to SEEE) and to speboe from SSSS
+--                (180ott from SSSS to SEEE activated)
+--                simkin OGCCA created at EEEE (with targets on both sides?, directed mainly NW)
+--                slow^2 reflectors to NNNE, and NEEE created (and hit), 
+--                SEEE (180 OGGCA) recipe send to create slow^2 ott from EEEE to NNNW,
+--NNNN o=12q,d=4q slow2ott90 EEEE to NNNW created
+--EEEE o=8q, d=4q splitter SEEE,NNNN to NNNW created and activated
+--NNNN o=12q,d=4q NNNN built (from remnants of the slow^2ott) (till 6q with interruption at 5q)
+--EEEE o=8q, d=4q SEEE (180 OGGCA) recipe send to create slow^2 ott from EEEE to NN,
+--NNNE o=11q,d=4q (target created SSSS through SWWW and EEEE) slow2ott90 EEEE to NN created
+--                to rotationally symmetric position for directed build (from remnants of the slow^2ott) (till 6q with interruption at 5q)
+--EEEE o=8q, d=4q splitter SEEE,NNNE to NN created and activated
+--                SEEE (180 OGGCA) recipe send to create slow^2 ott from EEEE to EE,
+--NEEE o=9q, d=4q (target created SSSS through SSSW and EEEE) slow2ott90 EEEE to EE created
+--EEEE o=8q, d=4q splitter SEEE,NEEE to NN created and activated
+--NEEE o=9q, d=4q build NEEE (form remnants of the slow^2ott)
+--EEEE o=8q, d=4q EEEE build (both sides) (till 6q with 5q interruption)
+-- q4L end

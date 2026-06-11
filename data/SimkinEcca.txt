@@ -47,6 +47,9 @@
 [3] 225 137 148 (90)   -- 5;b37,4    -- br  -- n*
 [7] 252 93 173 (289)   -- 6;b-37,35  -- bl  -- o
 
+[7] 228 181 110 245 128 90 138 125 (90)     -- 11;A0,18 -- lbor -- longboat out at required distance and some lane
+[7] 150 203 173 106 108 102 90 184 201 (90) -- 13;B0,7  -- lbir -- longboat in at required distance and some lane
+
 -- [3] 174 138 657+240*n 104 (90) cap uncap ... for state reading tape
 -- [5=K%120] 144 165 125 115 177 225 90 107 206 156 96 104
 -- construction (290) [(20+K)%120] 151 199 210 181 let A simkin gliders escape) for 290 + (A*120)

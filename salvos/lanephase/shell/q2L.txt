@@ -1,9 +1,105 @@
 L
-o92 -- 2q SWWW build start
-o-3 -- 2q SSSW build start
---SWWW o=5q, d=2q glider from WWWW should be sync targeted, slow2 ott90 from SSSW to WW created (till 3q)
---SSSW o=3q, d=2q glider from SSWW should be sync targeted, splitter SSWW,SSSS to SS created and hit (a target remains)
---SSWW o=4q, d=2q (mwss seed is hit from SSSW msww goes to SS, SSWW site remains empty)
---SWWW o=5q, d=2q finish slow2ott90 from SSSW to WW(till 3q), build slow2ott90 from SSSS to NNNE (till 4q) build SWWW (till 4q)
---SSSW o=3q, d=2q SSSW construction finished (till 4q), build SS,SSSS to SSSE splitter (till 3q), build SS,SWWW to WW splitter (till 3q), build slow2ott90 from SSSS to NWWW (till 4q) 
+o90 -- 2q SWWW build start
+-- split and build ott on one version ... the other version is base of SWWW
+b77 -- split for construction/ott
+b80 b73 -- slow2 ott90 from SSSW to WW created
+--164-187 blocked at SSSS
+b111 b100 b105|b106|b107|b108|b109|b110 b134 b141 b135 e133 e158|e159 o155 -- *
+b179 -- SSSS 164-177 remain blocked
+b185 o181 b196 b201|b204|b205 e198 b206 e204 b196 o217 -- *
+b263 o259 b274 b279|b282|b283 e276 b284 e282 b274 o295 -- *
+b341 o337 b352 b357|b360|b361 e354 b362 e360 b352 o373 -- *
+b419 o415 b430 b435|b438|b439 e432 b440 e438 b430 o451 -- *
+b497 o493 b508 b513|b516|b517 e510 b518 e516 b508 o529 -- *
+b575 e575 o577 
+w2 o-3 -- 2q SSSW build start
+b33 -- shift 0.2q construction (future input lane blocking delay ott180) 
+b-8 o0 b5 o7 e16 -- *
+b32 e28 e30 o21 o21 e30 o15 -- *
+b13 b20 -- splitter SSWW,SSSS to SS created and hit (a target remains)
+-- neighborhood of 20 is forbidden (14-26) till 3q
+-- neighborhood of -22 is already forbidden (-28-14) till 3.9 and then (honeyfarm around unless constuction of input lane blocking seed starts)
+-- neighborhood of 51 is already forbidden (45-57) till 4q NNNN
+-- neighborhood of 63 is already forbidden (57-69) till 4q EEEE
+-- neghborhood of 20 already blocked at .2q (somewhere between SSSW and SSWW)
+b-4 e-8 o7 b10|b11 b0 b-3|b2 -- *
+e2 o5 e2 o6 b-2 b-4|b1 -- *
+e-4 b-11 b-12 o10 e2 e13 b8 b0 o35 e35 b30 b31 -- *
+o38 o43 b44 -- *
+o29 e27|e28|o31|o32 e32 o37 o30 o34 e34 -- *
+b37 b71 o74 o80|o81|e76|e77 e79 o71 -- *
+o71 b94 b104 b95 b93|b98 o93 o106 b85 o88 -- *
+-- splitter to NN would not block slow2 building of SS (52-60 lanes reserve) slow ott's (unless we shift slow^2 ott on SWWW to SW)
+
+
+--SSSW o=3q, d=2q build SS,SSSS to SSSE splitter ... slow salvo to SS precedes the ignition (till 3q), build SS,SWWW to WW splitter (till 3q), build slow2ott90 from SSSS to NWWW (till 4q) 
+--SSWW o=4q, d=2q (mwss seed is hit from SSSW mwss goes to SS, SSWW site remains empty?)
+o577 b597 b574|b575|b578|b585 o612|o613|o614|e609|e610|e611 -- *
+b628 o631 e638
+b667 o639 e631|e632|e633|o634|o635|o636 -- *
+e657 o650 e636 o655 -- *
+b710 b719 b713 e711 e736|e737|e744 o733 -- *
+b763 e766 o773 o790 o788 o804 -- *
+
+b802 b793|b794|b797 b798 b789 b789 b803 b829 o828 e826 o834 o839 b834 o841
+e859|e860|e861|o856|o857|o858 -- *
+b868 o871 o880 o873 -- *
+b872|b877 b868 e880 o882 o886 o886 b888 e886 e896 e881 -- *
+o853 e863 o860 -- *
+o859 e857|e858|o861|o862 o857 b845 o849 e851|e852|o855|o856 o847 b844
+o842 b833 o838 o836 o844 b848 e862 e863 b865 o868 b855|b856|b857|b858|b859 o863 e859 b870 b878
+o871 e860 e865 b850 o860 b863 o850 o868 e850 o842 e881 b880 o890 b891 b888 b896 o880 b874 o871
+b857|b858|b859|b860|b861 b871|b872|b873|b874|b875 b905 b897 e914 e909 b900 e892 o890 b882 o879
+e871 o865 e882 o882 b876|b879 e880 o880 b868 o852 e848 e849 b849 o855 b853 b823|b834 b824 o824
+e830|e831|o826|o827 e831 b820 o816 b819 b828 b815 b814 o802 o834 e829 o836 o829 o836 o847 e832
+o835 b847 b838 b845 b847 o828 b844 e849 b859 b859 o862 e864|e865|o868|o869 e869 o860
+e866|e867|o862|o863 o849 e848 b837|b848 o845 e844|e845|o840|o841 o833 e838 o836 b820 o824
+e824|e825|o820|o821 e824 o825 e821 e839 b832 o829 o821 e832 e819 b811|b812|b813|b814|b815|b816
+b815 b811 e825 e820 e842|e843|e844|o839|o840|o841 e859
+b789 b787|b792 o787 o802 o789 o794 
+o790 -- SWWW fast pull start
+w12 
+o789 -- SWWW fast pull end
+o783 o786|o787|e782|e783 o775 e775 o786 b789|b792|b793|b796 -- *
+o766 e765 o778|o779 o771 b779 b787 b786|b787 b781 b797 o779 e781 e781 o798 b813 o813 b817 e809
+o814 e823 b815 o824 o821 o834 e828 o828 e831 e838 b831|b834 b810 o807 e799 o793 e810 o810
+b804|b807 e808 o808 b796 e784 e778 o783 e773 e770 o788 b774 o774 o760 o769 o769 e768 b761 o761
+e763 o763 e767 b744|b745|b746|b747|b748|b749 b752 b757|b760|b761 o754 e744 b745 b756 b743 b742
+o730 b760 b754 o761 e747 o746 e751 e746 b747 o769 b784 b776 b774 o785 o789 e768 b767|b778 o784
+o789 b783 o787 o790 e779 b772|b783 b773 b771|b776 b777|b784 e776 b762 o766 e772 b762 b773
+b770|b775 o775 o772 e769|e770|o773|o774 e759 b767 o767 o774|o775 e767 o761 o768 b766 b770 o767
+o758 o775 e773 e759 b754 b748 o752 e750|e751|o754|o755 o760 o748 b751|b752|b753|b754|b755|b756
+o770 b768 o765 e769 b780 b791 b785|b788|b789 b789 o793 o785 e783 b799 b798 e798 o786 b787 o798
+o790 e792|e793|o796|o797 e797 o788 e794|e795|o790|o791 o777 e776 e787
+b764 b762|b767 o762 o777 o764 o769 o765 -- SWWW 2nd fast pull
+w10
+o762
+o767 o759 o762 o777 o769 -- *
+o752 e760 o762 e746 e732 e734 o726 o723 o717 o714 o716 b713 o713 e704|e705|o700|o701 e710 o700
+e708 o716 e724|e725|o720|o721 e722 e728 o724 b698 b687 b674|b675|b676|b677 b681 o687 e699 o697
+e701 e687 o693 b679 o676 e669 e654 b682|b685|b686|b689 b683 b696 o693 b708 o685 e691 e701 o716
+b731 o734 o742 o742 b749 o751 o748 o742 b734|b735 e737 e738 e762 o761 b733 o730 e721 e732 b711
+o736 b741 b728|b729|b732 b728 o732 b722 o724 o740 b726|b727 b728 b716 e719 e725|e726|o721|o722
+b706|b707|b708|b709|b710 o712 b715|b716 e707 e718 e717 e728 o716 b689 o685 o677 e676 b687 e693
+e704 b683 o679 o671 e674 e691 b695 e691 e679 b676 b685 o688 o680 e688 b688 o696 o708 o699 o702
+b694 b692|b697 o697 o708 e698 o684 o693 o685 b695|b696|b697|b698|b699 b715|b716|b717|b718|b719
+b709 b714|b717|b718 o705 o717 b713|b714 e700 o715 b714 o718 e720|e721|o724|o725 e725 o716
+e722|e723|o718|o719 o705 e704 e715 b684|b685|b686|b687|b688|b689 o650 e638 b629 b640
+b630|b631|b632|b633|b634|b635 b606 b617 b583 b591 o574 e592 o592 e588 e585 b600 b602|b609 b602
+b590 b585 o594 o593 o601 b583|b585|b586|b587|b588 e599 o597 e599|e600 b605 e578 e581 e587 e591
+e578 o567 e564
+b596 b594|b599 o594 o609 o596 o601 o597 -- SWWW 3rd fast pull
+w2
+o594
+b593|b598 e598 b604|b607|b608 o594 b594 -- *
+o593 o584 o594 o578 o588 b594 b582 o579 o571 o585 e578 e571|b570 b575 e577 b573 b562 o594
+e585|e586|o589|o590 o584 e598 e596 o600 o597 o608 e591 e596 b603 o606 o614 o614 b621 o623 o620
+o614 b606|b607 e609 e610 e634 o633 b605 b596 o592 b580 b576 b562 o562 o577 e566 b576 b578 e582
+e592 b596|b597|b598|b599|b600|b601 b596 b596 e592 o582 e590 e596 e592 o557 o562 e551 o549
+e540|e541|o544|o545 e539 o552 e557 b561 b558 b577|b580 e576 o563 e566 b544|b548|b549|b551|b554
+o552 e562 e549|e550 e555 o563 e556 b560 o561 b566 o560 e557 o556 e567 o562 o558 b571
+b560|b567|b570 o574 e572 e563 e561 o565|o566 b588|b589|b590|b591 b610 o607 e599 o593 e610 o610
+b604|b607 e608 o608 b596 o586 o556 e564 b570 b575|b578|b579 b579 o568 e586 o589 o593 b596 e598
+o586 b587 o598 o590 e592|e593|o596|o597 e597 o588 e594|e595|o590|o591 o577 e576 e587 -- SWWW construction ends (slow^2 ott from SSSW to WW remains)
+w3436
 -- q2L end

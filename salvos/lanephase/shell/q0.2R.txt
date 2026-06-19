@@ -7,5 +7,5 @@ b51 b41 o38 e30 e36 o39 -- *
 o41 o23 e50 e46 e50 -- *
 b67 e67 o60|o61|e64|e65 o57 e62 e60 -- *
 b56 b50 o48 o51 e45 e36 o56 b66 o62 e55 b53|b55|b58 o52 b79 o87 e88|e89|o84|o85 o85 o87 o89 
-w w w w w w w w w w w w w w w w w w w w w
+w21
 -- q0.2R end 699139

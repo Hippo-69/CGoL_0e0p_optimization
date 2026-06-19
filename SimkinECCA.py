@@ -690,13 +690,14 @@ class SimkinECCAp2compiler(object):
             for phaseswitch in range(2):
                 for key, value in self.delayed1[phaseswitch].items():
                     updateIfBetter(key, phaseswitch, (key, 1, ''), value[1]) # delayed correspond to doing nothing
-        elif goptions == ['w']:
+        elif len(goptions) == 1 and goptions[0][0] == 'w':
+            repeat = 1 if len(goptions[0])==1 else int(goptions[0][1:])
             goptions=[]
             for phaseswitch in range(2):
                 for key, value in self.delayed1[phaseswitch].items():
-                    wmove = 'A' * (16-(key%8)) + 'B' + 'A' * (14+key%8) # requires A = +1, B = [0] (90)
+                    wmove = 'A' * (16-(key%8)) + 'B' + ('A'*30+'B')*(repeat-1) + 'A' * (14+key%8) # requires A = +1, B = [0] (90)
                     #print(f"wmove {self.pack_letters(wmove)}")
-                    ncost = value[1] + 120
+                    ncost = value[1] + 120*repeat
                     ncur = key
                     nmove = (key, 1, wmove) # real update would be during step forward
                     updateIfBetter(ncur, phaseswitch, nmove, ncost)

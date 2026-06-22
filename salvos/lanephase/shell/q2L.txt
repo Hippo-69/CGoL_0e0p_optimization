@@ -22,15 +22,16 @@ b13 b20 -- splitter SSWW,SSSS to SS created and hit (a target remains)
 -- neighborhood of 51 is already forbidden (45-57) till 4q NNNN
 -- neighborhood of 63 is already forbidden (57-69) till 4q EEEE
 -- neghborhood of 20 already blocked at .2q (somewhere between SSSW and SSWW)
-b-4 e-8 o7 b10|b11 b0 b-3|b2 -- *
-e2 o5 e2 o6 b-2 b-4|b1 -- *
-e-4 b-11 b-12 o10 e2 e13 b8 b0 o35 e35 b30 b31 -- *
-o38 o43 b44 -- *
-o29 e27|e28|o31|o32 e32 o37 o30 o34 e34 -- *
-b37 b71 o74 o80|o81|e76|e77 e79 o71 -- *
-o71 b94 b104 b95 b93|b98 o93 o106 b85 o88 -- *
+b-4 b-6|b-1 e-1 o-1 e3 b7 b4|b9 -- *
+e4 o1 e4 o0 b8 -- *
+b27 -- removes block on path to WWWW slow^2 ott (could be removed by construction instead)
+o4 e-6 e4 b8|b9|b10|b11|b12|b13 b8 b8 b0 b31 -- = 
+o34 e36|e37|o40|o41 e40 e33 e36 o35 o40 o38 b32 b33 -- *
+o41 o38 -- =
+o32 e31 b27 -- *
+o30 o42 e39 o31 e31 o28 o36 e27|e28|o31|o32 e32 e44 b44 o37 o30 o34 e34 b37 -- =
+b70|b71|b72|b73|b74|b75 o71 o80 o80 o77 b107|b110|b111 o81 b71|b72|b75|b82 e70|o71|o72|o73 -- * 2309062
 -- splitter to NN would not block slow2 building of SS (52-60 lanes reserve) slow ott's (unless we shift slow^2 ott on SWWW to SW)
-
 
 --SSSW o=3q, d=2q build SS,SSSS to SSSE splitter ... slow salvo to SS precedes the ignition (till 3q), build SS,SWWW to WW splitter (till 3q), build slow2ott90 from SSSS to NWWW (till 4q) 
 --SSWW o=4q, d=2q (mwss seed is hit from SSSW mwss goes to SS, SSWW site remains empty?)
@@ -101,5 +102,5 @@ o552 e562 e549|e550 e555 o563 e556 b560 o561 b566 o560 e557 o556 e567 o562 o558 
 b560|b567|b570 o574 e572 e563 e561 o565|o566 b588|b589|b590|b591 b610 o607 e599 o593 e610 o610
 b604|b607 e608 o608 b596 o586 o556 e564 b570 b575|b578|b579 b579 o568 e586 o589 o593 b596 e598
 o586 b587 o598 o590 e592|e593|o596|o597 e597 o588 e594|e595|o590|o591 o577 e576 e587 -- SWWW construction ends (slow^2 ott from SSSW to WW remains)
-w3436
+w3397
 -- q2L end

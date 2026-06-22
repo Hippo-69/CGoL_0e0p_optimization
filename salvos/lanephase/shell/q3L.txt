@@ -4,14 +4,25 @@ L
 -- neighborhood of 51 is already forbidden (45-57) till 4q NNNN
 -- neighborhood of 63 is already forbidden (57-69) till 4q EEEE
 -- neghborhood of 20 already blocked at .2q (somewhere between SSSW and SSWW)
-b9 -- slow2 SS salvo
-e7 e10 b13 b-1 b8 -- *
-e4 e-7 o3 e9 b-2 b7 -- =
-o3 b-5 e2 o10 b10 b27 b-1 b8 -- *
-o9 e12 e-1 b-3 b6 -- *
-b36 o81
--- splitter to NN would block slow2 building of SS slow ott's (unless we shift slow^2 ott on SWWW to SW) so their build would wait till 3q
---SSSW o=3q, d=2q build SS,SSSS to SSSE splitter ... slow salvo to SS precedes the ignition (till 3q), build SS,SWWW to WW splitter (till 3q), build slow2ott90 from SSSS to NWWW (till 4q) 
+b9 -- slow2 SS salvo 1st
+e7 e10 b13 b-1 b8 -- * 2nd  +3
+e4 e-7 o3 e9 b-2 b7 -- = 3rd +7
+--o3 b-5 e2 o10 b10 b27 b-1 b8 -- * 4th -29 !!!! replan
+--o9 e12 e-1 b-3 b6 -- * 5th -8
+e8 o-6 o9 b9 -- 
+e-3 o0 --
+e-2 e-7 b-7 b-11 b-2 --
+e-1 o2 o-11 b-13 b-4 --
+o81 -- split to WW invoked
+e-8 e-1|e0|o3|o4 o-13 b7 b6 b-2 b7 -- 6th +17
+e8 o11 o-6 e5 b-8 b-15 -- 7th -9 -- 
+o-6 -- 7th -9 -- phase of the last glider s important for future
+e-5 o-2 o-3 e-5 b-4 b-13 b-4 -- 8th -16
+e-3 e-11|e-10|o-15|o-14 e-15 e-2 b-12 b-3   -- 9th -7
+
+o28 -- splitter to NWWW invoked
+b36 -- split to SSSE invoked blocks 28 (22-34)
+--SSSW o=3q, d=3q build slow2ott90 from SSSS to NWWW (till 4q) 
 --SSSW o=4q, d=3q slow^2 gliders to SS building slow2ott90 from SSSW to SSSE, activate splitter SS,SSSS to SSSE
 --                slow^2 gliders to SS building slow2ott90 from SSSW to WW, activate splitter SS,SWWW to WW
 --		build slow2ott90 from SSSS to NWWW (till 4q) 

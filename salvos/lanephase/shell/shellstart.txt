@@ -291,50 +291,65 @@ w3397
 -- q2L end
 L
 -- neighborhood of 20 is forbidden (14-26) till 4q
--- neighborhood of -22 is already forbidden (-28-14) till 3.9 and then (honeyfarm around unless constuction of input lane blocking seed starts)
+-- neighborhood of -22 is already forbidden (-28-14) till 3.9 and then (honeyfarm around unless constuction of input lane blocking seed starts) hmm seems -15 is not forbidden
 -- neighborhood of 51 is already forbidden (45-57) till 4q NNNN
 -- neighborhood of 63 is already forbidden (57-69) till 4q EEEE
 -- neghborhood of 20 already blocked at .2q (somewhere between SSSW and SSWW)
 b9 -- slow2 SS salvo 1st
 e7 e10 b13 b-1 b8 -- * 2nd  +3
 e4 e-7 o3 e9 b-2 b7 -- = 3rd +7
---o3 b-5 e2 o10 b10 b27 b-1 b8 -- * 4th -29 !!!! replan
---o9 e12 e-1 b-3 b6 -- * 5th -8
-e8 o-6 o9 b9 -- 
-e-3 o0 --
-e-2 e-7 b-7 b-11 b-2 --
-e-1 o2 o-11 b-13 b-4 --
+e8 o-6 o9 b9 -- *
+o-3 e0 -- *
+o-2 o-7 b-7 b-11 b-2 -- *
+o-1 e2 e-11 b-13 b-4 -- *
 o81 -- split to WW invoked
-e-8 e-1|e0|o3|o4 o-13 b7 b6 b-2 b7 -- 6th +17
-e8 o11 o-6 e5 b-8 b-15 -- 7th -9 -- 
-o-6 -- 7th -9 -- phase of the last glider s important for future
-e-5 o-2 o-3 e-5 b-4 b-13 b-4 -- 8th -16
-e-3 e-11|e-10|o-15|o-14 e-15 e-2 b-12 b-3   -- 9th -7
-
+e-8 e-1|e0|o3|o4 o-13 b7 b6 b-2 b7 -- = 6th +17
+e8 o11 o-6 e5 b-8 b-15 -- *
+e-6 -- * 7th -9 -- phase of the last glider s important for future
+o-5 e-2 e-3 o-5 b-4 b-13 b-4 -- * 8th -16
+e-3 e-11|e-10|o-15|o-14 e-15 e-2 b-12 b-3 -- * 9th -7
 o28 -- splitter to NWWW invoked
 b36 -- split to SSSE invoked blocks 28 (22-34)
---SSSW o=3q, d=3q build slow2ott90 from SSSS to NWWW (till 4q) 
---SSSW o=4q, d=3q slow^2 gliders to SS building slow2ott90 from SSSW to SSSE, activate splitter SS,SSSS to SSSE
---                slow^2 gliders to SS building slow2ott90 from SSSW to WW, activate splitter SS,SWWW to WW
---		build slow2ott90 from SSSS to NWWW (till 4q) 
---SS   o=5q, d=3q (collision of mwss's from SSSS and SSWW creates target, slow^2 gliders from SSSW build slow2ott90 from SSSW to SSSW which is hit)
---                (slow^2 gliders from SSSW build slow2ott from SSSW to WW which is hit)
---SWWW o=6q, d=3q (glider from SSSW reflected to WW) slow^2 gliders sent to WW to create slow2ott90 from SWWW to NWWW, build WWWW,WW to NWWW splitter and activate it, 
---		  build slow2ott90 from SSSS to NNNE (till 4q)
---SWWW build slow2ott90 from SSSS to NNNE (till 4q) ... from slow^2 ott SSSW to WW
---WW   o=7q, d=3q (target created by SSSW through SWWW and SS gliders), slow^2 gliders from SWWW created slow^2ott90 from SWWW to NWWW and hit
---WWWW o=7q, d=3q (glider from SWWW reflected to NWWW, rest of slow^2ott destroyed)
---NWWW o=8q, d=3q target created (SWWW through WWWW and WW)
-b174 b164 b157 b160 b152 o164 o157 e158 e128 e122 --
+-- Slow^3 % b-4 % b-6|b-1 % b1 % b0 % b3 % (b11|b12|b13|b14|b15|b16) at SSSE using SS (slow 2 using SSSW) ... translated to slow^2
+-- Slow^2 % (b54) b13|b20 % b0 % b6 % b-2 % b-8 % b1 % e-3 o6 % b12 % b-15 % b-6 % b-4|b3 % b-12 % b-21 % b-12 % e-11 o-15 %
+-- b-15 % b-24 % b-15 % e-19 o-10 % b-4 % b-31 % b-22 % b-28 % b-36 % b-46 % b-37
+-- 6_34_6(4),6_20_8(12),3_-6_-6,4_8_6,3_6_-16,4_-9_17,
+-- 4_4_-16(4,10,12,16),5_-9_3,3_-6_6,6_27_-11(),4_-9_17,
+-- 2_-2_-6,4_8_2(0,-2,-6,-8),4_9_5(3,11),4_-9_-17,3_-1_3
+-- 4_4_12(4,10,16),4_0_0(2,4,6,8,10,12,22),4_9_5(3,11),4_-9_-17,
+-- 4_4_4(10,12,16),5_-9_3(1,3,5,7,9,11,13,15,23,25),3_-6_6,6_27_5(1,5,7,9,11,17,19,21,25*,29),4_-9_-17,3_6_16,4_8_-6(0,2,8),5_10_2(0,4,6,8,10,12,14,16,18,20,22),4_-9_-17
+b-9 e-7 o-13 o-5 e3 b3 b-6 b3 b11 b5 -- *
+e-4 o10 o3 b10 b2 b11 -- =
+e10 e7 b7 b-4 b5 -- =
+e6 e-7 o11 b-3|b-2 b2 b11 b5 -- =
+e10 e0 b-14 b-5 -- =
+e-9 o5 o-1 b11 b3 b12 -- =
+e8 o8 e0 b-7 b-13 -- *
+e-4 o-8 o-6 e6 b-6 o7 b2 o11 -- *
+e10 e7 b7 b-4 b5 b-1 b-13 b-10 -- =
+o-15 e-11 b-7 b-15 b-6 -- o-15 OK
+e-10 o4 o-2 b10 b2 b11 b13 b5 b-4 b5 -- *
+e4 e-1 o9 e7 b-2 b7 b-4 -- *
+o-7 o2 b11 b3 b12 -- *
+e13 o-1 o5 b-7 b-14 b-5 b-10 b-5 b-4 e-11 -- * b-11 crushes
+o-2 b6 b4 b9 b1 e10 -- *
+o9 o4 b-14|b-7|b-4|b-3 e-1 e6 b-3 b6 b-5 -- *
+o-8 o1 b10 b2 b11 -- *
+o12 e-2 e4 b-8 b-15 b-6 b2 b0 b-11|b-8|b-7 b-4 b-11 -- * b-15 is OK
+o-2 o-1 e4 o2 e-15 e-9 b-8 e1 -- o-15 crushes
+o-1 o2 b2 b-2 b7 b-4 -- *
+e-7 o11 o-1 b8 b9 b3 b12 -- *
+e13 o-1 o5 b-7 b-14 b-5 -- *
+--SWWW build slow2ott90 from SSSS to NNNE (till 4q)
+--NWWW o=8q, d=3q target created (SSSW through WWWW and SS)
+b174 b164 b157 b160 b152 o164 o157 e158 e128 e122 -- * 2367502 other parity collides with the longboat
+b114 b112|b117 b110 b111 b108 b95|b96|b97|b98|b99|b100 b88 o93 e78|o69 -- *
+b65 b66 b76 b41 b47|b50|b51 o44 e48 -- *
+b44 o21 b28 o32 e33|e34|e35|o36|o37|o38 b18 -- * mwss seed SSSW through SSSS to SS
 
-b114 b112|b117 b110 b111 b108 b95|b96|b97|b98|b99|b100 b88 o93 e78|o69 --
-
-b65 b66 b76 b41 b47|b50|b51 o44 e48 --
-
-b44 o21 b28 o32 e33|e34|e35|o36|o37|o38 b18 --
-
-t22 b27 b19 b16 b34 b20 b26 --t100 crashes ott SSSW SSSS SSSE
+t22 b27 b19 b16 b34 b20 b26 -- boat ott SSSW through SSSS to SSSE
 -- q3L end
+--WWWW d=4q cleanup of slow ott's
 L
 o-25 -- ~3.9 target for ott180 for input lane blocking seed
 --SSSS o=d~3.9q   (sync targeted glider from WWSS) build 180ott SSSS to SSSS "part" of the future "input lane blocking seed"

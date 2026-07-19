@@ -12,6 +12,7 @@ o-3 e0 -- *
 o-2 o-7 b-7 b-11 b-2 -- *
 o-1 e2 e-11 b-13 b-4 -- *
 o81 -- split to WW invoked
+b90 b90|b91 b96 o84 e100 -- * boat 5_15_-27 SSSW through NWWW to NNNE
 e-8 e-1|e0|o3|o4 o-13 b7 b6 b-2 b7 -- = 6th +17
 e8 o11 o-6 e5 b-8 b-15 -- *
 e-6 -- * 7th -9 -- phase of the last glider s important for future
@@ -49,13 +50,12 @@ o-2 o-1 e4 o2 e-15 e-9 b-8 e1 -- o-15 crushes
 o-1 o2 b2 b-2 b7 b-4 -- *
 e-7 o11 o-1 b8 b9 b3 b12 -- *
 e13 o-1 o5 b-7 b-14 b-5 -- *
+b-2 b-3 b5 b12 -- boat 5_16_-8 ott SSSW to NEEE 
 --SWWW build slow2ott90 from SSSS to NNNE (till 4q)
 --NWWW o=8q, d=3q target created (SSSW through WWWW and SS)
 b174 b164 b157 b160 b152 o164 o157 e158 e128 e122 -- * 2367502 other parity collides with the longboat
-b114 b112|b117 b110 b111 b108 b95|b96|b97|b98|b99|b100 b88 o93 e78|o69 -- *
+b114 b112|b117 b110 b111 b108 b95|b96|b97|b98|b99|b100 b88 o93 b96|b103|b106|b107 e78|o69 -- *
 b65 b66 b76 b41 b47|b50|b51 o44 e48 -- *
 b44 o21 b28 o32 e33|e34|e35|o36|o37|o38 b18 -- * mwss seed SSSW through SSSS to SS
-
-t22 b27 b19 b16 b34 b20 b26 -- boat ott SSSW through SSSS to SSSE
 -- q3L end
 --WWWW d=4q cleanup of slow ott's

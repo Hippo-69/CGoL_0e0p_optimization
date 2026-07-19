@@ -1,4 +1,43 @@
-L
+
 o-25 -- ~3.9 target for ott180 for input lane blocking seed
+b59 e55 o47 o43 o57 -- * SSSS west part prepare
+e65 e60 e73 o68 b75 b40 -- =
+e37 e39 -- *
+J-12 -- start of NEEE splitter construction
+b-8 b-17|b-16|b-13 o-10 o0 b-8|b-7|b-6|b-5|b-4|b-3 b-14|b-13|b-12 b-10 b1 b-9|b-8|b-7|b-6|b-5|b-4 b-24 -- *
+o-21 o-13 e-25 e-29|e-28|e-27|o-26|o-25|o-24 e-28 e-11 -- =
+J126 -- start of NNNE splitter and EEEE salvo construction
+b139 b129|b130|b133 b134 b125 o139 o125 o144|o145|o146|e147|e148|e149 o144 b159 b166 b164|b169 --
+e169 e156 o180 b163 -- =
+e164 e158 o151 o148 b153|b160 -- *
+e169 o177|o178|e173|e174 o166 o164 o169 -- *
+o175 e185|e186|o181|o182 o181 e178 o196 b211 -- *
+e210 o212 b195 e222 b225 b211 -- *
+o215 o223 b234|b237 b241 -- =
+o236 b245 e251|o260 -- *
+o260 o257 e251 e270 o270 o270 e285 b300 -- =
+o290 o308 o310 b309 b300|b301|b304 -- *
+o307 e320 b322 b299 b316 b303 -- *
+o300 e299|e300|o303|o304 b308|b309|b310|b311|b312|b313 e304 o298
+b342 b331 b365 b357 o374 e356 o356 o359 e355 e354 o341 e341 o342 e331|e332|e333|o334|o335|o336
+o339 e353 o345 e343 o358 o370 o380 e386 b386 b388 o388 o388 e387 o375 o374 b384 b398 b395|b400
+b407 b399 b422 b414 o429 e407 o405 o413 b413|b414|b415|b416|b417|b418 e398 e382 e377 e379 e388
+o374 b399 o399 o391|o392 o398 b397 b397 b408 b407 b395 o399 e396 b384 b395 
+b382 e381 o369 b382 -- b381 should be e381
+o382 b386 e378 e378 e383 e378 o393 e398 o398 e404 e403|b402 e400 o392 b406 b345 o345 e329 e330
+b330 b322 e344 o339 e326 b329|b330|b331|b332|b333|b334 b334 o335 o332 e318 b305 b313 o301 e308
+e304 b277 b286 e282 e285|e286|o281|o282 b290|b291|b292 o286 e294 o319 e280 b284 b288 b262 o258
+e257|e258|o261|o262 b266|b267|b268|b269|b270|b271 e262 o256 b222|b223|b226|b233 b235 b244 e240
+e243|e244|o239|o240 b248|b249|b250|b251|b252 o244 e238 b226 o222 e221|e222|o225|o226
+b230|b231|b232|b233|b234 e226 o220 b207 e204 e207|e208|o203|o204 b212|b213|b214|b215|b216 o208
+e202 b189 o186 e185|e186|o189|o190 b194|b195|b196|b197|b198 e190 o184 b171 e168
+e171|e172|o167|o168 b176|b177|b178|b179|b180 o172 e166 b135 b128 b134 o130 o118 e145 b129 e109
+b110 o110 o95 o105 o101 e116 e114 e83
+A62 -- ott starting salvo
+G282 -- EEEE salvo construction otts
+F692 -- EEEE SoD close input lane
+D866 -- input blocking eater seed
+E674 -- input blocking seed activation ott
+w3660 --
 --SSSS o=d~3.9q   (sync targeted glider from WWSS) build 180ott SSSS to SSSS "part" of the future "input lane blocking seed"
 -- q3.9L end

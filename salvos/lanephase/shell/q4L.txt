@@ -1,3 +1,8 @@
+I42 -- should wait the SSWW SSSS EEEE reflection original L emissions does not woork
+w95
+R e42 -- should wait the SSWW SSSS NNNN reflection (seed activation)
+L t22 b27 b19 b16 b34 b20 b26 -- boat ott SSSW through SSSS to SSSE
+B32 -- SoD near input lane last SSSS part
 --SSSS o=4q, d=4q (glider reaching SSWW to EEEE ott)
 --	          slow^2 gliders creating ott180 from SSSS to SEEE at EEEE created
 --                splitter SSSW(SSSS),EEEE to SEEE created and activated

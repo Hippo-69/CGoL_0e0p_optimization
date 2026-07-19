@@ -1,10 +1,10 @@
 L
 b118 o119 o110 b102 o119 o117 b136 b132 -- * 1q ignition WWWW
 w2039
-o127 o137 o122 o119 -- *
-b116 b114|b119 o119 b127 o104 o117 e101 o127 -- other collide
-b138|b143 b132 b129|b134 b136 b135 b138 b146|b147|b148|b149|b150|b151 b158 b148|b149|b152 b153 b144 o158 o144 e166|e167|e168|o163|o164|o165 o163 -- *
-b178 b194 b191|b196 b189 b190 b187 b174|b175|b176|b177|b178|b179 b176 b173|b178 b180 b179 b182 b190|b191|b192|b193|b194|b195 b193 
-b191|b196 b189 b190 b187 b174|b175|b176|b177|b178|b179 b176 b183 e174 -- kernel opennig glider is sent to parent it opens the directed build at d>5q, it arrives to the child cell at d>6
-w3698
+o127 o137 o122 o119 b116 b114|b119 b112 b113 b110 b97|b98|b99|b100|b101|b102 b90 b88|b93 b86 b87 b84 b69 -- *
+e70 o58 b64|b75 b73 b70|b75 b77 b76 b79 b87|b88|b89|b90|b91|b92 b99 b96|b101 -- *
+e101 b109 e86 e99 o83 e109 b120|b125 b114 b104|b105|b108 b109 b100 -- *
+o114 o100 e122|e123|e124|o119|o120|o121 o119 b134 b150 b147|b152 b154 b153 b156 b164|b165|b166|b167|b168|b169 b176 b183 -- *
+e174 --phase parity forced kernel opennig glider is sent to parent it opens the directed build at d>5q, it arrives to the child cell at d>6
+w3690
 -- q1L end

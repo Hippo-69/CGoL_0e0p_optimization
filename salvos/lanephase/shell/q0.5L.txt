@@ -2,5 +2,5 @@ L
 -- waits
 b121 b111|b112|b115 b111 o108 o116 -- *
 e118 o106 -- *
-b107 b114 e106 b101 o81 o83 e88 o89|o90|o91|e86|e87|e88 A113 b96 -- * 0.5q ignition SSWW (A reduces the "beam" so %120 timing is predictable)
+b107 b114 e106 b101 o81 o83 e88 o89|o90|o91|e86|e87|e88 w13 b96 -- * 0.5q ignition SSWW (A113 reduces the "beam" so %120 timing is predictable, but it restricts the construction possibilities too much)
 -- q0.5L end

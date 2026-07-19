@@ -5,6 +5,7 @@ class SimkinECCAp2compiler(object):
         with open('data\\SimkinECCA.txt') as f:
             rows=f.read().split("\n")
             for row in rows:
+                #print (row)
                 sections = row.split("--")
                 if sections[0]!="":
                     recipe_l += 1
@@ -355,7 +356,7 @@ class SimkinECCAp2compiler(object):
                 for lane in range(prevMinMinus-1,minMinus-1,-1):
                      lane_recipes(lane,phasedir)
 
-                #print_ltable(phasedir,maxmin[1],maxmin[0])
+                #print_xtable(phasedir,maxmin[1],maxmin[0])
                 prevMinMinus,prevMaxPlus = minMinus,maxPlus
 
                 toFindPeriod = False

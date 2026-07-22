@@ -792,6 +792,14 @@ class SimkinECCAp2compiler(object):
         self.prev_goptions = []
         self.output = ["",""]
 
+    def build_clean (self):
+        self.cur = [0,0]
+        self.subresults = [""]
+        self.delayed2, self.delayed1 = [{},{}], [{},{}] # portions of candidate salvas not yet decided to connect to the recipe, delayed2 does not contain last 2 gliders, delayed1 does not contain last glider (the glider currently considered)
+        self.delayed1[0][0],self.delayed1[1][0]=("0:=|",0),("0:=|",0)
+        self.prev_goptions = []
+        self.output = ["",""]
+
     def convert_to_speboe(self):
         treshold = -1
         for phaseswitch in range(2):

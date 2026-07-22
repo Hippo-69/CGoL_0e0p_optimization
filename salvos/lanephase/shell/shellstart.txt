@@ -170,8 +170,8 @@ o648 e644 b648 b647|b648 o658 e668 o664 o664 o713 e702 b700 b708 o696 e700 o699 
 o770 b777 o773 e770|e771|o766|o767 o765 o775 o786 e787 o765 e767 b760 o765 e752 e741 o776 b785
 e769 b745 b752 o744 o728 o720 o717 o715 b719 b719 o720 b732|b733|b734|b735|b736 b724 o727 o721
 b713 b722|b723|b724|b725|b726|b727 o741 e731 o730 b737|b738|b739|b740|b741 o746 e736 e736
-K736 -- claenup around the SimkinGun
-w924
+K726 -- claenup around the SimkinGun
+w834
 -- q0.5R end 1049008
 L
 b118 o119 o110 b102 o119 o117 b136 b132 -- * 1q ignition WWWW
@@ -340,8 +340,7 @@ o12 e-2 e4 b-8 b-15 b-6 b2 b0 b-11|b-8|b-7 b-4 b-11 -- * b-15 is OK
 o-2 o-1 e4 o2 e-15 e-9 b-8 e1 -- o-15 crushes
 o-1 o2 b2 b-2 b7 b-4 -- *
 e-7 o11 o-1 b8 b9 b3 b12 -- *
-e13 o-1 o5 b-7 b-14 b-5 -- *
-b-2 b-3 b5 b12 -- boat 5_16_-8 ott SSSW to NEEE 
+e13 o-1 o5 b-7 b-14 -- *
 --SWWW build slow2ott90 from SSSS to NNNE (till 4q)
 --NWWW o=8q, d=3q target created (SSSW through WWWW and SS)
 b174 b164 b157 b160 b152 o164 o157 e158 e128 e122 -- * 2367502 other parity collides with the longboat
@@ -355,9 +354,6 @@ o-25 -- ~3.9 target for ott180 for input lane blocking seed
 b59 e55 o47 o43 o57 -- * SSSS west part prepare
 e65 e60 e73 o68 b75 b40 -- =
 e37 e39 -- *
-J-12 -- start of NEEE splitter construction
-b-8 b-17|b-16|b-13 o-10 o0 b-8|b-7|b-6|b-5|b-4|b-3 b-14|b-13|b-12 b-10 b1 b-9|b-8|b-7|b-6|b-5|b-4 b-24 -- *
-o-21 o-13 e-25 e-29|e-28|e-27|o-26|o-25|o-24 e-28 e-11 -- =
 J126 -- start of NNNE splitter and EEEE salvo construction
 b139 b129|b130|b133 b134 b125 o139 o125 o144|o145|o146|e147|e148|e149 o144 b159 b166 b164|b169 --
 e169 e156 o180 b163 -- =
@@ -390,52 +386,30 @@ G282 -- EEEE salvo construction otts
 F692 -- EEEE SoD close input lane
 D866 -- input blocking eater seed
 E674 -- input blocking seed activation ott
-w3660 --
+b-5 b-2 b-3 b5 b12 -- creates speboe at SSSE and boat 5_16_-8 ott SSSW to NEEE ----- TIME IT -----
+J-12 -- start of NEEE splitter construction
+b-8 b-17|b-16|b-13 o-10 o0 b-8|b-7|b-6|b-5|b-4|b-3 b-14|b-13|b-12 b-10 b1 b-9|b-8|b-7|b-6|b-5|b-4 b-24 -- *
+o-21 o-13 e-25 e-29|e-28|e-27|o-26|o-25|o-24 e-28 e-11 -- =
+w3659 --
 --SSSS o=d~3.9q   (sync targeted glider from WWSS) build 180ott SSSS to SSSS "part" of the future "input lane blocking seed"
 -- q3.9L end
-I42 -- should wait the SSWW SSSS EEEE reflection original L emissions does not woork
+I42 -- should wait the SSWW SSSS EEEE reflection original L emissions does not work
+--SSSS o=4q, d=4q (glider reaching SSWW to EEEE ott)
+--EEEE o=8q, d=4q slow^2 reflectors to NNNE, and NEEE created 
+--SSSS o=4q, d=4q splitter SSSW,EEEE to NEEE activated
+--SSSS            splitter SWWW,EEEE to NNNE activated               
 w95
+--SSSS            (glider reaching SSWW to NNNN mwss seed)
 R e42 -- should wait the SSWW SSSS NNNN reflection (seed activation)
 L t22 b27 b19 b16 b34 b20 b26 -- boat ott SSSW through SSSS to SSSE
 B32 -- SoD near input lane last SSSS part
---SSSS o=4q, d=4q (glider reaching SSWW to EEEE ott)
---	          slow^2 gliders creating ott180 from SSSS to SEEE at EEEE created
---                splitter SSSW(SSSS),EEEE to SEEE created and activated
---                (glider reaching SSWW to NNNN mwss seed)
---                (glider reaching SSSW to SS mwss seed)
---                splitter SWWW,EEEE to NNNE created and activated               
+C0 -- Simkin OGGCA destroyal
+--SSSS            (glider reaching SSSW to SS mwss seed)
+--SSSW o=5q, d=4q (reflect glider from SSSS to NEEE)
 --SWWW o=7q, d=4q (reflect glider from SSSS to NNNE)
---SSSS o=4q, d=4q splitter SSSW,EEEE to NEEE created and activated
---SSSW o=5q, d=4q (reflect glider to NEEE)
---                build 180ott from SSSS to SSSS and SEEE
---		convert rest to rotationally symmetric position for directed build
---SSSS o=4q, d=4q (ott from SSSW to SSSE is created)
---                SSSS west part is build 
---                ott from SSSW to SEEE created
---                ott from ~2.9S,1.1W to EEEE (simkin gun stopper) created
---                simkin OGGCA converted to speboe at SSSS
---                SSSS middle part "input blocking" seed is build addressed throught ott from SSSE to NW and 180ott build at ~3.9q (may be replaced by before OGGCA conversion)
---                exactly timed glider sent to ~2.9S,1.1W ott to stop the Simkin OGGCA at EEEE
---                speboe gliders sent to EEEE to convert to speboe
---                SSSS speboe destroyed
---SSSW o=5q, d=4q (180ott from SSSS to SSSS activated)		
---EEEE o=8q, d=4q (target created (SSWW through WWWW and SSSS) converted to (180ott from SSSS to SEEE) and to speboe from SSSS
---                (180ott from SSSS to SEEE activated)
---                simkin OGCCA created at EEEE (with targets on both sides?, directed mainly NW)
---                slow^2 reflectors to NNNE, and NEEE created (and hit), 
---                SEEE (180 OGGCA) recipe send to create slow^2 ott from EEEE to NNNW,
---NNNN o=12q,d=4q slow2ott90 EEEE to NNNW created
---EEEE o=8q, d=4q splitter SEEE,NNNN to NNNW created and activated
---NNNN o=12q,d=4q NNNN built (from remnants of the slow^2ott) (till 6q with interruption at 5q)
---EEEE o=8q, d=4q SEEE (180 OGGCA) recipe send to create slow^2 ott from EEEE to NN,
---NNNE o=11q,d=4q (target created SSSS through SWWW and EEEE) slow2ott90 EEEE to NN created
---                to rotationally symmetric position for directed build (from remnants of the slow^2ott) (till 6q with interruption at 5q)
---EEEE o=8q, d=4q splitter SEEE,NNNE to NN created and activated
---                SEEE (180 OGGCA) recipe send to create slow^2 ott from EEEE to EE,
---NEEE o=9q, d=4q (target created SSSS through SSSW and EEEE) slow2ott90 EEEE to EE created
---EEEE o=8q, d=4q splitter SEEE,NEEE to NN created and activated
---NEEE o=9q, d=4q build NEEE (form remnants of the slow^2ott)
---EEEE o=8q, d=4q EEEE build (both sides) (till 6q with 5q interruption)
+------ TO DO till now ------
+--SSSW o=5q, d=4q convert rest to rotationally symmetric position for directed build
+--SSSS o=4q, d=4q ott to ~2.9S,1.1W and ott180 back to input line stopper seed created (well timed)
 -- q4L end
 --SSSS o=5q, d=5q glider from SSSW is reflected to SSSE
 --SSSE o=6q, d=5q target as speboe created (SSSW through SS and SSSS)

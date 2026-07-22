@@ -3,9 +3,6 @@ o-25 -- ~3.9 target for ott180 for input lane blocking seed
 b59 e55 o47 o43 o57 -- * SSSS west part prepare
 e65 e60 e73 o68 b75 b40 -- =
 e37 e39 -- *
-J-12 -- start of NEEE splitter construction
-b-8 b-17|b-16|b-13 o-10 o0 b-8|b-7|b-6|b-5|b-4|b-3 b-14|b-13|b-12 b-10 b1 b-9|b-8|b-7|b-6|b-5|b-4 b-24 -- *
-o-21 o-13 e-25 e-29|e-28|e-27|o-26|o-25|o-24 e-28 e-11 -- =
 J126 -- start of NNNE splitter and EEEE salvo construction
 b139 b129|b130|b133 b134 b125 o139 o125 o144|o145|o146|e147|e148|e149 o144 b159 b166 b164|b169 --
 e169 e156 o180 b163 -- =
@@ -38,6 +35,10 @@ G282 -- EEEE salvo construction otts
 F692 -- EEEE SoD close input lane
 D866 -- input blocking eater seed
 E674 -- input blocking seed activation ott
-w3660 --
+b-5 b-2 b-3 b5 b12 -- creates speboe at SSSE and boat 5_16_-8 ott SSSW to NEEE ----- TIME IT -----
+J-12 -- start of NEEE splitter construction
+b-8 b-17|b-16|b-13 o-10 o0 b-8|b-7|b-6|b-5|b-4|b-3 b-14|b-13|b-12 b-10 b1 b-9|b-8|b-7|b-6|b-5|b-4 b-24 -- *
+o-21 o-13 e-25 e-29|e-28|e-27|o-26|o-25|o-24 e-28 e-11 -- =
+w3659 --
 --SSSS o=d~3.9q   (sync targeted glider from WWSS) build 180ott SSSS to SSSS "part" of the future "input lane blocking seed"
 -- q3.9L end

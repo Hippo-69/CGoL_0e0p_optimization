@@ -49,8 +49,7 @@ o12 e-2 e4 b-8 b-15 b-6 b2 b0 b-11|b-8|b-7 b-4 b-11 -- * b-15 is OK
 o-2 o-1 e4 o2 e-15 e-9 b-8 e1 -- o-15 crushes
 o-1 o2 b2 b-2 b7 b-4 -- *
 e-7 o11 o-1 b8 b9 b3 b12 -- *
-e13 o-1 o5 b-7 b-14 b-5 -- *
-b-2 b-3 b5 b12 -- boat 5_16_-8 ott SSSW to NEEE 
+e13 o-1 o5 b-7 b-14 -- *
 --SWWW build slow2ott90 from SSSS to NNNE (till 4q)
 --NWWW o=8q, d=3q target created (SSSW through WWWW and SS)
 b174 b164 b157 b160 b152 o164 o157 e158 e128 e122 -- * 2367502 other parity collides with the longboat

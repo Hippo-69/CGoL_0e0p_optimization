@@ -1,1 +1,1 @@
-copy q4LEEEE.txt oggca3.txt
+copy q4EEEE.txt oggca3.txt

@@ -9,6 +9,8 @@ class SimkinECCAp2compiler(object):
                 sections = row.split("--")
                 if sections[0]!="":
                     recipe_l += 1
+                    while chr(recipe_l) in '':
+                        recipe_l += 1
                     name = sections[2].strip()
                     self.name2l[name] = chr(recipe_l)
                     self.l2name[chr(recipe_l)] = name
@@ -446,8 +448,8 @@ class SimkinECCAp2compiler(object):
         self.name2l['clean_block']='<'
         self.l2name['<']='clean_block'
         self.recipes['clean']=["[2] 91 138 201 221 216 138 125 (90)"]
-        self.name2l['clean']='|'
-        self.l2name['|']='clean'
+        self.name2l['clean']='\\'
+        self.l2name['\\']='clean'
 
         self.prev_goptions = [] # used for combined emissions
         self.subresults = [""]
@@ -702,6 +704,16 @@ class SimkinECCAp2compiler(object):
                     ncur = key
                     nmove = (key, 1, wmove) # real update would be during step forward
                     updateIfBetter(ncur, phaseswitch, nmove, ncost)
+        elif len(goptions) == 1 and goptions[0][0] == 'i':
+            repeat = 1 if len(goptions[0])==1 else int(goptions[0][1:])
+            goptions=[]
+            for phaseswitch in range(2):
+                for key, value in self.delayed1[phaseswitch].items():
+                    wmove = 'A' * (120*repeat) # requires A = +1
+                    ncost = value[1] + 120*repeat
+                    ncur = key+120*repeat
+                    nmove = (key, 1, wmove) # real update would be during step forward
+                    updateIfBetter(ncur, phaseswitch, nmove, ncost)
         else:
             for phaseswitch in range(2):
                 if self.prev_goptions != []:
@@ -796,7 +808,7 @@ class SimkinECCAp2compiler(object):
         self.cur = [0,0]
         self.subresults = [""]
         self.delayed2, self.delayed1 = [{},{}], [{},{}] # portions of candidate salvas not yet decided to connect to the recipe, delayed2 does not contain last 2 gliders, delayed1 does not contain last glider (the glider currently considered)
-        self.delayed1[0][0],self.delayed1[1][0]=("0:=|",0),("0:=|",0)
+        self.delayed1[0][0],self.delayed1[1][0]=("0:=\\",0),("0:=\\",0)
         self.prev_goptions = []
         self.output = ["",""]
 

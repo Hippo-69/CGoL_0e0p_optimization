@@ -68,7 +68,8 @@
 -- it should be sent correctly as 79 mod 120 (at 18+30K position increasing K by 1 increases number of escaping gliders by 1)
 [0] 91 90 104 121 121 96 99 112 94 102 94 115 235 106 118 90 208 (90) -- 1;T0,0 -- remove_stopped_simkin
 -- requires one escaping glider (sync mod 2)
-[5] 151 199 210 181 (90) -- 8;V0,0 -- checkpoint_activation
+[3] 163 225 294 90 90 98 106 138 125 (90)-- 12;V0,0 -- cross_checkpoint_activation
+--[5] 151 199 210 181 (90) -- 8;V0,0 -- checkpoint_activation
 -- activation should be 80 mod 120 later than seed (V position should be among 30X+Wposition+{20,22,28,30,32} ... X gliders would escape)
 [5] 144 165 125 115 177 225 90 107 206 156 96 104 (90) -- 15;W0,0 -- checkpoint_seed
 [3] 91 166 133 100 140 (97) -- 8;X0,0 -- blockl-25

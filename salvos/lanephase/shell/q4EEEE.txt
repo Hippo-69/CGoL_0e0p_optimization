@@ -171,7 +171,7 @@ o944 o963 e968 o961 e967 b945|b952|b956 e951 o938
 --b1839 b1831 e1840 o1839 o1843 e1845 b1838 b1831 e1840 o1839 o1843 e1845 b1838 b1831 e1840 b1833|b1844 -- ignite NNNN, EE, NN allocations
 X2104 -- early late oggca interruption
 b2079 b2071 e2080 o2079 o2083 e2085 b2078 b2071 e2080 o2079 o2083 e2085 b2078 b2071 e2080 b2073|b2084 -- ignite NNNN, EE, NN allocations
-V2118 -- shifted by "interrupted distance"
+--V2118 -- shifted by "interrupted distance" interruption would be stopped by its oggca
 Z246180 Z246270 Z246318 -- NNNN, EE, NN allocation turners Z349000 Z349010 Z349020 shifted by "interrupted distance"
 --NNNW prepare
 --w2 

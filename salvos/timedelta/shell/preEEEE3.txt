@@ -1,0 +1,3 @@
+94 -- destroy pair of escaping gliders 
+207 145 -- destroy the eater and start pulling
+96 96 96 96 96 96 96 96 96 96 96 96 96 201 -- ready to fire the lane 709

@@ -857,8 +857,8 @@ local _0e0p_cellplan = cell(true)
 
 g.setrule("LifeHistory64")
 --local _0e0p_cells = _0e0p_cellF+_0e0p_cellF.t(-halfsize,-halfsize)+_0e0p_cellF.t(halfsize,-halfsize)+_0e0p_cellS.t(halfsize,halfsize)+_0e0p_cellF.t(-halfsize,halfsize)
-local _0e0p_cells = _0e0p_cellF+_0e0p_cellF.t(-halfsize,-halfsize) +_0e0p_cellplan.t(halfsize,-halfsize)
-    +_0e0p_cellF.t(halfsize,halfsize)+_0e0p_cellF.t(-halfsize,halfsize) +input_gen()
+--local _0e0p_cells = _0e0p_cellF+_0e0p_cellF.t(-halfsize,-halfsize) +_0e0p_cellplan.t(halfsize,-halfsize) +_0e0p_cellF.t(halfsize,halfsize)+_0e0p_cellF.t(-halfsize,halfsize) +input_gen()
+local _0e0p_cells = _0e0p_cellF+_0e0p_cellplan.t(-halfsize,-halfsize) +_0e0p_cellplan.t(halfsize,-halfsize) +_0e0p_cellplan.t(halfsize,halfsize)+_0e0p_cellplan.t(-halfsize,halfsize) +input_gen()
 _0e0p_cells.display("0e0pcells")
 g.setcell(-349354,-489,0); g.setcell(-349353,-488,0) -- state 1
 g.setcell(-354953,-6445,1); g.setcell(-354952,-6445,1); g.setcell(-354953,-6444,1); g.setcell(-354938,-6434,0) -- central clocks started

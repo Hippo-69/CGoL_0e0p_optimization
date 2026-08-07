@@ -1,4 +1,4 @@
-L w3 e97|e98|e99|o94|o95|o96 b102|b103|b105|b106|b113 -- inner cleaup %
+l w3 e97|e98|e99|o94|o95|o96 b102|b103|b105|b106|b113 -- SSSS 		inner cleaup %
 e100 e98 b90 b101 b67 -- WWWW blinker split %
 b83 b74 e71 e73 o64 o64 e73 -- SSWW splitter to EEEE part1 %
 b78 b44 o44 e52|e53|o56|o57 o54 o56 -- WWWW right block to mwss seed barge part1 %
@@ -13,7 +13,8 @@ b38 b30 -- WWWW slow^2 ott to NNNN part1
 b25 b35 	-- SSWW split
 b20 -- WWWW  slow^2 ott to NNNN part2
 b1 e1 b-4 o9|o10|e13|e14 e11 e13 b1|b2|b3|b4|b5 b33 b33 b43 b31 o28 e32 b27 b38 b4 b15 -- SSWWmwssandsplits %
-b-19 b-21|b-16 o-21 o-6 o-19 o-14 o-18 -- SSWW ott180 built and invoked %
+b-19 b-21|b-16 o-21 o-6 
+w10 -- o-19 o-14 o-18 -- SSWW ott180 built and invoked % -- delaying, but keeping sync of others
 b3 b1|b6 o1 o16 o3 o8 o4 -- SSWW ott180 built and invoked %
 b26 b24|b29 o24 o39 o26 o31 o27 -- SSWW ott180 built and invoked %
 e129|e130|e131|o132|o133|o134 b127|b128|b129|b130|b131 --outer cleanup

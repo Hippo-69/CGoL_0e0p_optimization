@@ -1,5 +1,5 @@
 -- something from q0.5R can go here (we could start building SE_Part3 here ... but we should incorporate q4 reflectors to the build)
-R t54 
+r t54 
 b50 b48|b53 e53 b61 e38 e51 o35 e61 -- *
 b64 b71 b83 o81 e89|e90|o93|o94 e94 b77 o74 e82 -- *
 b79 b77|b82 b75 b76 b73 b60|b61|b62|b63|b64|b65 b53 b51|b56 o51 o53 o67 e58 o47 o63 -- *

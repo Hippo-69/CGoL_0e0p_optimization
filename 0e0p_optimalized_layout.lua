@@ -785,7 +785,7 @@ end
 
 local function input_gen()
     local DNAloopshift = 2^DNAFDlog
-    local input_gen = gen.t(25,53).t(6,-17).t(-input_lane0_dist-input_lane1_dist-shell_lane0_dist,input_lane0_dist+input_lane1_dist-shell_lane0_dist).t(0,0,gp.rccw).t(innerquadsize,-innerquadsize)
+    local input_gen = gen.t(25,53).t(6,-17).t(-input_lane0_dist-input_lane1_dist-shell_lane0_dist,input_lane0_dist+input_lane1_dist-shell_lane0_dist).t(0,0,gp.rccw).t(innerquadsize,-innerquadsize).t(90,-90)
     if true then
         return input_gen.t(DNAloopshift,-DNAloopshift)+input_gen
     end

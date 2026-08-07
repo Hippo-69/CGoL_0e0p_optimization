@@ -1,4 +1,4 @@
-L % b-16 % o-20 o-18 o-15 % b11 % b8|b13 % o13 o11 o-3 e6 o17 e13
+l % b-16 % o-20 o-18 o-15 % b11 % b8|b13 % o13 o11 o-3 e6 o17 e13
 % b23 % b12 % b17|b18|b19|b20|b21|b22 % b37 % o34 o36 o39 % b65 % b62|b67 % b69 % b68 % b71 %
 b79|b80|b81|b82|b83|b84 % b91 % b88|b93 % b95 % b94 % b97 % b105|b106|b107|b108|b109|b110 % b117 %
 b114|b119 % b121 % b120 % b123 % b131|b132|b133|b134|b135|b136 % b134 % b125|b126|b129 % o132 e132 o146 e139
@@ -23,7 +23,7 @@ o84 o79 e94 e88 o98 b92 b82|b83|b86 b99 o86 e87 e101 b83 o93 e88 o98 o101 o89
 o97 e103 e108|e109|e110|o106|o107 o109 o98 e101 o102 e97 e98 o94 b99 o98 b93 o113
 b117|b124 o116 b93 b99 b96 b89 o106 o109 o96 o104 o102 b84 b95 o88 b93 e97 o118 b108
 o96
-L w3 e97|e98|e99|o94|o95|o96 b102|b103|b105|b106|b113 -- inner cleaup %
+l w3 e97|e98|e99|o94|o95|o96 b102|b103|b105|b106|b113 -- SSSS 		inner cleaup %
 e100 e98 b90 b101 b67 -- WWWW blinker split %
 b83 b74 e71 e73 o64 o64 e73 -- SSWW splitter to EEEE part1 %
 b78 b44 o44 e52|e53|o56|o57 o54 o56 -- WWWW right block to mwss seed barge part1 %
@@ -38,7 +38,8 @@ b38 b30 -- WWWW slow^2 ott to NNNN part1
 b25 b35 	-- SSWW split
 b20 -- WWWW  slow^2 ott to NNNN part2
 b1 e1 b-4 o9|o10|e13|e14 e11 e13 b1|b2|b3|b4|b5 b33 b33 b43 b31 o28 e32 b27 b38 b4 b15 -- SSWWmwssandsplits %
-b-19 b-21|b-16 o-21 o-6 o-19 o-14 o-18 -- SSWW ott180 built and invoked %
+b-19 b-21|b-16 o-21 o-6 
+w10 -- o-19 o-14 o-18 -- SSWW ott180 built and invoked % -- delaying, but keeping sync of others
 b3 b1|b6 o1 o16 o3 o8 o4 -- SSWW ott180 built and invoked %
 b26 b24|b29 o24 o39 o26 o31 o27 -- SSWW ott180 built and invoked %
 e129|e130|e131|o132|o133|o134 b127|b128|b129|b130|b131 --outer cleanup
@@ -106,10 +107,10 @@ o295 b313 b303|b304|b305|b306|b307|b308 -- WWWW
 -- something from q0.2R.txt could go here 
 -- q0R end
 w3
-L o20 -- ~0.2q target for future input lane blocking delay ott180
+l o20 -- ~0.2q target for future input lane blocking delay ott180
 -- q0.2L end
 -- something from q0.5R can go here (we could start building SE_Part3 here ... but we should incorporate q4 reflectors to the build)
-R t54 
+r t54 
 b50 b48|b53 e53 b61 e38 e51 o35 e61 -- *
 b64 b71 b83 o81 e89|e90|o93|o94 e94 b77 o74 e82 -- *
 b79 b77|b82 b75 b76 b73 b60|b61|b62|b63|b64|b65 b53 b51|b56 o51 o53 o67 e58 o47 o63 -- *
@@ -119,13 +120,13 @@ b67 e67 o60|o61|e64|e65 o57 e62 e60 -- *
 b56 b50 o48 o51 e45 e36 o56 b66 o62 e55 b53|b55|b58 o52 b79 o87 e88|e89|o84|o85 o85 o87 o89 
 w21
 -- q0.2R end
-L 
+l 
 -- waits
 b121 b111|b112|b115 b111 o108 o116 -- *
 e118 o106 -- *
 b107 b114 e106 b101 o81 o83 e88 o89|o90|o91|e86|e87|e88 w13 b96 -- * 0.5q ignition SSWW (A113 reduces the "beam" so %120 timing is predictable, but it restricts the construction possibilities too much)
 -- q0.5L end
-R 
+r 
 e79 b81 b75 o90 o90 o88 o69 e71 e67 b63|b65|b68 b61|b62|b63|b64|b65 o57 b32|b34|b37
 t760
 -- divisions at (local) p1 boundaries * better version = equal versions
@@ -173,7 +174,7 @@ b713 b722|b723|b724|b725|b726|b727 o741 e731 o730 b737|b738|b739|b740|b741 o746 
 K726 -- claenup around the SimkinGun
 w834
 -- q0.5R end 1049008
-L
+l
 b118 o119 o110 b102 o119 o117 b136 b132 -- * 1q ignition WWWW
 w2039
 o127 o137 o122 o119 b116 b114|b119 b112 b113 b110 b97|b98|b99|b100|b101|b102 b90 b88|b93 b86 b87 b84 b69 -- *
@@ -181,9 +182,16 @@ e70 o58 b64|b75 b73 b70|b75 b77 b76 b79 b87|b88|b89|b90|b91|b92 b99 b96|b101 -- 
 e101 b109 e86 e99 o83 e109 b120|b125 b114 b104|b105|b108 b109 b100 -- *
 o114 o100 e122|e123|e124|o119|o120|o121 o119 b134 b150 b147|b152 b154 b153 b156 b164|b165|b166|b167|b168|b169 b176 b183 -- *
 e174 --phase parity forced kernel opennig glider is sent to parent it opens the directed build at d>5q, it arrives to the child cell at d>6
-w3690
+w212
+--b-19 b-21|b-16 o-21 o-6 -- done at 0L to prevent collision of o-6
+o-19 o-14 o-18 -- SSWW ott180 built and invoked %
+-- adjustable delay
+w0
+o-25 -- for ott180 for input lane blocking seed
+b-30 b-33 b-24 b-10 -- to longboat with better color
+w3446
 -- q1L end
-L
+l
 o90 -- 2q SWWW build start
 -- split and build ott on one version ... the other version is base of SWWW
 b77 -- split for construction/ott
@@ -289,7 +297,7 @@ b604|b607 e608 o608 b596 o586 o556 e564 b570 b575|b578|b579 b579 o568 e586 o589 
 o586 b587 o598 o590 e592|e593|o596|o597 e597 o588 e594|e595|o590|o591 o577 e576 e587 -- SWWW construction ends (slow^2 ott from SSSW to WW remains)
 w3397
 -- q2L end
-L
+l
 -- neighborhood of 20 is forbidden (14-26) till 4q
 -- neighborhood of -22 is already forbidden (-28-14) till 3.9 and then (honeyfarm around unless constuction of input lane blocking seed starts) hmm seems -15 is not forbidden
 -- neighborhood of 51 is already forbidden (45-57) till 4q NNNN
@@ -340,7 +348,8 @@ o12 e-2 e4 b-8 b-15 b-6 b2 b0 b-11|b-8|b-7 b-4 b-11 -- * b-15 is OK
 o-2 o-1 e4 o2 e-15 e-9 b-8 e1 -- o-15 crushes
 o-1 o2 b2 b-2 b7 b-4 -- *
 e-7 o11 o-1 b8 b9 b3 b12 -- *
-e13 o-1 o5 b-7 b-14 -- *
+e13 o-1 o5 b-7 b-14 b-5 -- *
+b-2 b-3 b5 b12 -- boat 5_16_-8 ott SSSW to NEEE 
 --SWWW build slow2ott90 from SSSS to NNNE (till 4q)
 --NWWW o=8q, d=3q target created (SSSW through WWWW and SS)
 b174 b164 b157 b160 b152 o164 o157 e158 e128 e122 -- * 2367502 other parity collides with the longboat
@@ -349,11 +358,17 @@ b65 b66 b76 b41 b47|b50|b51 o44 e48 -- *
 b44 o21 b28 o32 e33|e34|e35|o36|o37|o38 b18 -- * mwss seed SSSW through SSSS to SS
 -- q3L end
 --WWWW d=4q cleanup of slow ott's
-
-o-25 -- ~3.9 target for ott180 for input lane blocking seed
+l
+--o-25 -- ~3.9 target for ott180 for input lane blocking seed
+--b-30 b-33 b-24 b-10 -- to longboat with better color
+--b-15 b-12 e-21 b-35 -- to longboat conversion o-21 would crash
+--e-21 w100000 debug
 b59 e55 o47 o43 o57 -- * SSSS west part prepare
 e65 e60 e73 o68 b75 b40 -- =
 e37 e39 -- *
+J-12 -- start of NEEE splitter construction
+b-8 b-17|b-16|b-13 o-10 o0 b-8|b-7|b-6|b-5|b-4|b-3 b-14|b-13|b-12 b-10 b1 b-9|b-8|b-7|b-6|b-5|b-4 b-24 -- *
+o-21 o-13 e-25 e-29|e-28|e-27|o-26|o-25|o-24 e-28 e-11 -- =
 J126 -- start of NNNE splitter and EEEE salvo construction
 b139 b129|b130|b133 b134 b125 o139 o125 o144|o145|o146|e147|e148|e149 o144 b159 b166 b164|b169 --
 e169 e156 o180 b163 -- =
@@ -385,12 +400,9 @@ A62 -- ott starting salvo
 G282 -- EEEE salvo construction otts
 F692 -- EEEE SoD close input lane
 D866 -- input blocking eater seed
-E674 -- input blocking seed activation ott
-b-5 b-2 b-3 b5 b12 -- creates speboe at SSSE and boat 5_16_-8 ott SSSW to NEEE ----- TIME IT -----
-J-12 -- start of NEEE splitter construction
-b-8 b-17|b-16|b-13 o-10 o0 b-8|b-7|b-6|b-5|b-4|b-3 b-14|b-13|b-12 b-10 b1 b-9|b-8|b-7|b-6|b-5|b-4 b-24 -- *
-o-21 o-13 e-25 e-29|e-28|e-27|o-26|o-25|o-24 e-28 e-11 -- =
-w3659 --
+E676 -- input blocking seed activation ott
+L658 -- another input blocking seed activation ott
+w3660 --
 --SSSS o=d~3.9q   (sync targeted glider from WWSS) build 180ott SSSS to SSSS "part" of the future "input lane blocking seed"
 -- q3.9L end
 I42 -- should wait the SSWW SSSS EEEE reflection original L emissions does not work
@@ -398,12 +410,15 @@ I42 -- should wait the SSWW SSSS EEEE reflection original L emissions does not w
 --EEEE o=8q, d=4q slow^2 reflectors to NNNE, and NEEE created 
 --SSSS o=4q, d=4q splitter SSSW,EEEE to NEEE activated
 --SSSS            splitter SWWW,EEEE to NNNE activated               
-w95
+w82
+b-24 -- input lane stop invocation better color
+R-24 -- input lane stop ott
 --SSSS            (glider reaching SSWW to NNNN mwss seed)
-R e42 -- should wait the SSWW SSSS NNNN reflection (seed activation)
-L t22 b27 b19 b16 b34 b20 b26 -- boat ott SSSW through SSSS to SSSE
+r e42 -- should wait the SSWW SSSS NNNN reflection (seed activation)
+l t22 b27 b19 b16 b34 b20 b26 -- boat ott SSSW through SSSS to SSSE
 B32 -- SoD near input lane last SSSS part
-C0 -- Simkin OGGCA destroyal
+--e-21 -- input lane stop invocation worse color
+C20 -- Simkin OGGCA destroyal
 --SSSS            (glider reaching SSSW to SS mwss seed)
 --SSSW o=5q, d=4q (reflect glider from SSSS to NEEE)
 --SWWW o=7q, d=4q (reflect glider from SSSS to NNNE)

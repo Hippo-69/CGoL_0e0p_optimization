@@ -687,8 +687,8 @@ class SimkinECCAp2compiler(object):
         #print (f"delayed 2[1]{self.pack_delayed1(self.delayed2[1])}")
         #print (f"delayed 1[0]{self.pack_delayed1(self.delayed1[0])}")
         #print (f"delayed 1[1]{self.pack_delayed1(self.delayed1[1])}")
-        if goptions == ['L'] or goptions == ['R']:
-            self.direction = goptions[0] # I have expected I should do other stuff as well and check "doing nothing" if already 'L' ... it 'L' side mode prevents llmove
+        if goptions == ['l'] or goptions == ['r']:
+            self.direction = 'L' if goptions[0]=='l' else 'R' # I have expected I should do other stuff as well and check "doing nothing" if already 'L' ... it 'L' side mode prevents llmove
             goptions=[]
             for phaseswitch in range(2):
                 for key, value in self.delayed1[phaseswitch].items():

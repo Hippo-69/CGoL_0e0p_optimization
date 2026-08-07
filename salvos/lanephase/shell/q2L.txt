@@ -1,4 +1,4 @@
-L
+l
 o90 -- 2q SWWW build start
 -- split and build ott on one version ... the other version is base of SWWW
 b77 -- split for construction/ott

@@ -1,4 +1,4 @@
-R 
+r 
 e79 b81 b75 o90 o90 o88 o69 e71 e67 b63|b65|b68 b61|b62|b63|b64|b65 o57 b32|b34|b37
 t760
 -- divisions at (local) p1 boundaries * better version = equal versions

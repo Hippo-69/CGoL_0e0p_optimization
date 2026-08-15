@@ -80,7 +80,7 @@ local glider_notrail_state=129
 local comment_glider_state=64
 local shell_comment_glider_state=64
 local construction_target_state=31
-local ori_construction_target_state=33
+local ori_construction_target_state=32
 local pseudo_state=101 -- not to be built ... mimicks construction process
 
 local function finalstates()
@@ -109,7 +109,7 @@ local function finalstates()
     comment_glider_state=64
     shell_comment_glider_state=64
     construction_target_state=31
-    ori_construction_target_state=33
+    ori_construction_target_state=32
     pseudo_state=101 -- not to be built ... mimicks construction process
 end
 
@@ -173,6 +173,36 @@ local function shellplanstates()
     pseudo_state=0
 end
 
+local function planstates()
+    build_child_shell_state=28
+    shell_entrance_state=26
+    shell_state=26
+    send_DNA_state=6
+    send_DNA_seed_state=78
+    SE_clock_state=68
+    NW_clock_state=70
+    shell_send_DNA_state=6
+    receive_DNA_state=14  -- to be replaced by say 5
+    DNA_loop_state=16
+    clock_logic_state=18 -- to be replaced by say 5
+    state_computation_state=24
+    send_state_state=20
+    receive_state_state=22
+    SoD_state=12
+    shell_SoD_state=10
+    SoD_glidermark_state=10
+    active_state=4
+    passive_state=38
+    comment_state=40
+    glider_trail_state=126
+    glider_notrail_state=128
+    comment_glider_state=64
+    shell_comment_glider_state=64
+    construction_target_state=30
+    ori_construction_target_state=32
+    pseudo_state=100 -- not to be built ... mimicks construction process
+end
+
 -- patterns
 local shillelagh=pattern()
 shillelagh.array=g.parse("ob2o$2o2bo$3b2o!")
@@ -182,6 +212,14 @@ snark.array=g.parse("13bo$11b3o$10bo$10b2o3$18b2o$19bo$19bob2o$11b2o4b3o2bo$11b2
 
 local snark_SoDOpp=pattern()
 snark_SoDOpp.array=g.parse("$22bo$21bobo$20bobo$21bo20$8b2o$9bo$9bobo$10b2o!")
+
+local scorbieshift=pattern()
+scorbieshift.array=g.parse("46bo$46b3o$49bo$40bo7b2o$40b3o$18bo24bo$16b3o23b2o$15bo$15b2o$2o$bo$bob2o$2bo2bo$3b2o$18b2o13b2o$18b2o13b2o7$21b2obo6b2o$21b2ob3o3bobo21b2o$27bo2bo23bobo$21b2ob3o2b2o25bo$22bobo31b2o$10b2o10bobo$10b2o11bo3$38b2o$39bo$36b3o$36bo!")
+scorbieshift=scorbieshift.t(-27,11)
+
+local scorbieshift_SoDOpp=pattern()
+scorbieshift_SoDOpp.array=g.parse("42b2o$42bobo$43b2o$3o42b2o$45bobo$22b2o22b2o$21bo2bo$11b2o9b2o$11bobo$12b2o19$21b2o$18b2o2bo$18bob2o!")
+scorbieshift_SoDOpp=scorbieshift_SoDOpp.t(11,-1).t(-27,11)
 
 local scorbiesplit=pattern()
 scorbiesplit.array=g.parse("46bo$46b3o$49bo$40bo7b2o$40b3o$18bo24bo$16b3o23b2o$15bo$15b2o$2o$bo$bob2o$2bo2bo$3b2o$18b2o13b2o$18b2o13b2o7$21b2obo6b2o$21b2ob3o3bobo21b2o$27bo2bo23bobo$21b2ob3o2b2o25bo$22bobo31b2o$10b2o10bobo$10b2o11bo!")
@@ -220,8 +258,6 @@ scorbieturninsert_SoD=scorbieturninsert_SoD.t(0,-14)
 local tubsemisnark = gpo.eater.t(2,11,gp.rcw)+ gpo.eater.t(14,14)+ gpo.tub.t(3,4)+ gpo.block.t(11,-1)+gpo.block.t(7,16)
 local boatsemisnark = gpo.eater.t(2,11,gp.rcw)+ gpo.eater.t(14,14)+ gpo.boat.t(2,3)+ gpo.block.t(11,-1)+ gpo.block.t(7,16)
 local boatsemisnark_SoD = gpo.block.t(-4,5)+gpo.block.t(22,22)+gpo.beehive.t(12,20)--.state(SoD_state)
-local semisnarksemi = gpo.block.t(6,9).state(active_state)+gpo.block.t(8,8).state(passive_state)
-local semisnarkready = gpo.block.t(6,9).state(passive_state)+gpo.block.t(8,8).state(active_state)
 --local snarkNES_SoD1=pattern()
 --snarkNES_SoD1.array=g.parse("21$26b2o$26b2o!")
 --snarkNES_SoD1=snarkNES_SoD1[SoD_phase].state(SoD_state)
@@ -494,9 +530,12 @@ local function S_ori()
 end
 
 local function DNA_loop()
-local shift = 82+4*(DNAtimelog%2)
-local speedupshift=4*19
-local L=((snark.state(DNA_loop_state)+snark_SoDOpp.state(SoD_state)).t(-14,10,gp.rccw).t(DNA_loop_shrink,DNA_loop_shrink)).t(3*DNAloopOctavoDist,DNAloopOctavoDist,gp.flip) -- 1 dna loop delay
+    local shift = 82+4*(DNAtimelog%2)
+    local speedupshift=4*19
+    local semisnarksemi = gpo.block.t(6,9).state(active_state)+gpo.block.t(8,8).state(passive_state)
+    local semisnarkready = gpo.block.t(6,9).state(passive_state)+gpo.block.t(8,8).state(active_state)
+
+    local L=((snark.state(DNA_loop_state)+snark_SoDOpp.state(SoD_state)).t(-14,10,gp.rccw).t(DNA_loop_shrink,DNA_loop_shrink)).t(3*DNAloopOctavoDist,DNAloopOctavoDist,gp.flip) -- 1 dna loop delay
      +gpo.boat.state(DNA_loop_state).t(-16+149+5,-16+178+5+4*DNAloopOctavoDist,gp.flip).t(DNA_loop_shrink,-DNA_loop_shrink) -- destroy fill reflector
      +((snark.state(DNA_loop_state)+snark_SoDOpp.state(SoD_state)).t(-14,10,gp.rccw).t(-DNA_loop_shrink,DNA_loop_shrink)--+(gpo.blinker.t(-14,-19,gp.rcw)+gpo.boat.t(-14,-12,gp.flip))[1].state(SoD_state) -- 6 dna loop delay
      +(gpo.boat.t(16, -56, gp.flip) -- start NE construction
@@ -513,8 +552,7 @@ local L=((snark.state(DNA_loop_state)+snark_SoDOpp.state(SoD_state)).t(-14,10,gp
      +(gpo.block.t(85, -130)+gpo.block.t(89, -124)).state(SoD_state)
      ).t(2+2*DNAloopOctavoDist,2*DNAloopOctavoDist,gp.rcw)                                                                                                                           -- 6 dna loop delay neighborhood
      +gpo.boat.state(DNA_loop_state).t(-16+2-DNA_loop_shrink+2*DNAloopOctavoDist,-16+32-DNA_loop_shrink+2*DNAloopOctavoDist,gp.flip) -- first glider redirect to switch fill to clocks construction
-     +tubblinker_ots.state(pseudo_state).t(-16+30+2*DNAloopOctavoDist,-16+41+2*DNAloopOctavoDist)  -- mimicks moment in construction starting to work on clocks
-     +blinker2_ott90.state(DNA_loop_state).t(-16+157+5+2*DNAloopOctavoDist,-16+174+5+2*DNAloopOctavoDist,gp.rcw) -- part1 turn to destroy fill reflector
+     +blinker2_ott90[1].state(DNA_loop_state).t(-16+157+5+2*DNAloopOctavoDist,-16+174+5+2*DNAloopOctavoDist,gp.rcw) -- part1 turn to destroy fill reflector
      +((snark.state(DNA_loop_state)+snark_SoDOpp.state(SoD_state)).t(-14-22,10-22,gp.rccw).t(-3*DNA_loop_shrink,-3*DNA_loop_shrink)
       --+(gpo.block.t(7,-17)+gpo.block.t(23,-4)+gpo.loaf.t(17,0,gp.rcw)).state(SoD_state)
       +(boatsemisnark.state(clock_logic_state)+boatsemisnark_SoD.state(SoD_state) + semisnarkready).t(-129+1,-157-1) -- to make children and die
@@ -535,7 +573,7 @@ local L=((snark.state(DNA_loop_state)+snark_SoDOpp.state(SoD_state)).t(-14,10,gp
      +((snark.state(DNA_loop_state)+snark_SoDOpp.state(SoD_state)).t(-14-22,10+22,gp.rccw)).t(-4*DNA_loop_shrink,2*DNA_loop_shrink).t(3,2*DNAloopOctavoDist,gp.flip_y)                       -- 4 dna loop delay
      +((snark.state(DNA_loop_state)+snark_SoDOpp.state(SoD_state)).t(-14,10,gp.rccw)).t(-3*DNA_loop_shrink,-5*DNA_loop_shrink).t(shift+1-2*DNAloopOctavoDist,shift,gp.swap_xy)          -- 3 dna loop delay
      +((snark.state(DNA_loop_state)+snark_SoDOpp.state(SoD_state)).t(-14,10,gp.rccw)).t(4*DNA_loop_shrink,-4*DNA_loop_shrink).t(shift-1,shift-2*DNAloopOctavoDist,gp.flip_x)           -- 2 dna loop delay
-     +((scorbiesplit.state(receive_DNA_state)+scorbiesplitinsert_SoDOpp.state(SoD_state)).t(-500+5,-500-5)).t(4+3*DNAloopOctavoDist,346+DNAloopOctavoDist,gp.rcw) --dna fill/clocks construction
+     +((scorbieshift.state(receive_DNA_state)+scorbieshift_SoDOpp.state(SoD_state)).t(-500+5,-500-5)).t(4+3*DNAloopOctavoDist,346+DNAloopOctavoDist,gp.rcw) --dna fill
      +((gpo.boat.t(55+5+3,19+5-3) -- turn to open state fill
         +gpo.boat.t(130-16,45+16)).state(state_computation_state) -- turn to close state fill
         +(snark.state(state_computation_state)+snark_SoDOpp.state(SoD_state)).t(123-2,169+2) -- state fill
@@ -545,11 +583,6 @@ local L=((snark.state(DNA_loop_state)+snark_SoDOpp.state(SoD_state)).t(-14,10,gp
         --+gpo.blinker.t(150,170).state(1+0*SoD_state)
         --+(gpo.loaf.t(69,266)+gpo.eater.t(64,268,gp.swap_xy)).state(state_computation_state)
      ).t(4+3*DNAloopOctavoDist,346+DNAloopOctavoDist,gp.rcw) --dna fill/clocks construction
-     +gpo.eater.t(-16-160+500+3*DNAloopOctavoDist,-16+236-500+DNAloopOctavoDist,gp.swap_xy_flip).state(pseudo_state) -- clocks construction blocker (temporary ... depends on the method of ori construction)
-     --debug stuff
---     +gpo.eater.t(-16-225+3*DNAloopOctavoDist,-16+170+DNAloopOctavoDist,gp.flip) -- debug stop clock recipe
---     +gpo.block.t(-16-220+3*DNAloopOctavoDist,-16+183+DNAloopOctavoDist) -- debug stop clock recipe
---     +gpo.block.t(-16-189+3*DNAloopOctavoDist,-16+203+DNAloopOctavoDist) -- debug stop clock recipe
 return L.t(0,0,gp.flip)
 end
 
@@ -616,31 +649,30 @@ $213b2o4bo$219bobo$220b2o!
 ]])
  local readclockSoD=pattern()
  readclockSoD.array=g.parse([[
-72b2o$72b2o2$315b3o3$68b2o$68b2o4$347bo$346bobo$346bobo$347bo3$89b2o
-150b2o$82b3o4bobo149b2o$90bobo$91bo13$227bo$226bobo86b3o$226bobo51b2o$
-227bo52b2o2$97b3o3$254b2o28b2o$254b2o28b2o$103b3o118b2o37b2o$224b2o36b
-o2bo$263b2o9$92bo$92bo17b3o$92bo107b2o$200b2o$280b2o$280b2o11$217b2o$
-216bo2bo$217b2o$226b2o$226b2o$202bo$201bobo$201b2o7$273b2o5b3o$273b2o
-7$233bo6b2o$232bobo4bobo$233b2o5bo4$124b2o$124b2o5$120b2o$120b2o8bo$
-129bobo$129b2o$150b2o$150b2o$173b3o$314b2o$314bobo$315bo4$174b2o$174b
-2o4$216bo$215bobo$136bo79b2o$135bobo$135bobo$136bo7$133b2o$133b2o$126b
-o$125bobo$125bobo$126bo4$125bo$124bobo$124bobo$125bo$201b2o168b2o$200b
-obo168b2o$201bo68b2o$270b2o3$285b3o$274bo$274bo$274bo$193b2o$193bobo$
-194bo4$93b2o262bo$93b2o99b2o160bobo$193bobo160bobo$194bo162bo4$b2o$o2b
-o380b2o$o2bo380b2o$b2o351b2o37b2o$354b2o36bo2bo$155b2o52bo72b2o109b2o$
-66bo87bobo52bo71bo2bo$65bobo42b2o43bo53bo72b2o$66b2o41bo2bo36b2o$110b
-2o37b2o$89b2o28b2o$7b2o80b2o28b2o98b2o$7bobo209b2o26b2o$8bo176b2o59bo
-2bo$184bo2bo58bo2bo$185b2o60b2o$93b2o52bo$93b2o51bobo102b2o$146bobo
-101bo2bo156b2o$147bo103b2o5b3o149b2o4$455bo$455bo$455bo5$288b2o$287bo
-2bo95b2o$288b2o96b2o$279b2o$132b2o29bo115b2o$132b2o29bo$163bo3$384bo$
-383bobo$221b2o160bobo$220bobo161bo$221bo5$232b2o$232b2o4$225b2o$224bo$
-227bo72bo$225b2o8bo63bobo$234bobo62bo2bo66b2o$234bobo63bobo66b2o$235bo
-65bo3$299b2o$299bobo$300b2o3$278b2o$278b2o2$376b3o28b3o13$276b2o$276b
-2o5$280b2o$157b2o121b2o$156bobo$157bo8$398b2o$397bo2bo$398b2o13$356bo$
-355bobo$342b3o11bo8$142b3o20$112bo$111bobo$111bobo$112bo8$142b3o80$
-227b2o$226bo2bo$226bo2bo$227b2o!
-]])
- readclockSoD=readclockSoD.t(0,-3)
+315b3o8$347bo$346bobo$346bobo$347bo3$241b2o$241b2o3$95b2o$94bobo$93bob
+o$94bo9$227bo$226bobo86b3o$226bobo51b2o$227bo52b2o2$97b3o3$254b2o28b2o
+$254b2o28b2o$103b3o118b2o37b2o$224b2o36bo2bo$263b2o9$92bo$92bo17b3o$
+92bo107b2o$200b2o$280b2o$280b2o11$217b2o$216bo2bo$217b2o$226b2o$226b2o
+$202bo$201bobo$201b2o7$273b2o5b3o$273b2o7$233bo6b2o$232bobo4bobo$233b
+2o5bo4$124b2o$124b2o5$120b2o$120b2o8bo$129bobo$129b2o$150b2o$150b2o$
+173b3o$314b2o$314bobo$315bo4$174b2o$174b2o4$216bo$215bobo$136bo79b2o$
+135bobo$135bobo$136bo7$133b2o$133b2o$126bo$125bobo$125bobo$126bo4$125b
+o$124bobo$124bobo$125bo$201b2o168b2o$200bobo168b2o$201bo68b2o$270b2o3$
+285b3o$274bo$274bo$274bo$193b2o$193bobo$194bo4$93b2o262bo$93b2o99b2o
+160bobo$193bobo160bobo$194bo162bo4$b2o$o2bo380b2o$o2bo380b2o$b2o351b2o
+37b2o$354b2o36bo2bo$155b2o52bo72b2o109b2o$66bo87bobo52bo71bo2bo$65bobo
+42b2o43bo53bo72b2o$66b2o41bo2bo36b2o$110b2o37b2o$89b2o28b2o$7b2o80b2o
+28b2o98b2o$7bobo209b2o26b2o$8bo176b2o59bo2bo$184bo2bo58bo2bo$185b2o60b
+2o$93b2o52bo$93b2o51bobo102b2o$146bobo101bo2bo156b2o$147bo103b2o5b3o
+149b2o4$455bo$455bo$455bo5$288b2o$287bo2bo95b2o$288b2o96b2o$279b2o$
+132b2o29bo115b2o$132b2o29bo$163bo3$384bo$383bobo$221b2o160bobo$220bobo
+161bo$221bo5$232b2o$232b2o4$225b2o$224bo$227bo72bo$225b2o8bo63bobo$
+234bobo62bo2bo66b2o$234bobo63bobo66b2o$235bo65bo3$299b2o$299bobo$300b
+2o3$278b2o$278b2o2$376b3o28b3o13$276b2o$276b2o5$280b2o$157b2o121b2o$
+156bobo$157bo8$398b2o$397bo2bo$398b2o13$356bo$355bobo$342b3o11bo8$142b
+3o20$112bo$111bobo$111bobo$112bo8$142b3o80$227b2o$226bo2bo$226bo2bo$
+227b2o!]])
+ --readclockSoD=readclockSoD.t(0,-3)
  local send_state_salvo_seed=pattern()
  send_state_salvo_seed.array=g.parse([[
 2o$2o6$2b3o72$92b2o$91bo2bo$91bo2bo$92b2o3$87b3o8$93b2o$93b2o5$96bo$
@@ -657,7 +689,6 @@ $172b2o6$174b3o44$236b2o$235bo2bo$235bo2bo$236b2o3$231b3o8$237b2o$237b
  local D=1 -- SW shift of after a while destroyal
  local X=23
  return (readclock.state(clock_logic_state)+readclockSoD.t(5,7).state(SoD_state) --+gpo.boat.t(225,115).state(state_computation_state)
-         +gpo.eater.t(-411,532,gp.swap_xy).state(receive_DNA_state) -- stop the central clock construction (could be repositioned NW as needed with 2 blocks ott 180 and blinker longboat ots)
          +gpo.glider[1].t(324,134,gp.flip_y).state(comment_glider_state) -- clock starting glider
          +gpo.glider[1].t(55,116,gp.rcw).state(comment_glider_state) -- state sending circuit destroying glider
          +((gpo.block.t(30,30)+gpo.block.t(-12,-12)+gpo.block.t(-16,-16)+gpo.block.t(-20,-20)+gpo.block.t(-24,-24)+gpo.block.t(-28,-28)+gpo.block.t(-34,-34)).state(state_computation_state) -- state blocks
@@ -729,7 +760,8 @@ o$49bo26$6b3o4$b2o$o2bo$b2o$9bo$8bobo$7bobo$7b2o4$25b2o$24bobo$23bobo$
 24bo4$32b2o$24bo6bobo$23bobo4bobo$22bobo6bo$22b2o4$31bo$30bobo$29bobo$
 29b2o4$47b2o$46bobo$45bobo$46bo4$32bo$31bobo$32b2o!
 ]])
-
+ local semisnarksemi = gpo.block.t(6,9).state(active_state)+gpo.block.t(8,8).state(passive_state)
+ local semisnarkready = gpo.block.t(6,9).state(passive_state)+gpo.block.t(8,8).state(active_state)
  return
  (SE_part.state(SE_clock_state)+SE_partSoD.t(-396,-260).state(SoD_state)
   + (boatsemisnark.state(clock_logic_state)+boatsemisnark_SoD.state(SoD_state)+semisnarksemi).t(24-1,130+1,gp.rccw)
@@ -850,10 +882,21 @@ local _0e0p_cellF = cell(true)
         +DNA_loop()
         +ReadClock()+mainClock()
 
-shellplanstates()
+--shellplanstates()
+planstates()
 E,N,W,S=shell_corners_E_N_W_S()
 SE,NE,NW,SW=shell_sides_SE_NE_NW_SW()
+E_ori()
+N_ori()
+W_ori()
+S_ori()
+NE_ori()
+SE_ori()
+SW_ori()
+NW_ori()
 local _0e0p_cellplan = cell(true)
+        +DNA_loop()
+        +ReadClock()+mainClock()
 
 g.setrule("LifeHistory64")
 --local _0e0p_cells = _0e0p_cellF+_0e0p_cellF.t(-halfsize,-halfsize)+_0e0p_cellF.t(halfsize,-halfsize)+_0e0p_cellS.t(halfsize,halfsize)+_0e0p_cellF.t(-halfsize,halfsize)

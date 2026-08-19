@@ -58,6 +58,7 @@ local SoD_phase=1
 local build_child_shell_state=29
 local shell_state=27
 local shell_entrance_state=27
+local shell_ori_target_state=62
 local send_DNA_state=7
 local send_DNA_seed_state=79
 local SE_clock_state=69
@@ -415,6 +416,14 @@ local function SE_shell_pattern()
  SE=SE+outputtxt.t(-60+input_lane0_dist+input_lane1_dist+input_lane2_dist-shell_lane0_dist,-72-input_lane0_dist-input_lane1_dist-input_lane2_dist-shell_lane0_dist)
  SE=SE+outputglider.t(input_lane0_dist+input_lane1_dist+input_lane2_dist+input_lane3_dist-shell_lane0_dist,-input_lane0_dist-input_lane1_dist-input_lane2_dist-input_lane3_dist-shell_lane0_dist)
  SE=SE+outputtxt.t(-60+input_lane0_dist+input_lane1_dist+input_lane2_dist+input_lane3_dist-shell_lane0_dist,-64-input_lane0_dist-input_lane1_dist-input_lane2_dist-input_lane3_dist-shell_lane0_dist,gp.rcw)
+
+ --SE=SE+gpo.block.t(input_lane0_dist-238,-input_lane0_dist-82).state(shell_ori_target_state)
+ --SE=SE+gpo.block.t(input_lane0_dist-238+793,-input_lane0_dist-82-855).state(shell_ori_target_state)
+ SE=SE+gpo.block.t(input_lane0_dist-238+149,-input_lane0_dist-82-282).state(shell_ori_target_state)
+ --SE=SE+gpo.block.t(5063,-2*input_lane0_dist+7112).state(shell_ori_target_state)
+ SE=SE+gpo.block.t(5063-5473,-2*input_lane0_dist+7112-6471).state(shell_ori_target_state)
+ --SE=SE+gpo.block.t(5063-5473-41,-2*input_lane0_dist+7112-6471-120).state(shell_ori_target_state)
+ --SE=SE+gpo.block.t(5063-5473-49,-2*input_lane0_dist+7112-6471+42).state(shell_ori_target_state)
 
  SE=SE--.t(innerquadsize-DNAloopOctavoDist,-innerquadsize+DNAloopOctavoDist)
          +positionmark
@@ -901,7 +910,7 @@ local _0e0p_cellplan = cell(true)
 g.setrule("LifeHistory64")
 --local _0e0p_cells = _0e0p_cellF+_0e0p_cellF.t(-halfsize,-halfsize)+_0e0p_cellF.t(halfsize,-halfsize)+_0e0p_cellS.t(halfsize,halfsize)+_0e0p_cellF.t(-halfsize,halfsize)
 --local _0e0p_cells = _0e0p_cellF+_0e0p_cellF.t(-halfsize,-halfsize) +_0e0p_cellplan.t(halfsize,-halfsize) +_0e0p_cellF.t(halfsize,halfsize)+_0e0p_cellF.t(-halfsize,halfsize) +input_gen()
-local _0e0p_cells = _0e0p_cellF+_0e0p_cellplan.t(-halfsize,-halfsize) +_0e0p_cellplan.t(halfsize,-halfsize) +_0e0p_cellplan.t(halfsize,halfsize)+_0e0p_cellplan.t(-halfsize,halfsize) +input_gen()
+local _0e0p_cells = _0e0p_cellF +_0e0p_cellplan.t(-halfsize,-halfsize) +_0e0p_cellplan.t(halfsize,-halfsize) +_0e0p_cellplan.t(halfsize,halfsize)+_0e0p_cellplan.t(-halfsize,halfsize) +input_gen()
 _0e0p_cells.display("0e0pcells")
 g.setcell(-349354,-489,0); g.setcell(-349353,-488,0) -- state 1
 g.setcell(-354953,-6445,1); g.setcell(-354952,-6445,1); g.setcell(-354953,-6444,1); g.setcell(-354938,-6434,0) -- central clocks started

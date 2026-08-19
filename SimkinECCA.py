@@ -296,7 +296,7 @@ class SimkinECCAp2compiler(object):
                 # we want the target be in close proximity of determined position, it is rarely used and position easily debugged (we use just one color of block)
             if len(info)==2 and ord(info[1][0])>=ord("A") and ord(info[1][0])<=ord("Z"):
                 xinfo = info[1].split(",")
-                phasedir = f"{info[1][0]}_"
+                phasedir = f"{xinfo[0]}_"[0:2]
                 lane = int(xinfo[1])
                 sync = int(self.recipes[recipekey][0][1])
                 sg = self.recipes[recipekey][3]
@@ -304,7 +304,7 @@ class SimkinECCAp2compiler(object):
                 print (f"extra move {phasedir} [sync]lane,cost,sg:[{sync}]{lane},{cost},{sg}")
                 self.x_updateIfBetter(f"[{sync}]_{phasedir}{lane}",self.name2l[recipekey],cost,sg)
                 self.x_updateIfBetter(f"[{sync}]_{phasedir}{lane+1}",self.name2l[recipekey],cost,sg)
-                self.extras = self.extras + info[1][0]
+                self.extras.append(xinfo[0])
                 # we want the target be in close proximity of determined position, it is rarely used and position easily debugged (we use just one color of it)
                 # expecting p1 so far
 
@@ -438,7 +438,7 @@ class SimkinECCAp2compiler(object):
         # jointimedeltas transation to recipe possibly including [b]+c only on start and (a) only on both ends
         self.load_recipes()
         self.make_move_table()
-        self.extras=""
+        self.extras=[]
         self.init_x_table() # both glider emissions left and block emissions left/right (block emission is determined div2 ... color is fixed)
         self.make_x_table() # computes from -infty to +infty (periodic function with a preperiod xMinMinus[phasedir],xMinusPeriod,xMaxPlus[phasedir],xPlusPeriod computed)
         self.recipes['build']=["[0] 126 102 100 195 90 91 95 98 105 90 101 141 94 159 92 146 99 90 152 139 144 92 161 131 116 101 114 111 112 93 127 98 102 114 107 157 90 90 90 91 91 243 113 139 108 95 127 121 99 257 144 94 218 148 226 111 119 100 (90)"]
@@ -664,10 +664,10 @@ class SimkinECCAp2compiler(object):
                           "b0R":"bR", "b1R":"bR", "o0R":"oR", "o1R":"eR", "e0R":"eR", "e1R":"oR", "r0R":"r_", "r1R":"r_", "l0R":"l_", "l1R":"l_", "t0R":"r_", "t1R":"r_"
                           }
         for extra in self.extras:
-            phaseswitching[f"{extra}0L"]=f"{extra}_"
-            phaseswitching[f"{extra}1L"]=f"{extra}_"
-            phaseswitching[f"{extra}0R"]=f"{extra}_"
-            phaseswitching[f"{extra}1R"]=f"{extra}_"
+            phaseswitching[f"{extra}0L"]=f"{extra}_"[0:2]
+            phaseswitching[f"{extra}1L"]=f"{extra}_"[0:2]
+            phaseswitching[f"{extra}0R"]=f"{extra}_"[0:2]
+            phaseswitching[f"{extra}1R"]=f"{extra}_"[0:2]
         # b,e,o gliders l,r blocks
 
         self.delayed=[{},{}]
@@ -719,10 +719,16 @@ class SimkinECCAp2compiler(object):
                 if self.prev_goptions != []:
                     for pgoption in self.prev_goptions:
                         if len(pgoption):
-                            pphasedir, p_lane = phaseswitching[f"{pgoption[0]}{phaseswitch}{self.direction}"], int(pgoption[1:])
+                            if pgoption[1]>'9':
+                                pphasedir, p_lane = phaseswitching[f"{pgoption[0:2]}{phaseswitch}{self.direction}"], int(pgoption[2:])
+                            else:
+                                pphasedir, p_lane = phaseswitching[f"{pgoption[0]}{phaseswitch}{self.direction}"], int(pgoption[1:])
                             for goption in goptions:
                                 if len(goption):
-                                    phasedir, lane = phaseswitching[f"{goption[0]}{phaseswitch}{self.direction}"], int(goption[1:])
+                                    if goption[1]>'9':
+                                        phasedir, lane = phaseswitching[f"{goption[0:2]}{phaseswitch}{self.direction}"], int(goption[2:])
+                                    else:
+                                        phasedir, lane = phaseswitching[f"{goption[0]}{phaseswitch}{self.direction}"], int(goption[1:])
                                     lanedif = lane-p_lane
                                     xxpreoptions = self.get_xxpreoptions(p_lane%2,lanedif,pphasedir,phasedir)
                                     #print (f"xxpreoptions: {xxpreoptions}")
@@ -736,7 +742,10 @@ class SimkinECCAp2compiler(object):
                                             updateIfBetter(ncur, phaseswitch, nmove, ncost)
                 for goption in goptions:
                     if len(goption):
-                        phasedir, lane = phaseswitching[f"{goption[0]}{phaseswitch}{self.direction}"], int(goption[1:])
+                        if goption[1]>'9':
+                            phasedir, lane = phaseswitching[f"{goption[0:2]}{phaseswitch}{self.direction}"], int(goption[2:])
+                        else:
+                            phasedir, lane = phaseswitching[f"{goption[0]}{phaseswitch}{self.direction}"], int(goption[1:])
                         for key, value in self.delayed1[phaseswitch].items():
                             xoptions = self.get_xoptions(key%8, phasedir, lane-2*(key//8))
                             #print(f"xoptions [{key%8}]_{phasedir}{lane-2*(key//8)}: {self.pack_options(xoptions)}")

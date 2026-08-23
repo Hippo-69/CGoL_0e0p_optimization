@@ -744,13 +744,13 @@ end
 
 local function mainClock()
  local SE_part=pattern()
- SE_part.array=g.parse("20bo$19bobo$19bobo$2b2ob2o13bo$o2bob2o$2obo$3bo$3b2o$b2o2bobo7bo$o2bo2b2o6bobo$b2o12bo4$12b2o3b2o$13bo3bo$10b3o5b3o$10bo9bo!")
+ SE_part.array=g.parse("20bo$19bobo$19bobo$20bo3$6b2o$4bob2o$3bo11bo$6bo7bobo$2b2obo9bo$2b2o3$13bo3bo$12b2o3b2o$12b2o3b2o$12bo5bo!")
  local SE_partSoD=pattern()
  SE_partSoD.array=g.parse([[
-6bo$6bo$6bo2$b2o$o2bo$o2bo$b2o25$44b2o$43bobo$42bobo$43bo9$56b2o$55bob
-o$54bobo$55bo8$67b2o$66bobo$65bobo$66bo8$78b2o$77bobo$76bobo$77bo8$89b
-2o$88bobo$87bobo$88bo7$99b2o$98bobo$97bobo$98bo159$415b2o$415b2o30$
-414b2o$414b2o4$418b2o$418b2o70$353b2o$352bobo$353bo!
+6bo$6bo$6bo2$b2o$o2bo$o2bo$b2o37$56b2o$55bobo$54bobo$55bo8$67b2o$66bob
+o$65bobo$66bo7$77b2o$76bobo$75bobo$76bo8$88b2o$87bobo$86bobo$87bo8$99b
+2o$98bobo$97bobo$98bo8$110b2o$109bobo$108bobo$109bo167$391b3o61$329bo$
+328bobo$328bobo$329bo3$328b2o$328b2o!
 ]])
  local NW_part=pattern()
  NW_part.array=g.parse([[
@@ -772,7 +772,7 @@ o$49bo26$6b3o4$b2o$o2bo$b2o$9bo$8bobo$7bobo$7b2o4$25b2o$24bobo$23bobo$
  local semisnarksemi = gpo.block.t(6,9).state(active_state)+gpo.block.t(8,8).state(passive_state)
  local semisnarkready = gpo.block.t(6,9).state(passive_state)+gpo.block.t(8,8).state(active_state)
  return
- (SE_part.state(SE_clock_state)+SE_partSoD.t(-396,-260).state(SoD_state)
+ (SE_part[4].state(SE_clock_state)+SE_partSoD.t(-396,-260).state(SoD_state)
   + (boatsemisnark.state(clock_logic_state)+boatsemisnark_SoD.state(SoD_state)+semisnarksemi).t(24-1,130+1,gp.rccw)
   + (gpo.boat.t(18-1,109+1,gp.flip)+gpo.block.t(86-1,177+1)+gpo.block.t(92-1,173+1)+gpo.boat.t(84-1,169+1,gp.rccw)).state(SoD_state) --stop and start semisnark SoD (to wait for correct first semisnark state)
   + (gpo.boat.t(-31-1,12+1,gp.rccw)).state(send_DNA_state) -- starting read clock

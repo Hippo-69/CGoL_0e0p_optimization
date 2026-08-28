@@ -1,5 +1,5 @@
 l
--- neighborhood of 20 is forbidden (14-26) till 4q
+-- neighborhood of 20 is forbidden (14-26) till 5q SSSE
 -- neighborhood of -22 is already forbidden (-28-14) till 3.9 and then (honeyfarm around unless constuction of input lane blocking seed starts) hmm seems -15 is not forbidden
 -- neighborhood of 51 is already forbidden (45-57) till 4q NNNN
 -- neighborhood of 63 is already forbidden (57-69) till 4q EEEE
@@ -18,8 +18,10 @@ e8 o11 o-6 e5 b-8 b-15 -- *
 e-6 -- * 7th -9 -- phase of the last glider s important for future
 o-5 e-2 e-3 o-5 b-4 b-13 b-4 -- * 8th -16
 e-3 e-11|e-10|o-15|o-14 e-15 e-2 b-12 b-3 -- * 9th -7
-o28 -- splitter to NWWW invoked
+o28 -- splitter to NWWW invoked cleanup at WWWW should follow
+o28 e29|e30|e31|o27|o28 -- * WWWW cleanup part1
 b36 -- split to SSSE invoked blocks 28 (22-34)
+b39 b40|b47 -- WWWW cleanup part2
 -- Slow^3 % b-4 % b-6|b-1 % b1 % b0 % b3 % (b11|b12|b13|b14|b15|b16) at SSSE using SS (slow 2 using SSSW) ... translated to slow^2
 -- Slow^2 % (b54) b13|b20 % b0 % b6 % b-2 % b-8 % b1 % e-3 o6 % b12 % b-15 % b-6 % b-4|b3 % b-12 % b-21 % b-12 % e-11 o-15 %
 -- b-15 % b-24 % b-15 % e-19 o-10 % b-4 % b-31 % b-22 % b-28 % b-36 % b-46 % b-37
@@ -51,6 +53,16 @@ o-1 o2 b2 b-2 b7 b-4 -- *
 e-7 o11 o-1 b8 b9 b3 b12 -- *
 e13 o-1 o5 b-7 b-14 b-5 -- *
 b-2 b-3 b5 b12 -- boat 5_16_-8 ott SSSW to NEEE 
+b-8 b-6 b-12 b-7 b-12|b-8|b-7 b9 b8 b7 b6 b5 b4 b13 b2 b7|b8|b9|b10|b11|b12 b12 b11 b13 b36 b38 o36 e40 b37 b42 b35 b40|b41|b42|b43|b44 b70 b70 --
+o73 e80 e97 e95 e111 b118 b107 b120 b121 --
+o133 o136 o143 o136 o157 b145|b146|b147|b148|b149|b150 b200 --
+o196 b211 b216|b219|b220 e213 b221 e219 b211 o232 b278 --
+o274 b289 b294|b297|b298 e291 b299 e297 b289 o310 b356 --
+o352 b367 b372|b375|b376 e369 b377 e375 b367 o388 b425 b418 --
+o426 o439 b451
+e443 w42 I448 --fast pull
+b453 b445 o462 o447 b458 b453 b457|b465 b484 -- ? SSSW finish
+-- cleanup (making oriented target at an exact place
 --SWWW build slow2ott90 from SSSS to NNNE (till 4q)
 --NWWW o=8q, d=3q target created (SSSW through WWWW and SS)
 b174 b164 b157 b160 b152 o164 o157 e158 e128 e122 -- * 2367502 other parity collides with the longboat

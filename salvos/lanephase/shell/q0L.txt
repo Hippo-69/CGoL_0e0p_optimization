@@ -16,7 +16,7 @@ b1 e1 b-4 o9|o10|e13|e14 e11 e13 b1|b2|b3|b4|b5 b33 b33 b43 b31 o28 e32 b27 b38 
 b-19 b-21|b-16 o-21 o-6 
 w10 -- o-19 o-14 o-18 -- SSWW ott180 built and invoked % -- delaying, but keeping sync of others
 b3 b1|b6 o1 o16 o3 o8 o4 -- SSWW ott180 built and invoked %
-b26 b24|b29 o24 o39 o26 o31 o27 -- SSWW ott180 built and invoked %
+w22 --b24 w19 --b26 b24|b29 o24 o39 o26 o31 o27 -- SSWW ott180 built and invoked % target obsolete ... just preserve timing
 e129|e130|e131|o132|o133|o134 b127|b128|b129|b130|b131 --outer cleanup
 b128 -- WWWWW
 o132 o140 -- %

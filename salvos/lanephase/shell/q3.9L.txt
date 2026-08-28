@@ -42,6 +42,6 @@ F692 -- EEEE SoD close input lane
 D866 -- input blocking eater seed
 E676 -- input blocking seed activation ott
 L658 -- another input blocking seed activation ott
-w3660 --
+w3339 --w3432 --w3650 -- ori block trasformation at q3L compensation
 --SSSS o=d~3.9q   (sync targeted glider from WWSS) build 180ott SSSS to SSSS "part" of the future "input lane blocking seed"
 -- q3.9L end

@@ -13,7 +13,7 @@ b419 o415 b430 b435|b438|b439 e432 b440 e438 b430 o451 -- *
 b497 o493 b508 b513|b516|b517 e510 b518 e516 b508 o529 -- *
 b575 e575 o577 
 w2 o-3 -- 2q SSSW build start
-b33 -- shift 0.2q construction (future input lane blocking delay ott180) 
+b28|b29|b30|b31|b32|b33 --b33 -- shift 0.2q construction (future input lane blocking delay ott180) is obsolete, but required for o-3 timing :( ... now it destroys SSWW block 
 b-8 o0 b5 o7 e16 -- *
 b32 e28 e30 o21 o21 e30 o15 -- *
 b13 b20 -- splitter SSWW,SSSS to SS created and hit (a target remains)
@@ -24,7 +24,8 @@ b13 b20 -- splitter SSWW,SSSS to SS created and hit (a target remains)
 -- neghborhood of 20 already blocked at .2q (somewhere between SSSW and SSWW)
 b-4 b-6|b-1 e-1 o-1 e3 b7 b4|b9 -- *
 e4 o1 e4 o0 b8 -- *
-b27 -- removes block on path to WWWW slow^2 ott (could be removed by construction instead)
+--b27 -- removes block on path to WWWW slow^2 ott (could be removed by construction instead) obsolete
+w4 -- compensates for b33->b28..b33 and b27 changes
 o4 e-6 e4 b8|b9|b10|b11|b12|b13 b8 b8 b0 b31 -- = 
 o34 e36|e37|o40|o41 e40 e33 e36 o35 o40 o38 b32 b33 -- *
 o41 o38 -- =

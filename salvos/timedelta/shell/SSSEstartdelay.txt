@@ -1,2 +1,2 @@
-560
---79200 -- should wait for speboe apperance ... sums to 2066814 with o3. length (unless some more code is added at the o3 end ...) 54%120
+1520
+-- sums to 2136094 with o3. length

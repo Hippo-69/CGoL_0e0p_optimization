@@ -41,7 +41,7 @@ b1 e1 b-4 o9|o10|e13|e14 e11 e13 b1|b2|b3|b4|b5 b33 b33 b43 b31 o28 e32 b27 b38 
 b-19 b-21|b-16 o-21 o-6 
 w10 -- o-19 o-14 o-18 -- SSWW ott180 built and invoked % -- delaying, but keeping sync of others
 b3 b1|b6 o1 o16 o3 o8 o4 -- SSWW ott180 built and invoked %
-b26 b24|b29 o24 o39 o26 o31 o27 -- SSWW ott180 built and invoked %
+w22 --b24 w19 --b26 b24|b29 o24 o39 o26 o31 o27 -- SSWW ott180 built and invoked % target obsolete ... just preserve timing
 e129|e130|e131|o132|o133|o134 b127|b128|b129|b130|b131 --outer cleanup
 b128 -- WWWWW
 o132 o140 -- %
@@ -106,8 +106,8 @@ o295 b313 b303|b304|b305|b306|b307|b308 -- WWWW
 -- q0L end
 -- something from q0.2R.txt could go here 
 -- q0R end
-w3
-l o20 -- ~0.2q target for future input lane blocking delay ott180
+--w3
+w7 l --o20 -- ~0.2q target for future input lane blocking delay ott180 obsolete
 -- q0.2L end
 -- something from q0.5R can go here (we could start building SE_Part3 here ... but we should incorporate q4 reflectors to the build)
 r t54 
@@ -181,7 +181,8 @@ o127 o137 o122 o119 b116 b114|b119 b112 b113 b110 b97|b98|b99|b100|b101|b102 b90
 e70 o58 b64|b75 b73 b70|b75 b77 b76 b79 b87|b88|b89|b90|b91|b92 b99 b96|b101 -- *
 e101 b109 e86 e99 o83 e109 b120|b125 b114 b104|b105|b108 b109 b100 -- *
 o114 o100 e122|e123|e124|o119|o120|o121 o119 b134 b150 b147|b152 b154 b153 b156 b164|b165|b166|b167|b168|b169 b176 b183 -- *
-e174 --phase parity forced kernel opennig glider is sent to parent it opens the directed build at d>5q, it arrives to the child cell at d>6
+e174 --phase parity forced kernel opening glider is sent to parent it opens the directed build at d>5q, it arrives to the child cell at d>6
+-- opens kernel at 84136000 ... late ... even with state transition encoding meanwhile
 w212
 --b-19 b-21|b-16 o-21 o-6 -- done at 0L to prevent collision of o-6
 o-19 o-14 o-18 -- SSWW ott180 built and invoked %
@@ -206,7 +207,7 @@ b419 o415 b430 b435|b438|b439 e432 b440 e438 b430 o451 -- *
 b497 o493 b508 b513|b516|b517 e510 b518 e516 b508 o529 -- *
 b575 e575 o577 
 w2 o-3 -- 2q SSSW build start
-b33 -- shift 0.2q construction (future input lane blocking delay ott180) 
+b28|b29|b30|b31|b32|b33 --b33 -- shift 0.2q construction (future input lane blocking delay ott180) is obsolete, but required for o-3 timing :( ... now it destroys SSWW block 
 b-8 o0 b5 o7 e16 -- *
 b32 e28 e30 o21 o21 e30 o15 -- *
 b13 b20 -- splitter SSWW,SSSS to SS created and hit (a target remains)
@@ -217,7 +218,8 @@ b13 b20 -- splitter SSWW,SSSS to SS created and hit (a target remains)
 -- neghborhood of 20 already blocked at .2q (somewhere between SSSW and SSWW)
 b-4 b-6|b-1 e-1 o-1 e3 b7 b4|b9 -- *
 e4 o1 e4 o0 b8 -- *
-b27 -- removes block on path to WWWW slow^2 ott (could be removed by construction instead)
+--b27 -- removes block on path to WWWW slow^2 ott (could be removed by construction instead) obsolete
+w4 -- compensates for b33->b28..b33 and b27 changes
 o4 e-6 e4 b8|b9|b10|b11|b12|b13 b8 b8 b0 b31 -- = 
 o34 e36|e37|o40|o41 e40 e33 e36 o35 o40 o38 b32 b33 -- *
 o41 o38 -- =
@@ -298,7 +300,7 @@ o586 b587 o598 o590 e592|e593|o596|o597 e597 o588 e594|e595|o590|o591 o577 e576 
 w3397
 -- q2L end
 l
--- neighborhood of 20 is forbidden (14-26) till 4q
+-- neighborhood of 20 is forbidden (14-26) till 5q SSSE
 -- neighborhood of -22 is already forbidden (-28-14) till 3.9 and then (honeyfarm around unless constuction of input lane blocking seed starts) hmm seems -15 is not forbidden
 -- neighborhood of 51 is already forbidden (45-57) till 4q NNNN
 -- neighborhood of 63 is already forbidden (57-69) till 4q EEEE
@@ -317,8 +319,10 @@ e8 o11 o-6 e5 b-8 b-15 -- *
 e-6 -- * 7th -9 -- phase of the last glider s important for future
 o-5 e-2 e-3 o-5 b-4 b-13 b-4 -- * 8th -16
 e-3 e-11|e-10|o-15|o-14 e-15 e-2 b-12 b-3 -- * 9th -7
-o28 -- splitter to NWWW invoked
+o28 -- splitter to NWWW invoked cleanup at WWWW should follow
+o28 e29|e30|e31|o27|o28 -- * WWWW cleanup part1
 b36 -- split to SSSE invoked blocks 28 (22-34)
+b39 b40|b47 -- WWWW cleanup part2
 -- Slow^3 % b-4 % b-6|b-1 % b1 % b0 % b3 % (b11|b12|b13|b14|b15|b16) at SSSE using SS (slow 2 using SSSW) ... translated to slow^2
 -- Slow^2 % (b54) b13|b20 % b0 % b6 % b-2 % b-8 % b1 % e-3 o6 % b12 % b-15 % b-6 % b-4|b3 % b-12 % b-21 % b-12 % e-11 o-15 %
 -- b-15 % b-24 % b-15 % e-19 o-10 % b-4 % b-31 % b-22 % b-28 % b-36 % b-46 % b-37
@@ -350,6 +354,16 @@ o-1 o2 b2 b-2 b7 b-4 -- *
 e-7 o11 o-1 b8 b9 b3 b12 -- *
 e13 o-1 o5 b-7 b-14 b-5 -- *
 b-2 b-3 b5 b12 -- boat 5_16_-8 ott SSSW to NEEE 
+b-8 b-6 b-12 b-7 b-12|b-8|b-7 b9 b8 b7 b6 b5 b4 b13 b2 b7|b8|b9|b10|b11|b12 b12 b11 b13 b36 b38 o36 e40 b37 b42 b35 b40|b41|b42|b43|b44 b70 b70 --
+o73 e80 e97 e95 e111 b118 b107 b120 b121 --
+o133 o136 o143 o136 o157 b145|b146|b147|b148|b149|b150 b200 --
+o196 b211 b216|b219|b220 e213 b221 e219 b211 o232 b278 --
+o274 b289 b294|b297|b298 e291 b299 e297 b289 o310 b356 --
+o352 b367 b372|b375|b376 e369 b377 e375 b367 o388 b425 b418 --
+o426 o439 b451
+e443 w42 I448 --fast pull
+b453 b445 o462 o447 b458 b453 b457|b465 b484 -- ? SSSW finish
+-- cleanup (making oriented target at an exact place
 --SWWW build slow2ott90 from SSSS to NNNE (till 4q)
 --NWWW o=8q, d=3q target created (SSSW through WWWW and SS)
 b174 b164 b157 b160 b152 o164 o157 e158 e128 e122 -- * 2367502 other parity collides with the longboat
@@ -402,7 +416,7 @@ F692 -- EEEE SoD close input lane
 D866 -- input blocking eater seed
 E676 -- input blocking seed activation ott
 L658 -- another input blocking seed activation ott
-w3660 --
+w3339 --w3432 --w3650 -- ori block trasformation at q3L compensation
 --SSSS o=d~3.9q   (sync targeted glider from WWSS) build 180ott SSSS to SSSS "part" of the future "input lane blocking seed"
 -- q3.9L end
 I42 -- should wait the SSWW SSSS EEEE reflection original L emissions does not work

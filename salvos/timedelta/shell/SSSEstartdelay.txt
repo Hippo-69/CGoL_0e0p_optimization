@@ -1,2 +1,2 @@
-1520
--- sums to 2136094 with o3. length
+4072			---
+-- mod 120 should be debugged to create eater EEEE well

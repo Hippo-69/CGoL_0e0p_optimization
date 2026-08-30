@@ -1,0 +1,2 @@
+14676236 -- chosen offset (opens output lanes correctly)
+1580 -- distance from the first input glider not to crush (could be bigger then 1560)

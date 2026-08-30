@@ -286,20 +286,46 @@ o195574 w38 I195576 --fast pull
 e195564 o195559 e195561 -- forced 
 e195566 o195563 -- =
 --NN build end
---SSSS o=4q, d=4q ott from ~2.9S,1.1W to EEEE (simkin gun stopper) created
---                exactly timed glider sent to ~2.9S,1.1W ott to stop the Simkin OGGCA at EEEE
---EEEE o=8q, d=4q (180ott from SSSS to SEEE activated)
---                simkin OGCCA created at EEEE (with targets on both sides?, directed mainly NW)
---NNNN o=12q,d=4q slow2ott90 EEEE to NNNW created
---EEEE o=8q, d=4q splitter SEEE,NNNN to NNNW created and activated
---NNNN o=12q,d=4q NNNN built (from remnants of the slow^2ott) (till 6q with interruption at 5q)
---EEEE o=8q, d=4q SEEE (180 OGGCA) recipe send to create slow^2 ott from EEEE to NN,
---NNNE o=11q,d=4q (target created SSSS through SWWW and EEEE) slow2ott90 EEEE to NN created
---                to rotationally symmetric position for directed build (from remnants of the slow^2ott) (till 6q with interruption at 5q)
---EEEE o=8q, d=4q splitter SEEE,NNNE to NN created and activated
---                SEEE (180 OGGCA) recipe send to create slow^2 ott from EEEE to EE,
---NEEE o=9q, d=4q (target created SSSS through SSSW and EEEE) slow2ott90 EEEE to EE created
---EEEE o=8q, d=4q splitter SEEE,NEEE to NN created and activated
---NEEE o=9q, d=4q build NEEE (form remnants of the slow^2ott)
---EEEE o=8q, d=4q EEEE build (both sides) (till 6q with 5q interruption)
 -- q4LEEEE end
+r
+b949
+b956 o941 o950 o949 b938 o935 e928 b920 b899 o896 e889 e872 e874 b901 o902 b907 e890 b882 o879
+e871 o855 b853 o857 o855 o852 e865 o874 o886 b899 b899 b907 b893 o897 b877 b865|b873
+b853|b854|b855|b856 b826 o823 e816 e799 e801 o778 o776 o764 e767 o767 e768 e764|o765|o766|o767
+b730 b738 o730 e722 e716 o718|o723 b716 b716 b713|b718 o713 e719|e720 b714 b723 b728|b731|b732
+e725 e710 o719 o709 e707|e708|o711|o712 o719 b753 o750 o758 e750 b751 b738|b739|b742 e758
+b747|b751|b752|b754|b757 e734 e711|e712|o707|o708 o710 o714 b689 o686 e682 o666 o666 e679
+e695|e696|e697|o692|o693|o694 b689 e692 e698|e699|o694|o695 e696 e695 e690 e688 e684 e699 e707
+e714 b713 b704|b705|b708 o717-- SPEBOE creation on SSSE interrupts us here
+-- EEEE program after SPEBOE SSSE interruption
+r o709 e714 b700 e697 o693 e698 e698|e699|e700 b675 o674 e673 e670
+o665 o685 e692 b703 o698 o690 b706 o714 b691|b694 o699 o694 e690 o695 o704 b699 b693 e732 o722
+e730|e731|o726|o727 o726 o727 e725 e735 b742 o745 o737 o753 e746 e749 e731 o755 e759 b767 b774
+o759 e777 b790 b769|b774 o776 o795 o801 e791 e794 e789|e790|o785|o786 o782 e791|e792|o795|o796
+o814 b812 o812 e820|e821|o824|o825 e821 e825 b815 o818 e818|e819|o814|o815 o826 o827 b794
+b792|b797 e797 o789 b781 o790 b796 e793 b802 b802 o799 b808|b809|b810|b811|b812 e801 e791 o790
+o799 e816 e814 b812 b810|b815 b808 b817 b819 o806 e807|e808|o803|o804 e811 e796 o800 b778 b787
+b792|b795|b796 o789 o776 b788 b788 o784 e781|e782|o777|o778 e771|o768|o769|o770 b755 b766 b753
+b753 o753 b744 b732 o729 e722 b691|b692|b695 o697 e706|e707|e708|o703|o704|o705 b707 b719 e730
+o730 b715 b709 o713 e711|e712|o715|o716 o721 o709 b712|b713|b714|b715|b716|b717 e741 e751 e754
+o761 b757 e760 e756 e771 b772 e769 o765 e770 e770|e771|e772 e777 b793|b794|b795|b796|b797 o786
+e798 o787 b754 o738 e746 e745 o727 e762|e763|o758|o759 e763 o756 b743 b752 o752 e753 e751 o738
+e738 o774 e780 o770 e767 o784 o788 b785 e804 b817|b825 b826 o833 o841 o834 o838
+e832|e833|o836|o837 e832 o837 b847 o848 b822 b820|b825 o822 e816 o820 b828 e819 e826 b810 o833
+o843 o848 e849 o840 w1 b826 b837 b834 o837 o845 o849 b866 o865 b861 o853 e851|e852|o855|o856 o863
+e855|e856|o851|o852 o854 o858 e877 e878 o873 b879 b876|b881 b888 b882 o889 e890|e891|o886|o887
+o894 o877 e878 o884 o883 e886 e888 e882 e877 e872 e873 b879 b871 b880 e884 b887|b894|b897|b898
+b876 e860 o873 o865 o861 b831 e830 o846 o845 o830 e833 o837 e832 b805|b806|b807|b808|b809|b810
+e828 e843 b844 e841 o837 e842 e842|e843|e844 e876 b879 b870|b871|b874 b887 b890 o871
+e873|e874|e875|o870|o871|o872 e869 b852 b845 b846 b846 o856|o857|e858|e859 e854 b863 e858 o845
+b853 b851 b857 N851 e856 -- too close to arm, does not work and this makes it faster
+b892 o896 e900 e896 o902 b900 b890
+b903 b894|b895|b896|b897|b898 b894 o895 b904 b898 e903 o906 b904 o893 o908 e927 e937 b977|b983
+o977 b982 b982 o983 e971 b987 b991 b1009 b1015 b1001|b1004|b1005|b1008 b1030 e1045|e1046|e1047|o1042|o1043|o1044 o1033 o1031 o1039 b1036 o1039
+o1025 b1018 e1022 o1029 e1030 o1036 o1030 e1032 o1039 b1056|b1059|b1060 b1054 e1036 b1052|b1057
+J768 -- block -43->-51
+l b772 b770|b775 e770 o759 e780 --
+J944 -- block -43->-77
+b957 b954|b959 b961 b960 b963 b971|b972|b973|b974|b975|b976 b983 b972 b977|b978|b979|b980|b981|b982 b1007
+O932 -- beehive pond SoD
+--TODO open kernel glider could need replanning (to wait entire DNA loop) we will see

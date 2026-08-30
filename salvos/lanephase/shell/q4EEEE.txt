@@ -286,20 +286,4 @@ o195574 w38 I195576 --fast pull
 e195564 o195559 e195561 -- forced 
 e195566 o195563 -- =
 --NN build end
---SSSS o=4q, d=4q ott from ~2.9S,1.1W to EEEE (simkin gun stopper) created
---                exactly timed glider sent to ~2.9S,1.1W ott to stop the Simkin OGGCA at EEEE
---EEEE o=8q, d=4q (180ott from SSSS to SEEE activated)
---                simkin OGCCA created at EEEE (with targets on both sides?, directed mainly NW)
---NNNN o=12q,d=4q slow2ott90 EEEE to NNNW created
---EEEE o=8q, d=4q splitter SEEE,NNNN to NNNW created and activated
---NNNN o=12q,d=4q NNNN built (from remnants of the slow^2ott) (till 6q with interruption at 5q)
---EEEE o=8q, d=4q SEEE (180 OGGCA) recipe send to create slow^2 ott from EEEE to NN,
---NNNE o=11q,d=4q (target created SSSS through SWWW and EEEE) slow2ott90 EEEE to NN created
---                to rotationally symmetric position for directed build (from remnants of the slow^2ott) (till 6q with interruption at 5q)
---EEEE o=8q, d=4q splitter SEEE,NNNE to NN created and activated
---                SEEE (180 OGGCA) recipe send to create slow^2 ott from EEEE to EE,
---NEEE o=9q, d=4q (target created SSSS through SSSW and EEEE) slow2ott90 EEEE to EE created
---EEEE o=8q, d=4q splitter SEEE,NEEE to NN created and activated
---NEEE o=9q, d=4q build NEEE (form remnants of the slow^2ott)
---EEEE o=8q, d=4q EEEE build (both sides) (till 6q with 5q interruption)
 -- q4LEEEE end

@@ -32,17 +32,11 @@ e873|e874|e875|o870|o871|o872 e869 b852 b845 b846 b846 o856|o857|e858|e859 e854 
 b853 b851 b857 N851 e856 -- too close to arm, does not work and this makes it faster
 b892 o896 e900 e896 o902 b900 b890
 b903 b894|b895|b896|b897|b898 b894 o895 b904 b898 e903 o906 b904 o893 o908 e927 e937 b977|b983
-o977 b982 b982 o983 e971 b987 b991 b1009 b1015 b1001|b1004|b1005|b1008 b1030 o1033 o1031 o1039 b1036 o1039
+o977 b982 b982 o983 e971 b987 b991 b1009 b1015 b1001|b1004|b1005|b1008 b1030 e1045|e1046|e1047|o1042|o1043|o1044 o1033 o1031 o1039 b1036 o1039
 o1025 b1018 e1022 o1029 e1030 o1036 o1030 e1032 o1039 b1056|b1059|b1060 b1054 e1036 b1052|b1057
 J768 -- block -43->-51
-l b772 b770|b775 e770 o759 e780 -- 
+l b772 b770|b775 e770 o759 e780 --
 J944 -- block -43->-77
 b957 b954|b959 b961 b960 b963 b971|b972|b973|b974|b975|b976 b983 b972 b977|b978|b979|b980|b981|b982 b1007
 O932 -- beehive pond SoD
--- TODO: 
--- destroy remaining simking gliders far escaping (we can stop them earlier, but we still do not know the required amount)
--- destroy the eater of simkin gliders ... to finish the EEEE program
--- add conversion to SPEBOE and its reposition to required position
--- create path to stop input corresponding to current timing
--- think about directed build to determine rotational symmetric targets usefull for it
--- modify the build to create the required targets ... we have time on all 4 construction lanes (SSSS-WWWW), (SSSE-NWWW), (SEEE-NNNW), (EEEE-NNNN) the question is SSEE-NNWW lane ... should we build targets here as well?
+--TODO open kernel glider could need replanning (to wait entire DNA loop) we will see

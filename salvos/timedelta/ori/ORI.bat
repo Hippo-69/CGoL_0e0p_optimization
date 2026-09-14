@@ -1,1 +1,1 @@
-copy eol.txt + pre_ori.txt + eol.txt + move44.txt + move44.txt + move44.txt + move44.txt + move44.txt + move44.txt + move44.txt + move44.txt + move44.txt + oggca5.txt ori.txt
+copy eol.txt + pre_ori.txt + eol.txt + oggca5.txt + eol.txt + mid_ori.txt + eol.txt + oggca6.txt ori.txt

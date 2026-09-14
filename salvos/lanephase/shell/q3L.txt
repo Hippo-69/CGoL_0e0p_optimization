@@ -60,7 +60,7 @@ o196 b211 b216|b219|b220 e213 b221 e219 b211 o232 b278 --
 o274 b289 b294|b297|b298 e291 b299 e297 b289 o310 b356 --
 o352 b367 b372|b375|b376 e369 b377 e375 b367 o388 b425 b418 --
 o426 o439 b451
-e443 w42 I448 --fast pull
+e443 w42 LH448 --fast pull
 b453 b445 o462 o447 b458 b453 b457|b465 b484 -- ? SSSW finish
 -- cleanup (making oriented target at an exact place
 --SWWW build slow2ott90 from SSSS to NNNE (till 4q)

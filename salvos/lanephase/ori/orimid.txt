@@ -1,0 +1,5 @@
+l -- 1397920-1397923   left edge 1397666=142 1397698=174 1397524+X=X
+b13 b13 o10 e3 b-17 b-26 e-23 b-33|b-32|b-31|b-30|b-29|b-28 b0|b2|b3 e12 -- e23 phase to prevent "danger emission"
+S18 -- stop the OGGCA
+TS-32
+----

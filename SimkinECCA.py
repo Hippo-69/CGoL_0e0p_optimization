@@ -823,7 +823,9 @@ class SimkinECCAp2compiler(object):
 
     def convert_to_speboe(self):
         treshold = -1
+        maintd,td="",""
         for phaseswitch in range(2):
+            maintd = td
             if self.cur[phaseswitch] > treshold:
                 names = self.letters2names(self.output[phaseswitch])
                 #TODO we should make 2 letters for it to be able to incorporate the escaping gliders in the code
@@ -831,6 +833,7 @@ class SimkinECCAp2compiler(object):
                 exttd = self.names2exttimedeltas(names) +f" [95%120] 180 204 96 (90){' [2] (90)'*(escapes//2)}{' [4] (90)'*(escapes%2)} [0%2] 91 90 104 121 121 96 99 112 94 102 94 115 231 111 118 91 92 108 129 (90)"
                 td = self.jointimedeltas(exttd)
                 print (f"{phaseswitch}: {td}")
+        return maintd
 
     def compile(self, gliders):
         for x in gliders.split():

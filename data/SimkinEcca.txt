@@ -82,6 +82,10 @@
 [7] 136 155 105 124 164 109 112 90 (90) -- 9;P,0 -- blinkerl-19blockl-27
 [3] 195 128 137 211 96 131 138 120 90 97 123 138 120 90 91 97 138 120 90 97 155 138 120 90 97 171 138 120 90 (90) -- 30;Q,0 -- boato0l-43
 [3] 202 177 128 (90) -- 5;R,0 -- boato3l-12
+[3] 195 102 90 (152)    -- 5;RA,-14 -- R11_glider_from-46
+[3] 201 (167)           -- 4;RB,-9  -- R10_glider_from-45
+[1] 90 109 143 106 (90) -- 4;RC,-11 -- R01_glider_from-45
+[3] 102 90 (90)         -- 3;RD,-4  -- R00_glider_from-46
 [7] 180 204 96 (90) -- 5;S,0 -- stop_simkin
 -- it should be sent correctly as 79 mod 120 (at 18+30K position increasing K by 1 increases number of escaping gliders by 1)
 [0] 91 90 104 121 121 96 99 112 94 102 94 115 235 106 118 90 208 (90) -- 1;T,0 -- remove_stopped_simkin

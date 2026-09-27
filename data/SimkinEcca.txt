@@ -97,6 +97,12 @@
 [5] 151 199 210 181 (148) -- 8;VA,0 -- checkpoint_activation
 -- activation should be 80 mod 120 later than seed (V position should be among 30X+Wposition+{20,22,28,30,32} ... X gliders would escape)
 [5] 144 165 125 115 177 225 90 107 206 156 96 104 (90) -- 15;W,0 -- checkpoint_seed
+[1] (210) -- 2;WB,0 -- wait2
+[3] (330) -- 3;WC,0 -- wait3
+[6] (90) --  0;WD,0 -- remove_checkpoint
+-- should be well synchronized, w* should do it
+[5] 144 165 125 115 177 225 90 107 206 156 96 104 210 151 199 210 181 (148) -- 23;WZ,0 -- checkpoint_activated
+
 [3] 91 166 133 100 140 (97) -- 8;X,0 -- blockl-25
 [3] 101 200 192 90 159 92 134 119 183 100 137 115 (105) -- 15;Y,0 -- ship_blinker180_ots
 [3] 197 194 (90) -- 4;Z,0 -- boato2l-8

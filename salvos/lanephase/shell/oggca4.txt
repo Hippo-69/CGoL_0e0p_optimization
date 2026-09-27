@@ -9,7 +9,7 @@ K130 -- OGGCA cleanup
 o-25 -- * the lane would be used by WW portion
 -- finish at NWWW interrupted by finish at WW part1
 b3 o-5 o-18 b-30
-o-22 w75 GR-24 -- fast pull
+o-22 w15 w15 w15 w15 w15 GR-24 -- fast pull (do not want anchor near the OGGCA, so w75 split)
 -- finish at WW part1 end finish at NWWW continues
 b-10 b-5|b-2|b-1 e-8 b0 e-2 b-10 o11 b57 -- * phase from the start of NWWW
 o53 b68 b73|b76|b77 e70 b78 e76 b68 o89 b135 -- *

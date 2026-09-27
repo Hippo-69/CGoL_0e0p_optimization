@@ -698,7 +698,28 @@ class SimkinECCAp2compiler(object):
             goptions=[]
             for phaseswitch in range(2):
                 for key, value in self.delayed1[phaseswitch].items():
-                    wmove = 'A' * (16-(key%8)) + 'B' + ('A'*30+'B')*(repeat-1) + 'A' * (14+key%8) # requires A = +1, B = [0] (90)
+                    # requires A = +1, B = [0] (90)
+                    checkpoint_min = 25
+                    if repeat >= checkpoint_min:
+                        wz = self.name2l['checkpoint_activated']
+                        wd = self.name2l['remove_checkpoint']
+                        wmove = 'A' * (21-(key%8)) + wz + ('A'*120)*(repeat-checkpoint_min)+'A'*54 + wd + 'A' * (17+key%8)
+                    elif repeat > 2:
+                        w3 = self.name2l['wait3']
+                        w3r = repeat // 3
+                        wmove = 'A' * (19-(key%8)) + w3 + ('A'*30+w3)*(w3r-1)
+                        if repeat - 3*w3r > 1:
+                            w2 = self.name2l['wait2']
+                            wmove += 'A'*28 + w2 + 'A' * (13+key%8)
+                        elif repeat > 3*w3r:
+                            wmove += 'A'*27 + 'B' + 'A' * (14+key%8)
+                        else:
+                            wmove += 'A' * (11+key%8)
+                    elif repeat > 1:
+                        w2 = self.name2l['wait2']
+                        wmove = 'A' * (17-(key%8)) + w2 + 'A' * (13+key%8)
+                    else:
+                        wmove = 'A' * (16-(key%8)) + 'B' + 'A' * (14+key%8)
                     #print(f"wmove {self.pack_letters(wmove)}")
                     ncost = value[1] + 120*repeat
                     ncur = key

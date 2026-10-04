@@ -1,18 +1,110 @@
-l
+		l
 b118 o119 o110 b102 o119 o117 b136 b132 -- * 1q ignition WWWW
-w2039
-o127 o137 o122 o119 b116 b114|b119 b112 b113 b110 b97|b98|b99|b100|b101|b102 b90 b88|b93 b86 b87 b84 b69 -- *
-e70 o58 b64|b75 b73 b70|b75 b77 b76 b79 b87|b88|b89|b90|b91|b92 b99 b96|b101 -- *
-e101 b109 e86 e99 o83 e109 b120|b125 b114 b104|b105|b108 b109 b100 -- *
-o114 o100 e122|e123|e124|o119|o120|o121 o119 b134 b150 b147|b152 b154 b153 b156 b164|b165|b166|b167|b168|b169 b176 b183 -- *
-e174 --phase parity forced kernel opening glider is sent to parent it opens the directed build at d>5q, it arrives to the child cell at d>6
--- opens kernel at 84136000 ... late ... even with state transition encoding meanwhile
+w2034 -- we actually neednot wait here so SSSSKernelOpenningPrepare1 could be shifted to less colliding position if needed
+b131 o121 e128 e122 o115 e121|e122|o119|o120 e123 b91 b83 b75 b66|b67|b70 b66 -- *
+o62 b54|b55|b58|b65 e72 e65 b57 b47 b81 b78|b83 b85 b84 b87 b95|b96|b97|b98|b99|b100 b107 b97|b98|b101 b102 b93 -- *
+o107 e115|e116|e117|o112|o113|o114 o93 o112 b127 b134 b132|b137 b130 b131 b128 b115|b116|b117|b118|b119|b120 b108 b114|b117|b118 b113 b122 -- *
+o108 e98|e99|e100|o101|o102|o103 o122 o103 b88 b81 -- *
+o84 o82 o79 -- * two blocks away from future gliders waiting for the time to build mwws seed, ott to kernel openning and a shell splitter
 w212
 --b-19 b-21|b-16 o-21 o-6 -- done at 0L to prevent collision of o-6
 o-19 o-14 o-18 -- SSWW ott180 built and invoked %
--- adjustable delay
-w0
+-- adjustable delay for a long pull
+WW0
+w515 -- w1
 o-25 -- for ott180 for input lane blocking seed
+-- SSWW building ott180 for kernel openning delay ... ott would be probably shifted on WWWW-SSSS diagonal (w3409 gives us plenty of options ... but lanes > 45 are blocked! (gliders 51  and 63))
 b-30 b-33 b-24 b-10 -- to longboat with better color
-w3446
+b15 b12 -- mwss seed should go temporarily away
+b26 e30 b17|b18|b19|b20|b21 o23 o28 o40 o36|o37|e33 e19 -- *
+w1 o28|o29|e30|e31 b43 -- =
+b34 o30 b39|b40|b41|b42|b43 e37 e32 e20 e23|e24|o27 o41 -- *
+o31|o32|e29|e30 b17 -- =
+b26 e30 b17|b18|b19|b20|b21 o23 o28 o40 o36|o37|e33 e19 -- *
+w1 o28|o29|e30|e31 b43 -- =
+b34 o30 b39|b40|b41|b42|b43 e37 e32 e20 e23|e24|o27 o41 -- *
+o31|o32|e29|e30 b17 -- =
+b26 e30 b17|b18|b19|b20|b21 o23 o28 o40 o36|o37|e33 e19 -- *
+w1 o28|o29|e30|e31 b43 -- =
+b34 o30 b39|b40|b41|b42|b43 e37 e32 e20 e23|e24|o27 o41 -- *
+o31|o32|e29|e30 b17 -- =
+b26 e30 b17|b18|b19|b20|b21 o23 o28 o40 o36|o37|e33 e19 -- *
+w1 o28|o29|e30|e31 b43 -- =
+b34 o30 b39|b40|b41|b42|b43 e37 e32 e20 e23|e24|o27 o41 -- *
+o31|o32|e29|e30 b17 -- =
+b26 e30 b17|b18|b19|b20|b21 o23 o28 o40 o36|o37|e33 e19 -- *
+w1 o28|o29|e30|e31 b43 -- =
+b34 o30 b39|b40|b41|b42|b43 e37 e32 e20 e23|e24|o27 o41 -- *
+o31|o32|e29|e30 b17 -- =
+b26 e30 b17|b18|b19|b20|b21 o23 o28 o40 o36|o37|e33 e19 -- *
+w1 o28|o29|e30|e31 b43 -- =
+b34 o30 b39|b40|b41|b42|b43 e37 e32 e20 e23|e24|o27 o41 -- *
+o31|o32|e29|e30 b17 -- =
+b26 e30 b17|b18|b19|b20|b21 o23 o28 o40 o36|o37|e33 e19 -- *
+w1 o28|o29|e30|e31 b43 -- =
+b34 o30 b39|b40|b41|b42|b43 e37 e32 e20 e23|e24|o27 o41 -- *
+o31|o32|e29|e30 b17 -- =
+b26 e30 b17|b18|b19|b20|b21 o23 o28 o40 o36|o37|e33 e19 -- *
+w1 o28|o29|e30|e31 b43 -- =
+b34 o30 b39|b40|b41|b42|b43 e37 e32 e20 e23|e24|o27 o41 -- *
+o31|o32|e29|e30 b17 -- =
+b26 e30 b17|b18|b19|b20|b21 o23 o28 o40 o36|o37|e33 e19 -- *
+w1 o28|o29|e30|e31 b43 -- =
+b34 o30 b39|b40|b41|b42|b43 e37 e32 e20 e23|e24|o27 o41 -- *
+o31|o32|e29|e30 b17 -- =
+b26 e30 b17|b18|b19|b20|b21 o23 o28 o40 o36|o37|e33 e19 -- *
+w1 o28|o29|e30|e31 b43 -- =
+b34 o30 b39|b40|b41|b42|b43 e37 e32 e20 e23|e24|o27 o41 -- *
+o31|o32|e29|e30 b17 -- =
+b26 e30 b17|b18|b19|b20|b21 o23 o28 o40 o36|o37|e33 e19 -- *
+w1 o28|o29|e30|e31 b43 -- =
+b34 o30 b39|b40|b41|b42|b43 e37 e32 e20 e23|e24|o27 o41 -- *
+o31|o32|e29|e30 b17 -- =
+b26 e30 b17|b18|b19|b20|b21 o23 o28 o40 o36|o37|e33 e19 -- *
+w1 o28|o29|e30|e31 b43 -- =
+b34 o30 b39|b40|b41|b42|b43 e37 e32 e20 e23|e24|o27 o41 -- *
+o31|o32|e29|e30 b17 -- =
+b26 e30 b17|b18|b19|b20|b21 o23 o28 o40 o36|o37|e33 e19 -- *
+w1 o28|o29|e30|e31 b43 -- =
+b34 o30 b39|b40|b41|b42|b43 e37 e32 e20 e23|e24|o27 o41 -- *
+o31|o32|e29|e30 b17 -- =
+b26 e30 b17|b18|b19|b20|b21 o23 o28 o40 o36|o37|e33 e19 -- *
+w1 o28|o29|e30|e31 b43 -- =
+b34 o30 b39|b40|b41|b42|b43 e37 e32 e20 e23|e24|o27 o41 -- *
+o31|o32|e29|e30 b17 -- =
+b26 e30 b17|b18|b19|b20|b21 o23 o28 o40 o36|o37|e33 e19 -- *
+w1 o28|o29|e30|e31 b43 -- =
+b34 o30 b39|b40|b41|b42|b43 e37 e32 e20 e23|e24|o27 o41 -- *
+o31|o32|e29|e30 b17 -- =
+b26 e30 b17|b18|b19|b20|b21 o23 o28 o40 o36|o37|e33 e19 -- *
+w1 o28|o29|e30|e31 b43 -- =
+b34 o30 b39|b40|b41|b42|b43 e37 e32 e20 e23|e24|o27 o41 -- *
+o31|o32|e29|e30 b17 -- =
+b26 e30 b17|b18|b19|b20|b21 o23 o28 o40 o36|o37|e33 e19 -- *
+w1 o28|o29|e30|e31 b43 -- =
+b34 o30 b39|b40|b41|b42|b43 e37 e32 e20 e23|e24|o27 o41 -- *
+o31|o32|e29|e30 b17 -- =
+b26 e30 b17|b18|b19|b20|b21 o23 o28 o40 o36|o37|e33 e19 -- *
+w1 o28|o29|e30|e31 b43 -- =
+b34 o30 b39|b40|b41|b42|b43 e37 e32 e20 e23|e24|o27 o41 -- *
+o31|o32|e29|e30 b17 -- =
+b26 e30 b17|b18|b19|b20|b21 o23 o28 o40 o36|o37|e33 e19 -- *
+w1 o28|o29|e30|e31 b43 -- =
+b34 o30 b39|b40|b41|b42|b43 e37 e32 e20 e23|e24|o27 o41 -- *
+o31|o32|e29|e30 b17 -- =
+b26 e30 b17|b18|b19|b20|b21 o23 o28 o40 o36|o37|e33 e19 -- *
+w1 o28|o29|e30|e31 b43 -- =
+b34 o30 b39|b40|b41|b42|b43 e37 e32 e20 e23|e24|o27 o41 -- *
+o31|o32|e29|e30 b17 -- =
+b26 e30 b17|b18|b19|b20|b21 o23 o28 o40 o36|o37|e33 e19 -- *
+w1 o28|o29|e30|e31 b43 -- =
+b34 o30 b39|b40|b41|b42|b43 e37 e32 e20 e23|e24|o27 o41 -- *
+o31|o32|e29|e30 b17 -- =
+b13 e12 b7 e21 o21 o20 b12 -- *
+e19 o31|o32|e29|e30 e36 o20 o8 o12 b33|b34|b35|b36|b37|b38 -- * restore mwss seed
+b35 b32|b37 e37 o37 e41 b36 -- =
+o33 e32|e33|o36|o37 o23 e28 o38 -- *
+e44 e37
+-- SSWW ott180 not finished, e37 delayed for timing reasons ...
+w1523
 -- q1L end

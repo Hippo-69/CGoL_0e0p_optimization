@@ -3,17 +3,19 @@ o90 -- 2q SWWW build start
 -- split and build ott on one version ... the other version is base of SWWW
 b77 -- split for construction/ott
 b80 b73 -- slow2 ott90 from SSSW to WW created
---164-187 blocked at SSSS
+-- 164-187 blocked at SSSS ... not after change of kernel openning strategy
 b111 b100 b105|b106|b107|b108|b109|b110 b134 b141 b135 e133 e158|e159 o155 -- *
-b179 -- SSSS 164-177 remain blocked
+-- b179 -- SSSS 164-177 remain blocked
 b185 o181 b196 b201|b204|b205 e198 b206 e204 b196 o217 -- *
 b263 o259 b274 b279|b282|b283 e276 b284 e282 b274 o295 -- *
 b341 o337 b352 b357|b360|b361 e354 b362 e360 b352 o373 -- *
 b419 o415 b430 b435|b438|b439 e432 b440 e438 b430 o451 -- *
 b497 o493 b508 b513|b516|b517 e510 b518 e516 b508 o529 -- *
 b575 e575 o577 
-w2 o-3 -- 2q SSSW build start
-b28|b29|b30|b31|b32|b33 --b33 -- shift 0.2q construction (future input lane blocking delay ott180) is obsolete, but required for o-3 timing :( ... now it destroys SSWW block 
+w5 o-3 -- 2q SSSW build start
+e37 -- interruption ... end of SSWW for o-3 timing
+--b28|b29|b30|b31|b32|b33 --b33 -- shift 0.2q construction (future input lane blocking delay ott180) is obsolete, but required for o-3 timing :( ... now it destroys 
+-- SSSW construction continues
 b-8 o0 b5 o7 e16 -- *
 b32 e28 e30 o21 o21 e30 o15 -- *
 b13 b20 -- splitter SSWW,SSSS to SS created and hit (a target remains)
@@ -33,7 +35,6 @@ o32 e31 b27 -- *
 o30 o42 e39 o31 e31 o28 o36 e27|e28|o31|o32 e32 e44 b44 o37 o30 o34 e34 b37 -- =
 b70|b71|b72|b73|b74|b75 o71 o80 o80 o77 b107|b110|b111 o81 b71|b72|b75|b82 e70|o71|o72|o73 -- * 2309062
 -- splitter to NN would not block slow2 building of SS (52-60 lanes reserve) slow ott's (unless we shift slow^2 ott on SWWW to SW)
-
 --SSSW o=3q, d=2q build SS,SSSS to SSSE splitter ... slow salvo to SS precedes the ignition (till 3q), build SS,SWWW to WW splitter (till 3q), build slow2ott90 from SSSS to NWWW (till 4q) 
 --SSWW o=4q, d=2q (mwss seed is hit from SSSW mwss goes to SS, SSWW site remains empty?)
 o577 b597 b574|b575|b578|b585 o612|o613|o614|e609|e610|e611 -- *

@@ -38,5 +38,6 @@ J768 -- block -43->-51
 l b772 b770|b775 e770 o759 e780 --
 J944 -- block -43->-77
 b957 b954|b959 b961 b960 b963 b971|b972|b973|b974|b975|b976 b983 b972 b977|b978|b979|b980|b981|b982 b1007
+BB950 -- open kernel 
 O932 -- beehive pond SoD
---TODO open kernel glider could need replanning (to wait entire DNA loop) we will see
+-- final comment

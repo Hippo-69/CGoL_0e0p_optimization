@@ -1,14 +1,16 @@
 LH42 -- should wait the SSWW SSSS EEEE reflection original L emissions does not work
+LK53 -- should wait both for the SSWW SSSS EEEE reflection as well as for b42
 --SSSS o=4q, d=4q (glider reaching SSWW to EEEE ott)
 --EEEE o=8q, d=4q slow^2 reflectors to NNNE, and NEEE created 
 --SSSS o=4q, d=4q splitter SSSW,EEEE to NEEE activated
 --SSSS            splitter SWWW,EEEE to NNNE activated               
-w82
+w23 w27
+l t22 b27 b19 b16 b34 b20 b26 -- boat ott SSSW through SSSS to SSSE
 b-24 -- input lane stop invocation better color
 R-24 -- input lane stop ott
 --SSSS            (glider reaching SSWW to NNNN mwss seed)
 r e42 -- should wait the SSWW SSSS NNNN reflection (seed activation)
-l t22 b27 b19 b16 b34 b20 b26 -- boat ott SSSW through SSSS to SSSE
+U54 -- ott EEEE->SSSS->>SSWW then ott180 >> SSSS ott >> kernel
 B32 -- SoD near input lane last SSSS part
 --e-21 -- input lane stop invocation worse color
 C20 -- Simkin OGGCA destroyal

@@ -43,6 +43,6 @@ D866 -- input blocking eater seed
 E676 -- input blocking seed activation ott
 L658 -- another input blocking seed activation ott
 WB550 -- get space for long wait (w2)
-w3337 --w3432 --w3650 -- ori block trasformation at q3L compensation
+w3295 -- 
 --SSSS o=d~3.9q   (sync targeted glider from WWSS) build 180ott SSSS to SSSS "part" of the future "input lane blocking seed"
 -- q3.9L end

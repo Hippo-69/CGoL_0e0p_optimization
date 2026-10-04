@@ -11,20 +11,20 @@ e8 o-6 o9 b9 -- *
 o-3 e0 -- *
 o-2 o-7 b-7 b-11 b-2 -- *
 o-1 e2 e-11 b-13 b-4 -- *
-o81 -- split to WW invoked
+o81 -- split to WW invoked (continues as 82 to SWWW)
 b90 b90|b91 b96 o84 e100 -- * boat 5_15_-27 SSSW through NWWW to NNNE
 e-8 e-1|e0|o3|o4 o-13 b7 b6 b-2 b7 -- = 6th +17
 e8 o11 o-6 e5 b-8 b-15 -- *
 e-6 -- * 7th -9 -- phase of the last glider s important for future
 o-5 e-2 e-3 o-5 b-4 b-13 b-4 -- * 8th -16
 e-3 e-11|e-10|o-15|o-14 e-15 e-2 b-12 b-3 -- * 9th -7
-o28 -- splitter to NWWW invoked cleanup at WWWW should follow
+o28 -- splitter to NWWW invoked cleanup at WWWW should follow (continues as 29 to WWWW)
 o28 e29|e30|e31|o27|o28 -- * WWWW cleanup part1
 b36 -- split to SSSE invoked blocks 28 (22-34)
 b39 b40|b47 -- WWWW cleanup part2
--- Slow^3 % b-4 % b-6|b-1 % b1 % b0 % b3 % (b11|b12|b13|b14|b15|b16) at SSSE using SS (slow 2 using SSSW) ... translated to slow^2
--- Slow^2 % (b54) b13|b20 % b0 % b6 % b-2 % b-8 % b1 % e-3 o6 % b12 % b-15 % b-6 % b-4|b3 % b-12 % b-21 % b-12 % e-11 o-15 %
--- b-15 % b-24 % b-15 % e-19 o-10 % b-4 % b-31 % b-22 % b-28 % b-36 % b-46 % b-37
+-- Slow^3 b-4 b-6|b-1 b1 b0 b3 % (b11|b12|b13|b14|b15|b16) at SSSE using SS (slow 2 using SSSW) ... translated to slow^2
+-- Slow^2 % (b54) b13|b20 b0 b6 b-2 b-8 b1 % e-3 o6 b12 b-15 b-6 b-4|b3 b-12 b-21 b-12 % e-11 o-15 %
+-- b-15 b-24 b-15 % e-19 o-10 b-4 b-31 b-22 b-28 b-36 b-46 b-37
 -- 6_34_6(4),6_20_8(12),3_-6_-6,4_8_6,3_6_-16,4_-9_17,
 -- 4_4_-16(4,10,12,16),5_-9_3,3_-6_6,6_27_-11(),4_-9_17,
 -- 2_-2_-6,4_8_2(0,-2,-6,-8),4_9_5(3,11),4_-9_-17,3_-1_3
@@ -53,21 +53,26 @@ o-1 o2 b2 b-2 b7 b-4 -- *
 e-7 o11 o-1 b8 b9 b3 b12 -- *
 e13 o-1 o5 b-7 b-14 b-5 -- *
 b-2 b-3 b5 b12 -- boat 5_16_-8 ott SSSW to NEEE 
-b-8 b-6 b-12 b-7 b-12|b-8|b-7 b9 b8 b7 b6 b5 b4 b13 b2 b7|b8|b9|b10|b11|b12 b12 b11 b13 b36 b38 o36 e40 b37 b42 b35 b40|b41|b42|b43|b44 b70 b70 --
-o73 e80 e97 e95 e111 b118 b107 b120 b121 --
-o133 o136 o143 o136 o157 b145|b146|b147|b148|b149|b150 b200 --
-o196 b211 b216|b219|b220 e213 b221 e219 b211 o232 b278 --
-o274 b289 b294|b297|b298 e291 b299 e297 b289 o310 b356 --
-o352 b367 b372|b375|b376 e369 b377 e375 b367 o388 b425 b418 --
+b-8 b-6 b-12 b-7 b-12|b-8|b-7 b9 b8 b7 b6 b5 b4 b13 b2 b7|b8|b9|b10|b11|b12 b12 b11 b13 b36 b38 o36 e40 b37 b42 b35 b40|b41|b42|b43|b44 b70 b70 -- *
+e73 o80 o97 o95 o111 b118 b107 b120 b121 -- *
+o133 o136 o143 o136 o157 b145|b146|b147|b148|b149|b150 b200 -- *
+e196 b211 b216|b219|b220 o213 b221 o219 b211 e232 b278 -- *
+e274 b289 b294|b297|b298 o291 b299 o297 b289 e310 b356 -- *
+e352 b367 b372|b375|b376 o369 b377 o375 b367 e388 b425 b418 -- *
 o426 o439 b451
 e443 w42 LH448 --fast pull
-b453 b445 o462 o447 b458 b453 b457|b465 b484 -- ? SSSW finish
+b453 b445 o462 o447 b458 b453 b457|b465 b484 -- * SSSW finish
 -- cleanup (making oriented target at an exact place
 --SWWW build slow2ott90 from SSSS to NNNE (till 4q)
 --NWWW o=8q, d=3q target created (SSSW through WWWW and SS)
-b174 b164 b157 b160 b152 o164 o157 e158 e128 e122 -- * 2367502 other parity collides with the longboat
-b114 b112|b117 b110 b111 b108 b95|b96|b97|b98|b99|b100 b88 o93 b96|b103|b106|b107 e78|o69 -- *
-b65 b66 b76 b41 b47|b50|b51 o44 e48 -- *
-b44 o21 b28 o32 e33|e34|e35|o36|o37|o38 b18 -- * mwss seed SSSW through SSSS to SS
+--SSSS start
+b62 b72 b38 b46 e34 o37 -- *
+e35 o21 o30 o15 o12 b18 -- *
+o14 e11|e12|o7|o8 e10 o12 e-2 b25 -- *
+e21 o9 b4 b8 b9|b14 b21 b18 -- =
+o13 e26 o32 e33|e34|e35|o36|o37|o38 b69 -- *
+o72 o70 o67 b40 b40 b38|b43 b36 b18 b27 -- *
+e39 e36|e43 o26|o27|e22|e23 o34 e40 b43 -- = mwss seed SSSW through SSSS to SS and ott for kernel openning SSWW -> SSSS -> parent kernel openning
+--SSSS end
 -- q3L end
 --WWWW d=4q cleanup of slow ott's

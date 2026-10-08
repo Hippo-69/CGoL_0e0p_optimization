@@ -69,12 +69,14 @@
 [3] 96 92 147 (90)    -- 4;LG,-15 -- L11_glider_from-53
 [3] 198 105 (90)      -- 3;LH,10 -- L00_glider_nearSnark
 [3] 96 91 91 96 (321) -- 6;LI,34 -- L01_glider_nearestSnark
-[1] 100 137 115 (105) -- 4;LJ,-7 -- L10_glider_from-43
+[1] 100 137 115 (105) -- 4;LJ,-7 -- L10_glider442=2%8_from-43
 [5] 138 125 (90)      -- 3;LK,-1 -- L11_glider_fast
 [1] 108 109 109 152 144 (241) -- 8;LL,22 -- L00_glider_nearestSnark
 [3] 207 199 100 127 (192) -- 8;LN,29 -- L10_glider_nearestSnark
 [1] 92 163 (150)      -- 4;LO,-5 -- L11_glider_fastnearSnark
+[5] 144 132 107 (90)  -- 4;LR,3 -- L10_glider384=0%8
 [1] 93 92 229 91 (141)       -- 5;LS,23 -- L11_glider_nearerSnark
+[7] 162 110 195 (90)  -- 4;LV,27 -- L10_glider340=4%8
 [1] 90 109 240 109 166 (90)  -- 7;LW,25 -- L11_glider_nearestSnark
 [3] 111 230 226 115 138 91 (132) -- 10;M,0 -- block_l_31
 [3] 225 152 159 226 171 285 142 222 108 92 (90) -- 15;N,0 -- near_arm_subrecipe

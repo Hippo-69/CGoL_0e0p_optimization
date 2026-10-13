@@ -174,40 +174,134 @@ b713 b722|b723|b724|b725|b726|b727 o741 e731 o730 b737|b738|b739|b740|b741 o746 
 K726 -- claenup around the SimkinGun
 w834
 -- q0.5R end 1049008
-l
+		l
 b118 o119 o110 b102 o119 o117 b136 b132 -- * 1q ignition WWWW
-w2039
-o127 o137 o122 o119 b116 b114|b119 b112 b113 b110 b97|b98|b99|b100|b101|b102 b90 b88|b93 b86 b87 b84 b69 -- *
-e70 o58 b64|b75 b73 b70|b75 b77 b76 b79 b87|b88|b89|b90|b91|b92 b99 b96|b101 -- *
-e101 b109 e86 e99 o83 e109 b120|b125 b114 b104|b105|b108 b109 b100 -- *
-o114 o100 e122|e123|e124|o119|o120|o121 o119 b134 b150 b147|b152 b154 b153 b156 b164|b165|b166|b167|b168|b169 b176 b183 -- *
-e174 --phase parity forced kernel opening glider is sent to parent it opens the directed build at d>5q, it arrives to the child cell at d>6
--- opens kernel at 84136000 ... late ... even with state transition encoding meanwhile
+w2034 -- we actually neednot wait here so SSSSKernelOpenningPrepare1 could be shifted to less colliding position if needed
+b131 o121 e128 e122 o115 e121|e122|o119|o120 e123 b91 b83 b75 b66|b67|b70 b66 -- *
+o62 b54|b55|b58|b65 e72 e65 b57 b47 b81 b78|b83 b85 b84 b87 b95|b96|b97|b98|b99|b100 b107 b97|b98|b101 b102 b93 -- *
+o107 e115|e116|e117|o112|o113|o114 o93 o112 b127 b134 b132|b137 b130 b131 b128 b115|b116|b117|b118|b119|b120 b108 b114|b117|b118 b113 b122 -- *
+o108 e98|e99|e100|o101|o102|o103 o122 o103 b88 b81 -- *
+o84 o82 o79 -- * two blocks away from future gliders waiting for the time to build mwws seed, ott to kernel openning and a shell splitter
 w212
 --b-19 b-21|b-16 o-21 o-6 -- done at 0L to prevent collision of o-6
 o-19 o-14 o-18 -- SSWW ott180 built and invoked %
--- adjustable delay
-w0
+-- adjustable delay for a long pull
+WW0
+w515 -- w1
 o-25 -- for ott180 for input lane blocking seed
+-- SSWW building ott180 for kernel openning delay ... ott would be probably shifted on WWWW-SSSS diagonal (w3409 gives us plenty of options ... but lanes > 45 are blocked! (gliders 51  and 63))
 b-30 b-33 b-24 b-10 -- to longboat with better color
-w3446
+b15 b12 -- mwss seed should go temporarily away
+b26 e30 b17|b18|b19|b20|b21 o23 o28 o40 o36|o37|e33 e19 -- *
+w1 o28|o29|e30|e31 b43 -- =
+b34 o30 b39|b40|b41|b42|b43 e37 e32 e20 e23|e24|o27 o41 -- *
+o31|o32|e29|e30 b17 -- =
+b26 e30 b17|b18|b19|b20|b21 o23 o28 o40 o36|o37|e33 e19 -- *
+w1 o28|o29|e30|e31 b43 -- =
+b34 o30 b39|b40|b41|b42|b43 e37 e32 e20 e23|e24|o27 o41 -- *
+o31|o32|e29|e30 b17 -- =
+b26 e30 b17|b18|b19|b20|b21 o23 o28 o40 o36|o37|e33 e19 -- *
+w1 o28|o29|e30|e31 b43 -- =
+b34 o30 b39|b40|b41|b42|b43 e37 e32 e20 e23|e24|o27 o41 -- *
+o31|o32|e29|e30 b17 -- =
+b26 e30 b17|b18|b19|b20|b21 o23 o28 o40 o36|o37|e33 e19 -- *
+w1 o28|o29|e30|e31 b43 -- =
+b34 o30 b39|b40|b41|b42|b43 e37 e32 e20 e23|e24|o27 o41 -- *
+o31|o32|e29|e30 b17 -- =
+b26 e30 b17|b18|b19|b20|b21 o23 o28 o40 o36|o37|e33 e19 -- *
+w1 o28|o29|e30|e31 b43 -- =
+b34 o30 b39|b40|b41|b42|b43 e37 e32 e20 e23|e24|o27 o41 -- *
+o31|o32|e29|e30 b17 -- =
+b26 e30 b17|b18|b19|b20|b21 o23 o28 o40 o36|o37|e33 e19 -- *
+w1 o28|o29|e30|e31 b43 -- =
+b34 o30 b39|b40|b41|b42|b43 e37 e32 e20 e23|e24|o27 o41 -- *
+o31|o32|e29|e30 b17 -- =
+b26 e30 b17|b18|b19|b20|b21 o23 o28 o40 o36|o37|e33 e19 -- *
+w1 o28|o29|e30|e31 b43 -- =
+b34 o30 b39|b40|b41|b42|b43 e37 e32 e20 e23|e24|o27 o41 -- *
+o31|o32|e29|e30 b17 -- =
+b26 e30 b17|b18|b19|b20|b21 o23 o28 o40 o36|o37|e33 e19 -- *
+w1 o28|o29|e30|e31 b43 -- =
+b34 o30 b39|b40|b41|b42|b43 e37 e32 e20 e23|e24|o27 o41 -- *
+o31|o32|e29|e30 b17 -- =
+b26 e30 b17|b18|b19|b20|b21 o23 o28 o40 o36|o37|e33 e19 -- *
+w1 o28|o29|e30|e31 b43 -- =
+b34 o30 b39|b40|b41|b42|b43 e37 e32 e20 e23|e24|o27 o41 -- *
+o31|o32|e29|e30 b17 -- =
+b26 e30 b17|b18|b19|b20|b21 o23 o28 o40 o36|o37|e33 e19 -- *
+w1 o28|o29|e30|e31 b43 -- =
+b34 o30 b39|b40|b41|b42|b43 e37 e32 e20 e23|e24|o27 o41 -- *
+o31|o32|e29|e30 b17 -- =
+b26 e30 b17|b18|b19|b20|b21 o23 o28 o40 o36|o37|e33 e19 -- *
+w1 o28|o29|e30|e31 b43 -- =
+b34 o30 b39|b40|b41|b42|b43 e37 e32 e20 e23|e24|o27 o41 -- *
+o31|o32|e29|e30 b17 -- =
+b26 e30 b17|b18|b19|b20|b21 o23 o28 o40 o36|o37|e33 e19 -- *
+w1 o28|o29|e30|e31 b43 -- =
+b34 o30 b39|b40|b41|b42|b43 e37 e32 e20 e23|e24|o27 o41 -- *
+o31|o32|e29|e30 b17 -- =
+b26 e30 b17|b18|b19|b20|b21 o23 o28 o40 o36|o37|e33 e19 -- *
+w1 o28|o29|e30|e31 b43 -- =
+b34 o30 b39|b40|b41|b42|b43 e37 e32 e20 e23|e24|o27 o41 -- *
+o31|o32|e29|e30 b17 -- =
+b26 e30 b17|b18|b19|b20|b21 o23 o28 o40 o36|o37|e33 e19 -- *
+w1 o28|o29|e30|e31 b43 -- =
+b34 o30 b39|b40|b41|b42|b43 e37 e32 e20 e23|e24|o27 o41 -- *
+o31|o32|e29|e30 b17 -- =
+b26 e30 b17|b18|b19|b20|b21 o23 o28 o40 o36|o37|e33 e19 -- *
+w1 o28|o29|e30|e31 b43 -- =
+b34 o30 b39|b40|b41|b42|b43 e37 e32 e20 e23|e24|o27 o41 -- *
+o31|o32|e29|e30 b17 -- =
+b26 e30 b17|b18|b19|b20|b21 o23 o28 o40 o36|o37|e33 e19 -- *
+w1 o28|o29|e30|e31 b43 -- =
+b34 o30 b39|b40|b41|b42|b43 e37 e32 e20 e23|e24|o27 o41 -- *
+o31|o32|e29|e30 b17 -- =
+b26 e30 b17|b18|b19|b20|b21 o23 o28 o40 o36|o37|e33 e19 -- *
+w1 o28|o29|e30|e31 b43 -- =
+b34 o30 b39|b40|b41|b42|b43 e37 e32 e20 e23|e24|o27 o41 -- *
+o31|o32|e29|e30 b17 -- =
+b26 e30 b17|b18|b19|b20|b21 o23 o28 o40 o36|o37|e33 e19 -- *
+w1 o28|o29|e30|e31 b43 -- =
+b34 o30 b39|b40|b41|b42|b43 e37 e32 e20 e23|e24|o27 o41 -- *
+o31|o32|e29|e30 b17 -- =
+b26 e30 b17|b18|b19|b20|b21 o23 o28 o40 o36|o37|e33 e19 -- *
+w1 o28|o29|e30|e31 b43 -- =
+b34 o30 b39|b40|b41|b42|b43 e37 e32 e20 e23|e24|o27 o41 -- *
+o31|o32|e29|e30 b17 -- =
+b26 e30 b17|b18|b19|b20|b21 o23 o28 o40 o36|o37|e33 e19 -- *
+w1 o28|o29|e30|e31 b43 -- =
+b34 o30 b39|b40|b41|b42|b43 e37 e32 e20 e23|e24|o27 o41 -- *
+o31|o32|e29|e30 b17 -- =
+b26 e30 b17|b18|b19|b20|b21 o23 o28 o40 o36|o37|e33 e19 -- *
+w1 o28|o29|e30|e31 b43 -- =
+b34 o30 b39|b40|b41|b42|b43 e37 e32 e20 e23|e24|o27 o41 -- *
+o31|o32|e29|e30 b17 -- =
+b13 e12 b7 e21 o21 o20 b12 -- *
+e19 o31|o32|e29|e30 e36 o20 o8 o12 b33|b34|b35|b36|b37|b38 -- * restore mwss seed
+b35 b32|b37 e37 o37 e41 b36 -- =
+o33 e32|e33|o36|o37 o23 e28 o38 -- *
+e44 e37
+-- SSWW ott180 not finished, e37 delayed for timing reasons ...
+w1523
 -- q1L end
 l
 o90 -- 2q SWWW build start
 -- split and build ott on one version ... the other version is base of SWWW
 b77 -- split for construction/ott
 b80 b73 -- slow2 ott90 from SSSW to WW created
---164-187 blocked at SSSS
+-- 164-187 blocked at SSSS ... not after change of kernel openning strategy
 b111 b100 b105|b106|b107|b108|b109|b110 b134 b141 b135 e133 e158|e159 o155 -- *
-b179 -- SSSS 164-177 remain blocked
+-- b179 -- SSSS 164-177 remain blocked
 b185 o181 b196 b201|b204|b205 e198 b206 e204 b196 o217 -- *
 b263 o259 b274 b279|b282|b283 e276 b284 e282 b274 o295 -- *
 b341 o337 b352 b357|b360|b361 e354 b362 e360 b352 o373 -- *
 b419 o415 b430 b435|b438|b439 e432 b440 e438 b430 o451 -- *
 b497 o493 b508 b513|b516|b517 e510 b518 e516 b508 o529 -- *
 b575 e575 o577 
-w2 o-3 -- 2q SSSW build start
-b28|b29|b30|b31|b32|b33 --b33 -- shift 0.2q construction (future input lane blocking delay ott180) is obsolete, but required for o-3 timing :( ... now it destroys SSWW block 
+w5 o-3 -- 2q SSSW build start
+e37 -- interruption ... end of SSWW for o-3 timing
+--b28|b29|b30|b31|b32|b33 --b33 -- shift 0.2q construction (future input lane blocking delay ott180) is obsolete, but required for o-3 timing :( ... now it destroys 
+-- SSSW construction continues
 b-8 o0 b5 o7 e16 -- *
 b32 e28 e30 o21 o21 e30 o15 -- *
 b13 b20 -- splitter SSWW,SSSS to SS created and hit (a target remains)
@@ -227,7 +321,6 @@ o32 e31 b27 -- *
 o30 o42 e39 o31 e31 o28 o36 e27|e28|o31|o32 e32 e44 b44 o37 o30 o34 e34 b37 -- =
 b70|b71|b72|b73|b74|b75 o71 o80 o80 o77 b107|b110|b111 o81 b71|b72|b75|b82 e70|o71|o72|o73 -- * 2309062
 -- splitter to NN would not block slow2 building of SS (52-60 lanes reserve) slow ott's (unless we shift slow^2 ott on SWWW to SW)
-
 --SSSW o=3q, d=2q build SS,SSSS to SSSE splitter ... slow salvo to SS precedes the ignition (till 3q), build SS,SWWW to WW splitter (till 3q), build slow2ott90 from SSSS to NWWW (till 4q) 
 --SSWW o=4q, d=2q (mwss seed is hit from SSSW mwss goes to SS, SSWW site remains empty?)
 o577 b597 b574|b575|b578|b585 o612|o613|o614|e609|e610|e611 -- *
@@ -312,20 +405,20 @@ e8 o-6 o9 b9 -- *
 o-3 e0 -- *
 o-2 o-7 b-7 b-11 b-2 -- *
 o-1 e2 e-11 b-13 b-4 -- *
-o81 -- split to WW invoked
+o81 -- split to WW invoked (continues as 82 to SWWW)
 b90 b90|b91 b96 o84 e100 -- * boat 5_15_-27 SSSW through NWWW to NNNE
 e-8 e-1|e0|o3|o4 o-13 b7 b6 b-2 b7 -- = 6th +17
 e8 o11 o-6 e5 b-8 b-15 -- *
 e-6 -- * 7th -9 -- phase of the last glider s important for future
 o-5 e-2 e-3 o-5 b-4 b-13 b-4 -- * 8th -16
 e-3 e-11|e-10|o-15|o-14 e-15 e-2 b-12 b-3 -- * 9th -7
-o28 -- splitter to NWWW invoked cleanup at WWWW should follow
+o28 -- splitter to NWWW invoked cleanup at WWWW should follow (continues as 29 to WWWW)
 o28 e29|e30|e31|o27|o28 -- * WWWW cleanup part1
 b36 -- split to SSSE invoked blocks 28 (22-34)
 b39 b40|b47 -- WWWW cleanup part2
--- Slow^3 % b-4 % b-6|b-1 % b1 % b0 % b3 % (b11|b12|b13|b14|b15|b16) at SSSE using SS (slow 2 using SSSW) ... translated to slow^2
--- Slow^2 % (b54) b13|b20 % b0 % b6 % b-2 % b-8 % b1 % e-3 o6 % b12 % b-15 % b-6 % b-4|b3 % b-12 % b-21 % b-12 % e-11 o-15 %
--- b-15 % b-24 % b-15 % e-19 o-10 % b-4 % b-31 % b-22 % b-28 % b-36 % b-46 % b-37
+-- Slow^3 b-4 b-6|b-1 b1 b0 b3 % (b11|b12|b13|b14|b15|b16) at SSSE using SS (slow 2 using SSSW) ... translated to slow^2
+-- Slow^2 % (b54) b13|b20 b0 b6 b-2 b-8 b1 % e-3 o6 b12 b-15 b-6 b-4|b3 b-12 b-21 b-12 % e-11 o-15 %
+-- b-15 b-24 b-15 % e-19 o-10 b-4 b-31 b-22 b-28 b-36 b-46 b-37
 -- 6_34_6(4),6_20_8(12),3_-6_-6,4_8_6,3_6_-16,4_-9_17,
 -- 4_4_-16(4,10,12,16),5_-9_3,3_-6_6,6_27_-11(),4_-9_17,
 -- 2_-2_-6,4_8_2(0,-2,-6,-8),4_9_5(3,11),4_-9_-17,3_-1_3
@@ -354,22 +447,27 @@ o-1 o2 b2 b-2 b7 b-4 -- *
 e-7 o11 o-1 b8 b9 b3 b12 -- *
 e13 o-1 o5 b-7 b-14 b-5 -- *
 b-2 b-3 b5 b12 -- boat 5_16_-8 ott SSSW to NEEE 
-b-8 b-6 b-12 b-7 b-12|b-8|b-7 b9 b8 b7 b6 b5 b4 b13 b2 b7|b8|b9|b10|b11|b12 b12 b11 b13 b36 b38 o36 e40 b37 b42 b35 b40|b41|b42|b43|b44 b70 b70 --
-o73 e80 e97 e95 e111 b118 b107 b120 b121 --
-o133 o136 o143 o136 o157 b145|b146|b147|b148|b149|b150 b200 --
-o196 b211 b216|b219|b220 e213 b221 e219 b211 o232 b278 --
-o274 b289 b294|b297|b298 e291 b299 e297 b289 o310 b356 --
-o352 b367 b372|b375|b376 e369 b377 e375 b367 o388 b425 b418 --
+b-8 b-6 b-12 b-7 b-12|b-8|b-7 b9 b8 b7 b6 b5 b4 b13 b2 b7|b8|b9|b10|b11|b12 b12 b11 b13 b36 b38 o36 e40 b37 b42 b35 b40|b41|b42|b43|b44 b70 b70 -- *
+e73 o80 o97 o95 o111 b118 b107 b120 b121 -- *
+o133 o136 o143 o136 o157 b145|b146|b147|b148|b149|b150 b200 -- *
+e196 b211 b216|b219|b220 o213 b221 o219 b211 e232 b278 -- *
+e274 b289 b294|b297|b298 o291 b299 o297 b289 e310 b356 -- *
+e352 b367 b372|b375|b376 o369 b377 o375 b367 e388 b425 b418 -- *
 o426 o439 b451
 e443 w42 LH448 --fast pull
-b453 b445 o462 o447 b458 b453 b457|b465 b484 -- ? SSSW finish
+b453 b445 o462 o447 b458 b453 b457|b465 b484 -- * SSSW finish
 -- cleanup (making oriented target at an exact place
 --SWWW build slow2ott90 from SSSS to NNNE (till 4q)
 --NWWW o=8q, d=3q target created (SSSW through WWWW and SS)
-b174 b164 b157 b160 b152 o164 o157 e158 e128 e122 -- * 2367502 other parity collides with the longboat
-b114 b112|b117 b110 b111 b108 b95|b96|b97|b98|b99|b100 b88 o93 b96|b103|b106|b107 e78|o69 -- *
-b65 b66 b76 b41 b47|b50|b51 o44 e48 -- *
-b44 o21 b28 o32 e33|e34|e35|o36|o37|o38 b18 -- * mwss seed SSSW through SSSS to SS
+--SSSS start
+b62 b72 b38 b46 e34 o37 -- *
+e35 o21 o30 o15 o12 b18 -- *
+o14 e11|e12|o7|o8 e10 o12 e-2 b25 -- *
+e21 o9 b4 b8 b9|b14 b21 b18 -- =
+o13 e26 o32 e33|e34|e35|o36|o37|o38 b69 -- *
+o72 o70 o67 b40 b40 b38|b43 b36 b18 b27 -- *
+e39 e36|e43 o26|o27|e22|e23 o34 e40 b43 -- = mwss seed SSSW through SSSS to SS and ott for kernel openning SSWW -> SSSS -> parent kernel openning
+--SSSS end
 -- q3L end
 --WWWW d=4q cleanup of slow ott's
 l
@@ -417,20 +515,22 @@ D866 -- input blocking eater seed
 E676 -- input blocking seed activation ott
 L658 -- another input blocking seed activation ott
 WB550 -- get space for long wait (w2)
-w3337 --w3432 --w3650 -- ori block trasformation at q3L compensation
+w3295 -- 
 --SSSS o=d~3.9q   (sync targeted glider from WWSS) build 180ott SSSS to SSSS "part" of the future "input lane blocking seed"
 -- q3.9L end
 LH42 -- should wait the SSWW SSSS EEEE reflection original L emissions does not work
+LK53 -- should wait both for the SSWW SSSS EEEE reflection as well as for b42
 --SSSS o=4q, d=4q (glider reaching SSWW to EEEE ott)
 --EEEE o=8q, d=4q slow^2 reflectors to NNNE, and NEEE created 
 --SSSS o=4q, d=4q splitter SSSW,EEEE to NEEE activated
 --SSSS            splitter SWWW,EEEE to NNNE activated               
-w82
+w23 w27
+l t22 b27 b19 b16 b34 b20 b26 -- boat ott SSSW through SSSS to SSSE
 b-24 -- input lane stop invocation better color
 R-24 -- input lane stop ott
 --SSSS            (glider reaching SSWW to NNNN mwss seed)
 r e42 -- should wait the SSWW SSSS NNNN reflection (seed activation)
-l t22 b27 b19 b16 b34 b20 b26 -- boat ott SSSW through SSSS to SSSE
+U54 -- ott EEEE->SSSS->>SSWW then ott180 >> SSSS ott >> kernel
 B32 -- SoD near input lane last SSSS part
 --e-21 -- input lane stop invocation worse color
 C20 -- Simkin OGGCA destroyal

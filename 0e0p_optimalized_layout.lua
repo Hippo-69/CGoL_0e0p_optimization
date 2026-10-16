@@ -33,7 +33,7 @@ local quadsize = 2^(DNAFDlog-3)--5*DNAloopOctavoDist --4096 -- to be callculated
 local halfsize = 2*quadsize
 local DNA_outershell_dist = 400
 local innerquadsize = 2*DNAloopOctavoDist + DNA_outershell_dist -- to be choosen
-local DNA_loop_shrink=6
+local DNA_loop_shrink = 6
 local shell_lane0_dist = 48      -- 64 to be decided
 local shell_lane_dist = 36       -- 64 to be decided
 local shell_last_extra_dist = 28--28 -- 0 -- to be decided
@@ -83,6 +83,7 @@ local shell_comment_glider_state=64
 local construction_target_state=31
 local ori_construction_target_state=32
 local pseudo_state=101 -- not to be built ... mimicks construction process
+local fake_kernell_openning_state=0
 
 local function finalstates()
     build_child_shell_state=29
@@ -202,6 +203,17 @@ local function planstates()
     construction_target_state=30
     ori_construction_target_state=32
     pseudo_state=100 -- not to be built ... mimicks construction process
+end
+
+local function shelldonestates()
+    planstates()
+    shell_entrance_state=27
+    shell_state=27
+    shell_send_DNA_state=7
+    shell_SoD_state=11
+    ori_construction_target_state=33
+    pseudo_state=0
+    fake_kernell_openning_state=1
 end
 
 -- patterns
@@ -339,6 +351,8 @@ local function E_shell_pattern()
  constructionstopper=constructionstopper.t(-21-constr_lane_dist,-13+constr_lane_dist).state(shell_entrance_state)
 
  local constructionlaneblockingeater=gpo.eater.state(shell_entrance_state).t(58+4-constr_lane_dist-shell_lane0_dist-shell_lane_dist,58+5+constr_lane_dist-shell_lane0_dist-shell_lane_dist,gp.swap_xy_flip)
+ local fakeopenkernelboat1=gpo.boat.state(fake_kernell_openning_state).t(62+8-constr_lane_dist-shell_lane0_dist-shell_lane_dist,63+8+constr_lane_dist-shell_lane0_dist-shell_lane_dist,gp.rccw)
+ local fakeopenkernelboat2=gpo.boat.state(fake_kernell_openning_state).t(62+8-219-constr_lane_dist-shell_lane0_dist-shell_lane_dist,63+8+222+constr_lane_dist-shell_lane0_dist-shell_lane_dist,gp.flip)
 
  local constructionarmtarget=gpo.block.t(-72-4+4-constr_lane_dist,74-3+3-constr_lane_dist).state(construction_target_state)
  local constructionarmtargetSoD=gpo.block.t(-97-constr_lane_dist,44-constr_lane_dist).state(shell_SoD_state)
@@ -353,7 +367,7 @@ local function E_shell_pattern()
  E=E+filltxt.t(20-2*shell_lane0_dist-shell_lane_dist,20+0*shell_lane0_dist-shell_lane_dist,gp.flip)
  E=E --+constructiontarget
          +constructionarmtarget+constructionarmtargetSoD
-         +constructionlaneblockingeater+constructionstopper+oriconstructionarmtarget
+         +constructionlaneblockingeater+constructionstopper+oriconstructionarmtarget+fakeopenkernelboat1+fakeopenkernelboat2
  E=E+openkernelglider
  E=E+openkerneltxt.t(-open_kernel_lane+64,-open_kernel_lane-64)
  E=E+openkerneltxt.t(-open_kernel_lane+64,-open_kernel_lane-64,gp.rcw)
@@ -416,13 +430,15 @@ local function SE_shell_pattern()
  SE=SE+outputtxt.t(-60+input_lane0_dist+input_lane1_dist+input_lane2_dist-shell_lane0_dist,-72-input_lane0_dist-input_lane1_dist-input_lane2_dist-shell_lane0_dist)
  SE=SE+outputglider.t(input_lane0_dist+input_lane1_dist+input_lane2_dist+input_lane3_dist-shell_lane0_dist,-input_lane0_dist-input_lane1_dist-input_lane2_dist-input_lane3_dist-shell_lane0_dist)
  SE=SE+outputtxt.t(-60+input_lane0_dist+input_lane1_dist+input_lane2_dist+input_lane3_dist-shell_lane0_dist,-64-input_lane0_dist-input_lane1_dist-input_lane2_dist-input_lane3_dist-shell_lane0_dist,gp.rcw)
+ SE=SE+gpo.pond.state(fake_kernell_openning_state).t(100+266+input_lane0_dist-shell_lane0_dist,200-495-input_lane0_dist-shell_lane0_dist)
+ SE=SE+gpo.beehive.state(fake_kernell_openning_state).t(100+266+7+input_lane0_dist-shell_lane0_dist,200-495+2-input_lane0_dist-shell_lane0_dist,gp.rcw)
 
  --SE=SE+gpo.block.t(input_lane0_dist-238,-input_lane0_dist-82).state(shell_ori_target_state)
  --SE=SE+gpo.block.t(input_lane0_dist-238+793,-input_lane0_dist-82-855).state(shell_ori_target_state)
  SE=SE+gpo.block.t(input_lane0_dist-238+149,-input_lane0_dist-82-282).state(shell_ori_target_state)
  --SE=SE+gpo.block.t(5063,-2*input_lane0_dist+7112).state(shell_ori_target_state)
  SE=SE+gpo.block.t(5063-5473,-2*input_lane0_dist+7112-6471).state(shell_ori_target_state)
- --SE=SE+gpo.block.t(5063-5473-41,-2*input_lane0_dist+7112-6471-120).state(shell_ori_target_state)
+    --SE=SE+gpo.block.t(5063-5473-41,-2*input_lane0_dist+7112-6471-120).state(shell_ori_target_state)
  --SE=SE+gpo.block.t(5063-5473-49,-2*input_lane0_dist+7112-6471+42).state(shell_ori_target_state)
 
  SE=SE--.t(innerquadsize-DNAloopOctavoDist,-innerquadsize+DNAloopOctavoDist)
@@ -515,7 +531,7 @@ local function W_ori()
     +(scorbieturn.state(build_child_shell_state) + scorbieturn_SoDOpp.state(SoD_state)).t(-69+DNA_outershell_dist+constr_lane_dist,65+constr_lane_dist-DNA_outershell_dist) -- SW shell construction
        +((gpo.eater.t(0,0,gp.flip_y) -- state reading stoper (construction continues in DNA_loop_snarks)
        +boatloaf_ots.t(1-10,-30-10) + toad_ott90.t(8-10,-42-10) + gpo.boat.t(11+10,-23+10,gp.rcw) -- eater building seed
-       +gpo.boat.t(-41,-56)+gpo.long_boat.t(-46,-62,gp.rccw)
+       +gpo.boat.t(-41,-56)+gpo.long_boat.t(-46-10,-62-10,gp.rccw)
        +gpo.boat.t(-43-2,-38-2,gp.flip)  -- state reading stopper destroy
       ).t(2-600,2+600).state(state_computation_state) -- state reading stoper replacement
      ).t(89+DNA_outershell_dist+constr_lane_dist+DNAloopOctavoDist,1+constr_lane_dist-DNA_outershell_dist-DNAloopOctavoDist)
@@ -754,12 +770,13 @@ o$65bobo$66bo7$77b2o$76bobo$75bobo$76bo8$88b2o$87bobo$86bobo$87bo8$99b
 ]])
  local NW_part=pattern()
  NW_part.array=g.parse([[
-39b2o$39bo$18b2o17bobo$11b2o5b2o17b2o$11b2o3$13b2o27b2o$13b2o27b2o$7b
-2o$7b2o$48b2o$o47b2o$3o25bo15b2o$3bo23bobo14b2o$2b2o16b3o4b2o3$49b2o$
-49b2o6$13b2o$13b2o3$8b2o$8b2o3$2b2o$2b2o4$7b2o$7b2o$3b2o$3b2o$44b2o$
-44b2o$9b2o27b2o$9b2o27b2o3$40b2o$15b2o16b2o5b2o$16bo16b2o$13b3o$13bo
-40b2o$54bobo$56bo$56b2o$58bo$56b3o$55bo$43b2o10b2o$43b2o2$48b2o$47bo2b
-o$47bo2bo$48b2o2$54b2o$55bo$52b3o$52bo!
+86b2o$86bo$65b2o17bobo$58b2o5b2o17b2o$58b2o3$60b2o27b2o$60b2o27b2o$54b
+2o$54b2o$95b2o$47bo47b2o$47b3o41b2o$50bo40b2o$49b2o3$96b2o$96b2o4$61bo
+$60bobo$61b2o5$62bo$62bo$62bo$49b2o$49b2o4$54b2o$54b2o17b2o$50b2o21b2o
+$50b2o$91b2o$91b2o$56b2o19b2o6b2o$56b2o19b2o6b2o3$87b2o$62b2o16b2o5b2o
+$63bo16b2o$60b3o$60bo40b2o$101bobo$103bo$103b2o$105bo$103b3o$102bo$90b
+2o10b2o$90b2o2$95b2o$94bo2bo$94bo2bo$95b2o2$101b2o$102bo$99b3o$99bo39$
+b2o$obo$bo!
 ]])
  local NW_partSoD=pattern()
  NW_partSoD.array=g.parse([[
@@ -779,10 +796,10 @@ o$49bo26$6b3o4$b2o$o2bo$b2o$9bo$8bobo$7bobo$7b2o4$25b2o$24bobo$23bobo$
          --  + (gpo.loaf.t(-29,16,gp.rcw)+gpo.blinker.t(-32,27,gp.rcw)).state(transfer_DNA_state) -- starting read clock
  ).t(973-innerquadsize,-458)
  +
- (NW_part.state(NW_clock_state)+NW_partSoD.t(-46,1).state(SoD_state)+gpo.glider[1+2].t(-6-75115,13-75115,gp.swap_xy_flip).state(active_state)
-  +(boatsemisnark.state(clock_logic_state)+boatsemisnark_SoD.state(SoD_state)+semisnarksemi).t(3-1,97+1)
+ (NW_part.t(-47,0).state(NW_clock_state)+NW_partSoD.t(-46,1).state(SoD_state)+gpo.glider[1+2].t(-241+95-6+75115,-105+95+13+75115).state(active_state)
+  +(boatsemisnark.state(clock_logic_state)+boatsemisnark_SoD.state(SoD_state)+semisnarkready).t(3-1,97+1)
   +(gpo.boat.t(35-1, 87+1, gp.flip) -- read state alarm clock gun start (we can use other barel of this gun instead)
-   +gpo.block.t(25, 96) --
+   +gpo.pond.t(38, 80) --
    ).state(send_DNA_state)
   +gpo.boat.t(24, 91, gp.rccw).state(SoD_state) -- stops semisnark series destroyal
  ).t(-5069-innerquadsize,-6501)
@@ -893,6 +910,7 @@ local _0e0p_cellF = cell(true)
 
 --shellplanstates()
 planstates()
+--shelldonestates()
 E,N,W,S=shell_corners_E_N_W_S()
 SE,NE,NW,SW=shell_sides_SE_NE_NW_SW()
 E_ori()

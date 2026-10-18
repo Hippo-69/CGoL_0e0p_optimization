@@ -457,11 +457,13 @@ class SimkinECCAp2compiler(object):
         self.cur = [0,0] # position of the collision of the simking glider with gliders sent at next_available_tick would happen in "1/8 fd"
         # glider lanes in recipes are relative to 2*(self.cur//8)
         self.delayed2, self.delayed1 = [{},{}], [{},{}] # portions of candidate salvas not yet decided to connect to the recipe, delayed2 does not contain last 2 gliders, delayed1 does not contain last glider (the glider currently considered)
-        self.delayed1[0][0],self.delayed1[1][0]=("0:",0),("0:",0)
+        self.delayed1[0][0],self.delayed1[1][0]=("0:",0, 0),("0:",0, 0) # (compressed sequence so far, its length, number of comments after the last command)
         self.output = ["",""] # to be made by self.flush from subresults
         # curAfterLastEmission -> (letterstring,cost)
 
         self.delayed = [{},{}] # curerntly working on similarly as self.delayed1, self.delayed2 to be "rotated" after all options are processed
+        self.comments = [] # for commented code
+        self.l2name['@'] = '@'  # for commented code
         # curAfterLastEmission -> ((predecessorkey,predecessorlevel,letterstring after predecessor),cost)
 
     #(letterstring, cost, sgliders)
@@ -592,52 +594,61 @@ class SimkinECCAp2compiler(object):
         return names[:-1]
 
     def names2exttimedeltas(self, names_string):
+        comment_index = 0
         names = names_string.split(" ")
         recipe = []
         for name in names:
-            recipe.append(self.recipes[name][0])
+            if name == '@':
+                recipe.append("--"+self.comments[comment_index]+"\n")
+                comment_index += 1
+            else:
+                recipe.append(self.recipes[name][0])
         return " ".join(recipe)
 
     def jointimedeltas(self, ext_td, current_total=0):
-        etds = ext_td.split(" ")
+        etd_lanes = ext_td.split("\n")
         current_parenthesis, current_plus = 0, 0
         synced, started = False, False
         tds = []
-        for etd in etds:
-            if etd[0]=="(":
-                if not synced:
-                    print("consecutive parenthesis!")
-                else:
-                    current_parenthesis = int(etd[1:-1])
-                    synced = False
-            elif etd[0]=="[":
-                if synced:
-                    print("consecutive square brackets!")
-                if not started:
-                    if current_parenthesis>0:
-                        tds.append(f"({current_parenthesis + current_plus})")
-                    elif current_plus>0:
-                        tds.append(f"+{current_plus}")
-                    tds.append(etd)
-                    started = True
-                else:
-                    td = current_parenthesis + current_plus
-                    psplit = (etd[1:-1]+"%8").split('%') # %8 default
-                    rem = (int(psplit[0]) - td - current_total) % int(psplit[1])
-                    tds.append(f"{td+rem}")
-                    current_total += td+rem
-                    current_parenthesis, current_plus = 0, 0
-                synced = True
-            elif etd[0]=="+":
-                if synced:
-                    print("+ at synced state!")
-                current_plus += int(etd[1:])
-            else:
-                if not synced:
-                    print("exact delay when not synced!")
-                delay = int(etd)
-                tds.append(etd)
-                current_total += delay
+        for etd_lane in etd_lanes:
+            etds = etd_lane.split("--")[0].split(" ")
+            for etd in etds:
+                if len(etd)>0:
+                    if etd[0]=="(":
+                        if not synced:
+                            print("consecutive parenthesis!")
+                        else:
+                            current_parenthesis = int(etd[1:-1])
+                            synced = False
+                    elif etd[0]=="[":
+                        if synced:
+                            print("consecutive square brackets!")
+                        if not started:
+                            if current_parenthesis>0:
+                                tds.append(f"({current_parenthesis + current_plus})")
+                            elif current_plus>0:
+                                tds.append(f"+{current_plus}")
+                            tds.append(etd)
+                            started = True
+                        else:
+                            td = current_parenthesis + current_plus
+                            psplit = (etd[1:-1]+"%8").split('%') # %8 default
+                            rem = (int(psplit[0]) - td - current_total) % int(psplit[1])
+                            tds.append(f"{td+rem}")
+                            current_total += td+rem
+                            current_parenthesis, current_plus = 0, 0
+                        synced = True
+                    elif etd[0]=="+":
+                        if synced:
+                            print("+ at synced state!")
+                        current_plus += int(etd[1:])
+                    else:
+                        if not synced:
+                            print("exact delay when not synced!")
+                        delay = int(etd)
+                        tds.append(etd)
+                        current_total += delay
+            tds.append("--"+"--".join(etd_lane.split("--")[1:])+"\n")
         if current_parenthesis > 0:
             tds.append(f"({current_parenthesis + current_plus})")
             current_total += current_parenthesis + current_plus
@@ -672,6 +683,7 @@ class SimkinECCAp2compiler(object):
 
         self.delayed=[{},{}]
         def updateIfBetter(key, phaseswitch, move, cost):
+            #always made move includes comments so pending comments are cleaned
             #print(f"uib {key},{self.pack_letters(move[2])},{cost}")
             if (not key in self.delayed[phaseswitch]):
                 self.delayed[phaseswitch][key] = (move, cost)
@@ -692,7 +704,7 @@ class SimkinECCAp2compiler(object):
             goptions=[]
             for phaseswitch in range(2):
                 for key, value in self.delayed1[phaseswitch].items():
-                    updateIfBetter(key, phaseswitch, (key, 1, ''), value[1]) # delayed correspond to doing nothing
+                    updateIfBetter(key, phaseswitch, (key, 1, '@'*value[2]), value[1]) # delayed correspond to doing nothing ... required to roll delayed2 out as we do not process glider pairs emited to different directions (not worth implementing)
         elif len(goptions) == 1 and goptions[0][0] == 'w':
             repeat = 1 if len(goptions[0])==1 else int(goptions[0][1:])
             goptions=[]
@@ -723,7 +735,7 @@ class SimkinECCAp2compiler(object):
                     #print(f"wmove {self.pack_letters(wmove)}")
                     ncost = value[1] + 120*repeat
                     ncur = key
-                    nmove = (key, 1, wmove) # real update would be during step forward
+                    nmove = (key, 1, '@'*value[2]+wmove) # real update would be during step forward
                     updateIfBetter(ncur, phaseswitch, nmove, ncost)
         elif len(goptions) == 1 and goptions[0][0] == 'i':
             repeat = 1 if len(goptions[0])==1 else int(goptions[0][1:])
@@ -733,7 +745,7 @@ class SimkinECCAp2compiler(object):
                     wmove = 'A' * (120*repeat) # requires A = +1
                     ncost = value[1] + 120*repeat
                     ncur = key+120*repeat
-                    nmove = (key, 1, wmove) # real update would be during step forward
+                    nmove = (key, 1, '@'*value[2]+wmove) # real update would be during step forward
                     updateIfBetter(ncur, phaseswitch, nmove, ncost)
         else:
             for phaseswitch in range(2):
@@ -746,6 +758,8 @@ class SimkinECCAp2compiler(object):
                                 pphasedir, p_lane = phaseswitching[f"{pgoption[0]}{phaseswitch}{self.direction}"], int(pgoption[1:])
                             for goption in goptions:
                                 if len(goption):
+                                    if len(goption)<2:
+                                        print(f"short goption:{goption}")
                                     if goption[1]>'9':
                                         phasedir, lane = phaseswitching[f"{goption[0:2]}{phaseswitch}{self.direction}"], int(goption[2:])
                                     else:
@@ -759,7 +773,7 @@ class SimkinECCAp2compiler(object):
                                             xxoption = self.get_xxoption(key%8,p_lane-2*(key//8),xxpreoption)
                                             ncost = value[1] + xxoption[1]
                                             ncur = key + xxoption[1] - 120*xxoption[2]
-                                            nmove = (key, 2, xxoption[0]) # real update would be during step forward
+                                            nmove = (key, 2, '@'*value[2] + xxoption[0]) # real update would be during step forward
                                             updateIfBetter(ncur, phaseswitch, nmove, ncost)
                 for goption in goptions:
                     if len(goption):
@@ -773,24 +787,24 @@ class SimkinECCAp2compiler(object):
                             for xoption in xoptions:
                                 ncost = value[1] + xoption[1]
                                 ncur = key + xoption[1] - 120*xoption[2]
-                                nmove = (key, 1, xoption[0]) # real update would be during step forward
+                                nmove = (key, 1, '@'*value[2] + xoption[0]) # real update would be during step forward
                                 updateIfBetter(ncur, phaseswitch, nmove, ncost)
         self.prev_goptions = goptions
 
     #extends the options DAG and if it is "tally" it outputs already known
     def preprocess_glider(self, glider):
-        def updateIfBetter(cur,phaseswitch,movecost):
+        def updateIfBetter(cur,phaseswitch,movecostcomments):
             if not cur in self.delayed1[phaseswitch]:
-                self.delayed1[phaseswitch][cur]=movecost
-            elif movecost[1] < self.delayed1[phaseswitch][cur][1]:
-                self.delayed1[phaseswitch][cur]=movecost
+                self.delayed1[phaseswitch][cur]=movecostcomments
+            elif movecostcomments[1] < self.delayed1[phaseswitch][cur][1]:
+                self.delayed1[phaseswitch][cur]=movecostcomments
 
         if glider == '%':
             keys0 = self.delayed1[0].keys()
             for key1 in self.delayed1[1].keys():
-                updateIfBetter(key1,0,self.delayed1[1][key1])
+                updateIfBetter(key1,0,(self.delayed1[1][key1][0]+'@'*self.delayed1[1][key1][2],self.delayed1[1][key1][1],0))
             for key0 in keys0:
-                updateIfBetter(key0,1,self.delayed1[0][key0])
+                updateIfBetter(key0,1,(self.delayed1[0][key0][0]+'@'*self.delayed1[0][key0][2],self.delayed1[0][key0][1],0))
             #print("done? %")
         else:
             goptions = glider.split("|")
@@ -804,13 +818,14 @@ class SimkinECCAp2compiler(object):
                             self.cur[phaseswitch] = value[0][0]
                             joiner = len(self.subresults)
                             self.subresults.append(self.delayed1[phaseswitch][self.cur[phaseswitch]][0])
-                            self.delayed1[phaseswitch][value[0][0]]=(f"{joiner}:",self.delayed1[phaseswitch][value[0][0]][1])
-                for key, value in self.delayed[phaseswitch].items(): #let us include the history (if not cut)
+                            print(f"self.subresults[{joiner}]='{self.pack_letters(self.subresults[joiner])}'")
+                            self.delayed1[phaseswitch][value[0][0]]=(f"{joiner}:",self.delayed1[phaseswitch][value[0][0]][1],0)
+                for key, value in self.delayed[phaseswitch].items(): #let us include the history (if not cut) and allocate comments counter
                     if value[0][1] == 1:
-                        self.delayed[phaseswitch][key]=(self.delayed1[phaseswitch][value[0][0]][0]+value[0][2], value[1])
+                        self.delayed[phaseswitch][key]=(self.delayed1[phaseswitch][value[0][0]][0]+value[0][2], value[1], 0)
                     else:
                         #print (f"self_delayed update2 (({value[0][0]},{value[0][1]},{self.pack_letters(value[0][2])}),{value[1]}) {self.pack_delayed1(self.delayed2[phaseswitch])}")
-                        self.delayed[phaseswitch][key]=(self.delayed2[phaseswitch][value[0][0]][0]+value[0][2], value[1])
+                        self.delayed[phaseswitch][key]=(self.delayed2[phaseswitch][value[0][0]][0]+value[0][2], value[1], 0)
 
             self.delayed2,self.delayed1 = self.delayed1,self.delayed
 
@@ -820,7 +835,7 @@ class SimkinECCAp2compiler(object):
             bestkey = min(self.delayed1[phaseswitch], key=lambda x:self.delayed1[phaseswitch][x][1])
             print (f"finally {phaseswitch}: cost {self.delayed1[phaseswitch][bestkey][1]}")
             self.cur[phaseswitch] = bestkey
-            output = self.delayed1[phaseswitch][bestkey][0].split(":")
+            output = (self.delayed1[phaseswitch][bestkey][0]+'@'*self.delayed1[phaseswitch][bestkey][2]).split(":")
             while int(output[0])>0:
                 output = (self.subresults[int(output[0])]+output[1]).split(":")
             self.output[phaseswitch]=output[1]
@@ -830,7 +845,7 @@ class SimkinECCAp2compiler(object):
         self.cur = [0,0]
         self.subresults = [""]
         self.delayed2, self.delayed1 = [{},{}], [{},{}] # portions of candidate salvas not yet decided to connect to the recipe, delayed2 does not contain last 2 gliders, delayed1 does not contain last glider (the glider currently considered)
-        self.delayed1[0][0],self.delayed1[1][0]=("0:=<",0),("0:=<",0)
+        self.delayed1[0][0],self.delayed1[1][0]=("0:=<",0,0),("0:=<",0,0)
         self.prev_goptions = []
         self.output = ["",""]
 
@@ -838,7 +853,7 @@ class SimkinECCAp2compiler(object):
         self.cur = [0,0]
         self.subresults = [""]
         self.delayed2, self.delayed1 = [{},{}], [{},{}] # portions of candidate salvas not yet decided to connect to the recipe, delayed2 does not contain last 2 gliders, delayed1 does not contain last glider (the glider currently considered)
-        self.delayed1[0][0],self.delayed1[1][0]=("0:=\\",0),("0:=\\",0)
+        self.delayed1[0][0],self.delayed1[1][0]=("0:=\\",0,0),("0:=\\",0,0)
         self.prev_goptions = []
         self.output = ["",""]
 
@@ -856,9 +871,22 @@ class SimkinECCAp2compiler(object):
                 print (f"{phaseswitch}: {td}")
         return maintd
 
-    def compile(self, gliders):
-        for x in gliders.split():
-            self.preprocess_glider(x)
+    def compile(self, gliders): # should obtain lanes instead of gliders process individual lanes upto optional -- and add '@' marks whenever -- appeared and store the comment  (be aware on glider pair solutions)
+        for gliderlanes in gliders.split("\n"):
+            lane_parts = gliderlanes.split("--")
+            for x in lane_parts[0].split():
+                self.preprocess_glider(x)
+            comment = "--".join(lane_parts[1:])
+            if len(comment)>0:
+                self.comments.append(comment)
+                print(f'self.comments[{len(self.comments)-1}]={self.comments[-1]}')
+                for phaseswitch in range(2):
+                    for key in self.delayed1[phaseswitch].keys():
+                        self.delayed1[phaseswitch][key]=(self.delayed1[phaseswitch][key][0],self.delayed1[phaseswitch][key][1],self.delayed1[phaseswitch][key][2]+1) # adding end of lane mark
+                        print(f'self.delayed1[{phaseswitch}][{key}]=({self.pack_letters(self.delayed1[phaseswitch][key][0])},{self.delayed1[phaseswitch][key][1]},{self.delayed1[phaseswitch][key][2]})')
+                    for key in self.delayed2[phaseswitch].keys():
+                        self.delayed2[phaseswitch][key]=(self.delayed2[phaseswitch][key][0],self.delayed2[phaseswitch][key][1],self.delayed2[phaseswitch][key][2]+1) # adding end of lane mark
+                        print(f'self.delayed2[{phaseswitch}][{key}]=({self.pack_letters(self.delayed2[phaseswitch][key][0])},{self.delayed2[phaseswitch][key][1]},{self.delayed2[phaseswitch][key][2]})')
         self.flush()
         maintd,td="",""
         for phaseswitch in range(2):

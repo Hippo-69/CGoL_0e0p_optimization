@@ -6,9 +6,9 @@ e192 b207 b212|b215|b216 o209 b217 o215 b207 e228 -- *
 -- NNNN NNNE interrupt
 b271 -- shifting NNNE to safe lane
 -- NNNN NNNE interrupt end
--- NNNN 
+-- NNNN
 b274 e270 
--- NNNN 
+-- NNNN
 -- NNNN NEEE interrupt -- shifting to a safe lane
 b286 o289 e296 b304 e287 -- * to leave lanes required by both NNNN and NNNE
 -- NNNN NEEE interrupt end
@@ -283,7 +283,7 @@ e195633 o195631 o195621 e195640 o195621 o195635 e195629 o195633 o195617|o195618|
 --NN build start (shifted by 2280 = 76 anchored gliders *30)
 b195558 b195549 o195557 o195570 b195582 -- *
 o195574 w38 LH195576 --fast pull
-e195564 o195559 e195561 -- forced 
+e195564 o195559 e195561 -- forced
 e195566 o195563 -- =
 --NN build end
 -- q4LEEEE end
@@ -327,6 +327,7 @@ J768 -- block -43->-51
 l b772 b770|b775 e770 o759 e780 --
 J944 -- block -43->-77
 b957 b954|b959 b961 b960 b963 b971|b972|b973|b974|b975|b976 b983 b972 b977|b978|b979|b980|b981|b982 b1007
-BB950 -- open kernel 
+w3000 -- reserve for shell build gaps caused by transition function ... to be adjusted as gaps are added ... does not work now, the shell build is closed too early but with the gaps expanding ...
+BB950 -- open kernel
 O932 -- beehive pond SoD
 -- final comment

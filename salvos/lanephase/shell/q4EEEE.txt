@@ -6,9 +6,9 @@ e192 b207 b212|b215|b216 o209 b217 o215 b207 e228 -- *
 -- NNNN NNNE interrupt
 b271 -- shifting NNNE to safe lane
 -- NNNN NNNE interrupt end
--- NNNN 
+-- NNNN
 b274 e270 
--- NNNN 
+-- NNNN
 -- NNNN NEEE interrupt -- shifting to a safe lane
 b286 o289 e296 b304 e287 -- * to leave lanes required by both NNNN and NNNE
 -- NNNN NEEE interrupt end
@@ -283,7 +283,7 @@ e195633 o195631 o195621 e195640 o195621 o195635 e195629 o195633 o195617|o195618|
 --NN build start (shifted by 2280 = 76 anchored gliders *30)
 b195558 b195549 o195557 o195570 b195582 -- *
 o195574 w38 LH195576 --fast pull
-e195564 o195559 e195561 -- forced 
+e195564 o195559 e195561 -- forced
 e195566 o195563 -- =
 --NN build end
 -- q4LEEEE end

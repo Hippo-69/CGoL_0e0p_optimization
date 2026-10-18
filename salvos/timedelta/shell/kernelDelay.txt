@@ -1,0 +1,1 @@
+60564 --357204 -- reserve for shell build gaps caused by transition function ... to be adjusted as gaps are added fixed % 120 reserve probably too small, central clock synchronization should wait for gap planning

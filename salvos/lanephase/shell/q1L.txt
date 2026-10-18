@@ -11,7 +11,7 @@ w212
 o-19 o-14 o-18 -- SSWW ott180 built and invoked %
 -- adjustable delay for a long pull
 WW0
-w515 -- w1
+w2 -- w515 -- w1 delaying long boat positioning !530
 o-25 -- for ott180 for input lane blocking seed
 -- SSWW building ott180 for kernel openning delay ... ott would be probably shifted on WWWW-SSSS diagonal (w3409 gives us plenty of options ... but lanes > 45 are blocked! (gliders 51  and 63))
 b-30 b-33 b-24 b-10 -- to longboat with better color
@@ -106,5 +106,5 @@ b35 b32|b37 e37 o37 e41 b36 -- =
 o33 e32|e33|o36|o37 o23 e28 o38 -- *
 e44 e37
 -- SSWW ott180 not finished, e37 delayed for timing reasons ...
-w1523
+w2036 --w1523
 -- q1L end

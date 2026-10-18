@@ -14,7 +14,7 @@
 --   SS: lanes 1747604-1747642
 --   EE: lanes 2446675-2446701
 
--- SSSS: lanes 1397698-1398174 překážky 1398145-1398203
+-- SSSS: lanes 1397698-1398174 obstacles 1398145-1398203
 -- SSSE: 3 gliders 1746324-1746335
 -- SEEE: lanes 2448613-2448640
 -- EEEE: lanes 2796168-2796365 destroy block 2796633
@@ -26,7 +26,7 @@
 -- range of first OGGCA 1397776- is sufficient
 
 l -- 1397920-1397923   left edge 1397666=142 1397698=174 1397524+X=X
-U-38 FA82 o232 b101 --target through snark
+UC-38 FA82 o232 b101 --target through snark U does not work in this distance from simkin gun
 b238|b241|b242 b238 b225 b235 o238 e246 o237 o232 b239 b239 b228 b240 -- *
 e240 o226 o227 e236 b214 b214 b207 b205 -- *
 e216 o220 o224|o225|e228|e229 o222|o223|e218|e219 e215 o202 b201 e205

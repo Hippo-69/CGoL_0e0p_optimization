@@ -104,7 +104,7 @@ e464 b447 b428 o425 e418 e427 b410 b391 o388 e381 e390 b373 b354 b365
 b355|b356|b357|b358|b359|b360 b331 b342 b332|b333|b334|b335|b336|b337 b308 o305 o307 e290 o286
 o295 b313 b303|b304|b305|b306|b307|b308 -- WWWW
 -- q0L end
--- something from q0.2R.txt could go here 
+-- something from q0.2R.txt could go here
 -- q0R end
 --w3
 w7 l --o20 -- ~0.2q target for future input lane blocking delay ott180 obsolete
@@ -187,7 +187,7 @@ w212
 o-19 o-14 o-18 -- SSWW ott180 built and invoked %
 -- adjustable delay for a long pull
 WW0
-w515 -- w1
+w2 -- w515 -- w1 delaying long boat positioning !530
 o-25 -- for ott180 for input lane blocking seed
 -- SSWW building ott180 for kernel openning delay ... ott would be probably shifted on WWWW-SSSS diagonal (w3409 gives us plenty of options ... but lanes > 45 are blocked! (gliders 51  and 63))
 b-30 b-33 b-24 b-10 -- to longboat with better color
@@ -282,7 +282,7 @@ b35 b32|b37 e37 o37 e41 b36 -- =
 o33 e32|e33|o36|o37 o23 e28 o38 -- *
 e44 e37
 -- SSWW ott180 not finished, e37 delayed for timing reasons ...
-w1523
+w2036 --w1523
 -- q1L end
 l
 o90 -- 2q SWWW build start
@@ -314,7 +314,7 @@ b-4 b-6|b-1 e-1 o-1 e3 b7 b4|b9 -- *
 e4 o1 e4 o0 b8 -- *
 --b27 -- removes block on path to WWWW slow^2 ott (could be removed by construction instead) obsolete
 w4 -- compensates for b33->b28..b33 and b27 changes
-o4 e-6 e4 b8|b9|b10|b11|b12|b13 b8 b8 b0 b31 -- = 
+o4 e-6 e4 b8|b9|b10|b11|b12|b13 b8 b8 b0 b31 -- =
 o34 e36|e37|o40|o41 e40 e33 e36 o35 o40 o38 b32 b33 -- *
 o41 o38 -- =
 o32 e31 b27 -- *
@@ -446,7 +446,7 @@ o-2 o-1 e4 o2 e-15 e-9 b-8 e1 -- o-15 crushes
 o-1 o2 b2 b-2 b7 b-4 -- *
 e-7 o11 o-1 b8 b9 b3 b12 -- *
 e13 o-1 o5 b-7 b-14 b-5 -- *
-b-2 b-3 b5 b12 -- boat 5_16_-8 ott SSSW to NEEE 
+b-2 b-3 b5 b12 -- boat 5_16_-8 ott SSSW to NEEE
 b-8 b-6 b-12 b-7 b-12|b-8|b-7 b9 b8 b7 b6 b5 b4 b13 b2 b7|b8|b9|b10|b11|b12 b12 b11 b13 b36 b38 o36 e40 b37 b42 b35 b40|b41|b42|b43|b44 b70 b70 -- *
 e73 o80 o97 o95 o111 b118 b107 b120 b121 -- *
 o133 o136 o143 o136 o157 b145|b146|b147|b148|b149|b150 b200 -- *
@@ -515,15 +515,15 @@ D866 -- input blocking eater seed
 E676 -- input blocking seed activation ott
 L658 -- another input blocking seed activation ott
 WB550 -- get space for long wait (w2)
-w3295 -- 
+w3295 --
 --SSSS o=d~3.9q   (sync targeted glider from WWSS) build 180ott SSSS to SSSS "part" of the future "input lane blocking seed"
 -- q3.9L end
 LH42 -- should wait the SSWW SSSS EEEE reflection original L emissions does not work
 LK53 -- should wait both for the SSWW SSSS EEEE reflection as well as for b42
 --SSSS o=4q, d=4q (glider reaching SSWW to EEEE ott)
---EEEE o=8q, d=4q slow^2 reflectors to NNNE, and NEEE created 
+--EEEE o=8q, d=4q slow^2 reflectors to NNNE, and NEEE created
 --SSSS o=4q, d=4q splitter SSSW,EEEE to NEEE activated
---SSSS            splitter SWWW,EEEE to NNNE activated               
+--SSSS            splitter SWWW,EEEE to NNNE activated
 w23 w27
 l t22 b27 b19 b16 b34 b20 b26 -- boat ott SSSW through SSSS to SSSE
 b-24 -- input lane stop invocation better color
@@ -564,4 +564,3 @@ C20 -- Simkin OGGCA destroyal
 --SEEE o=9q, d=6q SEEE is convert to rotationally symmetric position for directed build (if it isn't) using last simkin OGGCA gliders
 --EEEE o=10q,d=6q salvo converting stopped simkin OGGCA to E construction target block of child cell arrives (middle of EEEE construction)
 -- q6L end
-

@@ -28,7 +28,7 @@ b-4 b-6|b-1 e-1 o-1 e3 b7 b4|b9 -- *
 e4 o1 e4 o0 b8 -- *
 --b27 -- removes block on path to WWWW slow^2 ott (could be removed by construction instead) obsolete
 w4 -- compensates for b33->b28..b33 and b27 changes
-o4 e-6 e4 b8|b9|b10|b11|b12|b13 b8 b8 b0 b31 -- = 
+o4 e-6 e4 b8|b9|b10|b11|b12|b13 b8 b8 b0 b31 -- =
 o34 e36|e37|o40|o41 e40 e33 e36 o35 o40 o38 b32 b33 -- *
 o41 o38 -- =
 o32 e31 b27 -- *

@@ -120,7 +120,7 @@ b67 e67 o60|o61|e64|e65 o57 e62 e60 -- *
 b56 b50 o48 o51 e45 e36 o56 b66 o62 e55 b53|b55|b58 o52 b79 o87 e88|e89|o84|o85 o85 o87 o89 
 w21
 -- q0.2R end
-l 
+l
 -- waits
 b121 b111|b112|b115 b111 o108 o116 -- *
 e118 o106 -- *
@@ -282,7 +282,12 @@ b35 b32|b37 e37 o37 e41 b36 -- =
 o33 e32|e33|o36|o37 o23 e28 o38 -- *
 e44 e37
 -- SSWW ott180 not finished, e37 delayed for timing reasons ...
-w2036 --w1523
+
+w1085 WW90 WW90 WW256 -- 7777 -> 2
+-- 7770 -> 0
+w477 WW256 WW256 WW256 WW256 WW512 --7707 -> 4
+w443
+--w2036 
 -- q1L end
 l
 o90 -- 2q SWWW build start

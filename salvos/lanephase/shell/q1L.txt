@@ -106,5 +106,10 @@ b35 b32|b37 e37 o37 e41 b36 -- =
 o33 e32|e33|o36|o37 o23 e28 o38 -- *
 e44 e37
 -- SSWW ott180 not finished, e37 delayed for timing reasons ...
-w2036 --w1523
+
+w1085 WW90 WW90 WW256 -- 7777 -> 2
+-- 7770 -> 0
+w477 WW256 WW256 WW256 WW256 WW512 --7707 -> 4
+w443
+--w2036 
 -- q1L end
